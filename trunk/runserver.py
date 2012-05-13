@@ -1,3 +1,3 @@
 #!/usr/bin/python
-from Evergreen.server import server
+from src.server import server
 server.run()
