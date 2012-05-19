@@ -5,7 +5,7 @@ from .. import level
 from .. import errors
 from .. import net
 from .. import chameleon
-from .. import connection
+#from .. import connection
 import os
 import sys
 import socket
@@ -13,26 +13,31 @@ import collections
 import pygame
 import cPickle as pickle
 import re
+import select
 pygame.init()
 pygame.display.set_mode()
 class serverWrapper():
 	def __init__(self, serversocket):
 		self.socket = serversocket
+		self.poll = select.poll()
+		self.poll.register(self.socket, select.POLLIN)
 		self.socket.send(sys.argv[3])
-		ack = self.socket.recv()
+		ack = self.socket.recv(6)
 		if ack != "idAck":
 			raise errors.serverError("Error: server refuses to acknowledge ID message.")
 	def postEvent(self, event, data):
 		#print event
 		#print data
-		self.socket.send(net.netEvent(event, data))
+		self.socket.send(pickle.dumps(net.netEvent(event, data)), 2)
 	def getData(self):
-		if self.socket.poll():
-			request = self.socket.recv()
+		#print "getData"
+		request = ""
+		while self.poll.poll(0):
+			request += self.socket.recv(8192)
 			#print request
-			return request.cham()
-		else:
-			return None
+		if request != "":
+			return pickle.loads(request).cham()
+		return None
 	def close(self):
 		self.socket.close()
 class networkController(chameleon.listener):
@@ -60,7 +65,7 @@ class networkController(chameleon.listener):
 		#print self.entityState.sprites()
 		self.manager.alert(chameleon.event("distEntityPos", self.entityState))
 	def ev_update(self, data):
-		self.server.postEvent("requestEntityPos", None)
+		#self.server.postEvent("requestEntityPos", None)
 		response = self.server.getData()
 		#print response
 		if response:
@@ -81,13 +86,13 @@ class networkView(chameleon.listener):
 		self.manager.reg("logout", self)
 		self.server = server
 	def ev_up(self, data):
-		self.server.postEvent("moveUp", data)
+		self.server.postEvent("up", data)
 	def ev_down(self, data):
-		self.server.postEvent("moveDown", data)
+		self.server.postEvent("down", data)
 	def ev_left(self, data):
-		self.server.postEvent("moveLeft", data)
+		self.server.postEvent("left", data)
 	def ev_right(self, data):
-		self.server.postEvent("moveRight", data)
+		self.server.postEvent("right", data)
 	def ev_logout(self, data):
 		self.server.postEvent("kill", data)
 class keyController(chameleon.listener):
@@ -133,15 +138,11 @@ class localStateView(chameleon.listener):
 		for sprite in self.entityState:
 			sprite.images = spritepack.getCharImage(sprite.imgname)
 			sprite.image = sprite.images[sprite.data["facing"]][0]
-		try:
-			self.char = [char for char in self.entityState.sprites() if char.data["name"] == sys.argv[3]][0]
-			self.entityState.sprites().remove(self.char)
-			self.chargroup.add(self.char)
-		except IndexError:
-			raise errors.coreError("Well, your avatar ID is valid, but the server doesn't think that an entity with that name exists. Email me about that.")
-		finally:
-			self.entityState.draw(self.surfBuf)
-			self.chargroup.draw(self.surfBuf)
+		self.char = [char for char in self.entityState.sprites() if char.data["name"] == sys.argv[3]][0]
+		#self.entityState.remove(self.char)
+		self.chargroup.add(self.char)
+		self.entityState.draw(self.surfBuf)
+		self.chargroup.draw(self.surfBuf)
 	def ev_update(self, data):
 		if self.entityState:
 			self.screenrect.center = self.char.rect.center
@@ -166,7 +167,8 @@ class spinner(chameleon.manager):
 	def __init__(self):
 		chameleon.manager.__init__(self)
 		self.errHandler = errorHandler(self)
-		self.socket = connection.Client((sys.argv[1], int(sys.argv[2])))
+		self.socket = socket.socket()
+		self.socket.connect((sys.argv[1], int(sys.argv[2])))
 		self.server = serverWrapper(self.socket)
 		self.netView = networkView(self, self.server)
 		self.netControl = networkController(self, self.server)

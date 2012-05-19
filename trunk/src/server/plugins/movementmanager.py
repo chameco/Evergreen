@@ -12,10 +12,12 @@ class movementmanager(chameleon.listener):
 		self.setResponse("down", self.ev_down)
 		self.setResponse("left", self.ev_left)
 		self.setResponse("right", self.ev_right)
+		#self.setResponse("update", self.ev_update)
 		self.manager.reg("up", self)
 		self.manager.reg("down", self)
 		self.manager.reg("left", self)
 		self.manager.reg("right", self)
+		#self.manager.reg("update", self)
 	def ev_up(self, data):
 		print "up"
 		self.controlledEntity.moveup(data)

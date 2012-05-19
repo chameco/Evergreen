@@ -14,5 +14,5 @@ def getCharImage(name):
 	if name in CHARIMAGES.keys():
 		pass
 	else:
-		CHARIMAGES[name] = ((utils.loadImage(os.path.join(PATH, "playerf.png")), utils.loadImage(os.path.join(PATH, "playerfa.png"))), (utils.loadImage(os.path.join(PATH, "playerb.png")), utils.loadImage(os.path.join(PATH, "playerba.png"))), (utils.loadImage(os.path.join(PATH, "playerl.png")), utils.loadImage(os.path.join(PATH, "playerla.png"))), (utils.loadImage(os.path.join(PATH, "playerr.png")), utils.loadImage(os.path.join(PATH, "playerra.png"))))
+		CHARIMAGES[name] = ((utils.loadImage(os.path.join(PATH, "playerb.png")), utils.loadImage(os.path.join(PATH, "playerba.png"))), (utils.loadImage(os.path.join(PATH, "playerf.png")), utils.loadImage(os.path.join(PATH, "playerfa.png"))), (utils.loadImage(os.path.join(PATH, "playerl.png")), utils.loadImage(os.path.join(PATH, "playerla.png"))), (utils.loadImage(os.path.join(PATH, "playerr.png")), utils.loadImage(os.path.join(PATH, "playerra.png"))))
 	return CHARIMAGES[name]

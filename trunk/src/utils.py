@@ -17,6 +17,9 @@ def loadLevelPack(name, manager):
 	return [value.lvl(manager) for value in ns.values()]
 def loadImage(pathname):
 	i = pygame.image.load(os.path.join(os.path.abspath("."), pathname))
-	i.set_colorkey((255, 0, 170))
 	i.convert()
+	i.set_colorkey((255, 0, 170))
+	#print i.get_colorkey()
 	return i
+def sponge(*args):
+	pass

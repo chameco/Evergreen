@@ -17,7 +17,7 @@ class drawnObject(pygame.sprite.Sprite):
 	@staticmethod
 	def load(dump):
 		data = dump
-		print data
+		#print data
 		if "data" in data.keys() and data["data"]: #If data is set to a true value in the constructor, you better have an argument slot for it!
 			return data["type"](data["coords"], data["data"])
 		else:
@@ -66,7 +66,7 @@ class entity(physicalObject): #On the character creation webpage we'll need to a
 		else:
 			self.requestx = 0 if self.requestx >= 1 else self.requestx
 	def update(self, allSprites):
-		print self.rect
+		#print self.rect
 		requestx = self.requestx
 		requesty = self.requestx
 		if self.rect.move(requestx, 0).collidelist(allSprites.sprites()) != -1:

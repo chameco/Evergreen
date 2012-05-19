@@ -4,7 +4,7 @@ from .. import level
 from .. import errors
 from .. import net # Net is mostly obsolete, but we need net.netEvent
 from .. import chameleon
-from .. import connection
+#from .. import connection
 import db
 import sys
 import os
@@ -14,6 +14,7 @@ import cPickle as pickle
 import socket
 import re
 import ConfigParser
+import select
 CONFIG = {}
 CONFIG["basedir"] = os.path.abspath(".")
 CONFIG["packagedir"] = os.path.join(CONFIG["basedir"], "src")
@@ -26,29 +27,31 @@ CONFIG["plugins"] = configParser.items("plugins")
 class clientWrapper():
 	def __init__(self, clientsocket):
 		self.socket = clientsocket
-		self.avatarID = self.socket.recv()
+		self.poll = select.poll()
+		self.poll.register(self.socket, select.POLLIN)
+		self.avatarID = self.socket.recv(256)
 		print self.avatarID
 		self.socket.send("idAck")
 	def postEvent(self, event, data):
 		#print event
 		#print data
-		self.socket.send(net.netEvent(event, data))
+		self.socket.send(pickle.dumps(net.netEvent(event, data), 2))
 	def getData(self):
 		#print "getData"
-		if self.socket.poll():
-			try:
-				request = self.socket.recv()
-			except EOFError:
-				raise errors.netError("Client Disconnect")
-			else:
-				#print request
-				return request.cham()
-		else:
-			return None
+		request = ""
+		while self.poll.poll(0):
+			request += self.socket.recv(8192)
+			#print request
+		if request != "":
+			return pickle.loads(request).cham()
+		return None
 	def close(self):
 		self.socket.close()
 class networkSubsystem(chameleon.manager, chameleon.listener):
-	"""networkSubsystem is a private manager class, one is instantiated for each client"""
+	"""
+		networkSubsystem is a private manager class, one is instantiated for each client.
+		Be careful - Anything may and will be called multiple times.
+	"""
 	def __init__(self, manager, clientsocket):
 		chameleon.manager.__init__(self)
 		chameleon.listener.__init__(self)
@@ -74,7 +77,7 @@ class networkSubsystem(chameleon.manager, chameleon.listener):
 			self.controlledEntity = self.dbWrap.fetchEntity(self.client.avatarID)
 		except errors.dbError as e:
 			print "Unknown character"
-			self.manager.postEvent(chameleon.event("kill", None))
+			self.alert(chameleon.event("kill", None))
 		else:
 			self.manager.alert(chameleon.event("spawnEntity", self.controlledEntity))
 			self.plugins.append(networkController(self, self.client))
@@ -85,6 +88,7 @@ class networkSubsystem(chameleon.manager, chameleon.listener):
 					exec("from plugins import " + plugin)
 					exec("plugin = " + plugin + "." + plugin)
 					self.registerPlugin(plugin)
+			print self.plugins
 	def registerPlugin(self, plugin):
 		self.plugins.append(plugin(self, self.controlledEntity))
 	def alertUp(self, event):
@@ -96,6 +100,8 @@ class networkSubsystem(chameleon.manager, chameleon.listener):
 		self.client.close()
 		self.manager.unregister("update", self)
 		self.manager.unregister("kill", self)
+		self.setResponse("update", utils.sponge)
+		self.setResponse("kill", utils.sponge)
 		self.plugins = []
 		self.manager.alert(chameleon.event("removeNetSubsystem", self))
 	def ev_getLevel(self, data):
@@ -112,22 +118,23 @@ class networkView(chameleon.listener):
 	def __init__(self, manager, client):
 		chameleon.listener.__init__(self)
 		self.manager = manager
-		self.setResponse("requestEntityPos", self.ev_requestEntityPos)
+		self.setResponse("update", self.ev_update)
 		self.setResponse("distEntityState", self.ev_distEntityState)
 		self.setResponse("distLevel", self.ev_distLevel)
-		self.manager.reg("requestEntityPos", self)
+		self.manager.reg("update", self)
 		self.manager.reg("distEntityState", self)
 		self.manager.reg("distLevel", self)
 		self.client = client
 		self.manager.alert(chameleon.event("getLevel", None))
-	def ev_requestEntityPos(self, data): #Called by Client
+	def ev_update(self, data):
 		#print "Get Entity Position"
 		self.manager.alert(chameleon.event("getEntityState", None))
 	def ev_distEntityState(self, data): #Called by level
 		#print "Distribute Entity State"
 		try:
 			self.client.postEvent("entityPosReceived", data.serialize())
-		except IOError:
+		except IOError as e:
+			print e
 			self.manager.alert(chameleon.event("kill", None))
 	def ev_distLevel(self, data): #Called by level
 		#print "Distribute Level"
@@ -145,7 +152,9 @@ class networkController(chameleon.listener):
 	def ev_update(self, data):
 		try:
 			data = self.client.getData()
-		except errors.netError, IOError:
+		except errors.netError:
+			self.manager.alert(chameleon.event("kill", None))
+		except socket.error:
 			self.manager.alert(chameleon.event("kill", None))
 		if data:
 			#print data
@@ -159,16 +168,16 @@ class networkSubsystemDelegator(chameleon.listener):
 		self.manager.reg("update", self)
 		self.manager.reg("removeNetSubsystem", self)
 		self.netSubsystems = []
-		self.socket = connection.Listener(("", CONFIG["port"]))
+		self.socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+		self.socket.setblocking(0)
+		self.socket.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
+		self.socket.bind(("", CONFIG["port"]))
+		self.socket.listen(5)
 		atexit.register(self.socket.close)
 	def ev_update(self, data):
 		if len(self.netSubsystems) <= CONFIG["maxplayers"]:
-			try:
-				client = self.socket.accept()
-			except socket.error:
-				#print "Socket Timeout"
-				pass
-			else:
+			if len(select.select([self.socket], [], [], 0)[0]):
+				client = self.socket.accept()[0]
 				self.netSubsystems.append(networkSubsystem(self.manager, client))
 		#print self.netSubsystems
 	def ev_removeNetSubsystem(self, data):
@@ -185,6 +194,7 @@ class spinner(chameleon.manager):
 	def main(self):
 		while 1:
 			self.alert(chameleon.event("update", None))
+			self.level.entityState.update(self.level.allSprites)#Need to change this to support collisions with other entities.
 manager = spinner()
 def run():
 	"""We need this method to expose manager.main() to runserver.py in an appealing manner."""
