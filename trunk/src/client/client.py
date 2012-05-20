@@ -57,7 +57,7 @@ class networkController(chameleon.listener):
 		print "Initial State Recieved"
 		print data
 		self.state = level.level.load(data, self.manager)
-		print self.state.allSprites
+		print self.state.blockState
 		self.manager.alert(chameleon.event("distState", self.state))# We do it this way so everyone has the same reference to the newly-loaded state. Probably unnessesary, but I like it.
 	def ev_entityPosReceived(self, data):
 		#print "Entity Positions Received"
@@ -74,25 +74,29 @@ class networkView(chameleon.listener):
 	def __init__(self, manager, server):
 		chameleon.listener.__init__(self)
 		self.manager = manager
-		self.setResponse("up", self.ev_up)
-		self.setResponse("down", self.ev_down)
-		self.setResponse("left", self.ev_left)
-		self.setResponse("right", self.ev_right)
+		self.setResponse("w", self.ev_w)
+		self.setResponse("s", self.ev_s)
+		self.setResponse("a", self.ev_a)
+		self.setResponse("d", self.ev_d)
+		self.setResponse("space", self.ev_space)
 		self.setResponse("logout", self.ev_logout)
-		self.manager.reg("up", self)
-		self.manager.reg("down", self)
-		self.manager.reg("left", self)
-		self.manager.reg("right", self)
+		self.manager.reg("w", self)
+		self.manager.reg("s", self)
+		self.manager.reg("a", self)
+		self.manager.reg("d", self)
+		self.manager.reg("space", self)
 		self.manager.reg("logout", self)
 		self.server = server
-	def ev_up(self, data):
+	def ev_w(self, data):
 		self.server.postEvent("up", data)
-	def ev_down(self, data):
+	def ev_s(self, data):
 		self.server.postEvent("down", data)
-	def ev_left(self, data):
+	def ev_a(self, data):
 		self.server.postEvent("left", data)
-	def ev_right(self, data):
+	def ev_d(self, data):
 		self.server.postEvent("right", data)
+	def ev_space(self, data):
+		self.server.postEvent("attack", data)
 	def ev_logout(self, data):
 		self.server.postEvent("kill", data)
 class keyController(chameleon.listener):
@@ -130,9 +134,9 @@ class localStateView(chameleon.listener):
 		self.clearcallback = lambda surf, rect : surf.fill((0, 0, 0), rect)
 	def ev_distState(self, data):
 		self.state = data
-		for sprite in self.state.allSprites:
+		for sprite in self.state.blockState:
 			sprite.image = spritepack.getImage(sprite.imgname)
-		self.state.allSprites.draw(self.surfBuf) #We need to perform an initial draw here so we don't need extra logic in ev_update for whether or not to call self.state.clear().
+		self.state.blockState.draw(self.surfBuf) #We need to perform an initial draw here so we don't need extra logic in ev_update for whether or not to call self.state.clear().
 	def ev_distEntityPos(self, data):
 		self.entityState = data
 		for sprite in self.entityState:

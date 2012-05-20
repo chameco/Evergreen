@@ -5,6 +5,10 @@ class lvl(level.level):
 		self.levelimp = """
 ##########
 #        #
+#        #
+#        #
+#        #
+#        #
 ##########
 """
 		self.loadLevel()

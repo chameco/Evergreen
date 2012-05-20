@@ -25,6 +25,9 @@ class drawnObject(pygame.sprite.Sprite):
 class physicalObject(drawnObject): #Abstract Base Class
 	def __init__(self, coords):
 		drawnObject.__init__(self, coords)
+	def hit(self, hitter):
+		print "hit"
+		pass
 class block(physicalObject): #Abstract Base Class
 	def __init__(self, coords):
 		physicalObject.__init__(self, coords)
@@ -39,7 +42,7 @@ class entity(physicalObject): #On the character creation webpage we'll need to a
 		self.curLevel = 0
 		self.requestx = 0
 		self.requesty = 0
-		self.attrs = {"speed" : 10} #data is replicated, attrs are serverside.
+		self.attrs = {"speed" : 15} #data is replicated, attrs are serverside.
 		self.imgname = "entity" #Just for testing
 	def moveup(self, down):
 		if down:
@@ -65,15 +68,29 @@ class entity(physicalObject): #On the character creation webpage we'll need to a
 			self.requestx = self.attrs["speed"]
 		else:
 			self.requestx = 0 if self.requestx >= 1 else self.requestx
+	def attack(self, allSprites):
+		if self.data["facing"] == 0:
+			collider = pygame.rect.Rect(self.rect.left + 15, self.rect.top - 25, 20, 20)
+		elif self.data["facing"] == 1:
+			collider = pygame.rect.Rect(self.rect.left + 15, self.rect.bottom + 5, 20, 20)
+		elif self.data["facing"] == 2:
+			collider = pygame.rect.Rect(self.rect.left - 25, self.rect.top + 15, 20, 20)
+		elif self.data["facing"] == 3:
+			collider = pygame.rect.Rect(self.rect.right + 5, self.rect.top + 15, 20, 20)
+		sl = collider.collidelistall(allSprites)
+		for index in sl:
+			allSprites[index].hit(self)
 	def update(self, allSprites):
 		#print self.rect
 		requestx = self.requestx
-		requesty = self.requestx
-		if self.rect.move(requestx, 0).collidelist(allSprites.sprites()) != -1:
+		requesty = self.requesty
+		temp = [sprite for sprite in allSprites if sprite is not self]
+		if self.rect.move(requestx, 0).collidelist(temp) != -1:
 			requestx = 0
-		if self.rect.move(0, requesty).collidelist(allSprites.sprites()) != -1:
+		if self.rect.move(0, requesty).collidelist(temp) != -1:
 			requesty = 0
 		self.rect.move_ip(requestx, requesty)
+		#print self.rect
 		#~ if self.health <= 0:
 			#~ self.kill()
 @utils.serializable

@@ -13,8 +13,10 @@ import collections
 import cPickle as pickle
 import socket
 import re
+import copy
 import ConfigParser
 import select
+import time
 CONFIG = {}
 CONFIG["basedir"] = os.path.abspath(".")
 CONFIG["packagedir"] = os.path.join(CONFIG["basedir"], "src")
@@ -73,6 +75,7 @@ class networkSubsystem(chameleon.manager, chameleon.listener):
 		self.client = clientWrapper(clientsocket)
 		self.dbWrap = db.entityDBWrapper("entity.db")
 		self.plugins = []
+		self.killFlag = False
 		try:
 			self.controlledEntity = self.dbWrap.fetchEntity(self.client.avatarID)
 		except errors.dbError as e:
@@ -96,14 +99,18 @@ class networkSubsystem(chameleon.manager, chameleon.listener):
 	def ev_update(self, data):
 		self.alert(chameleon.event("update", None))
 	def ev_kill(self, data):
-		print "KILL!"
-		self.client.close()
-		self.manager.unregister("update", self)
-		self.manager.unregister("kill", self)
-		self.setResponse("update", utils.sponge)
-		self.setResponse("kill", utils.sponge)
-		self.plugins = []
-		self.manager.alert(chameleon.event("removeNetSubsystem", self))
+		if not self.killFlag:#We need extra precautions if unregistering while alerting.
+			print "KILL!"
+			self.client.close()
+			self.manager.unregister("update", self)
+			self.manager.unregister("kill", self)
+			self.setResponse("update", utils.sponge)
+			self.setResponse("kill", utils.sponge)
+			self.plugins = []
+			self.manager.alert(chameleon.event("removeNetSubsystem", self))
+			self.dbWrap.saveEntity(self.controlledEntity)
+			self.controlledEntity.kill()
+			self.killFlag = True
 	def ev_getLevel(self, data):
 		self.manager.alert(chameleon.event("getLevel", data))
 	def ev_getEntityState(self, data):
@@ -133,8 +140,7 @@ class networkView(chameleon.listener):
 		#print "Distribute Entity State"
 		try:
 			self.client.postEvent("entityPosReceived", data.serialize())
-		except IOError as e:
-			print e
+		except IOError:
 			self.manager.alert(chameleon.event("kill", None))
 	def ev_distLevel(self, data): #Called by level
 		#print "Distribute Level"
@@ -192,9 +198,15 @@ class spinner(chameleon.manager):
 		self.level = lvl(self)
 		self.netSubDelegator = networkSubsystemDelegator(self)
 	def main(self):
+		curtime = time.time()
 		while 1:
+			delta = time.time() - curtime
 			self.alert(chameleon.event("update", None))
-			self.level.entityState.update(self.level.allSprites)#Need to change this to support collisions with other entities.
+			if delta >= 0.1:
+				t = copy.copy(self.level.blockState.sprites())
+				t.extend(self.level.entityState.sprites())
+				self.level.entityState.update(t)#Need to change this to support collisions with other entities. DO THIS NOW!
+				curtime = time.time()
 manager = spinner()
 def run():
 	"""We need this method to expose manager.main() to runserver.py in an appealing manner."""
