@@ -203,7 +203,7 @@ class spinner(chameleon.manager):
 			delta = time.time() - curtime
 			self.alert(chameleon.event("update", None))
 			if delta >= 0.1:
-				t = copy.copy(self.level.blockState.sprites())
+				t = list(self.level.blockState.sprites())
 				t.extend(self.level.entityState.sprites())
 				self.level.entityState.update(t)#Need to change this to support collisions with other entities. DO THIS NOW!
 				curtime = time.time()

@@ -1,0 +1,11 @@
+Metadata-Version: 1.1
+Name: Evergreen
+Version: 0.2
+Summary: An event-driven 2D game engine written in Python and C++.
+Home-page: https://github.com/chameco/Evergreen
+Author: Samuel Breese
+Author-email: sbreese@xitol.net
+License: UNKNOWN
+Description: UNKNOWN
+Platform: UNKNOWN
+Requires: pygame
