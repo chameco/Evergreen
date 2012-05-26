@@ -11,7 +11,7 @@ class movementmanager(chameleon.listener):
         self.controlledEntity = controlledEntity
         self.setResponse("distLevel", self.ev_distLevel)
         self.manager.reg("distLevel", self)
-        self.manager.alert(chameleon.event("getLevel", None))
+        self.manager.alert(chameleon.event("getLevel", True))#Passing True stops the server from resending the block state.
     def ev_distLevel(self, data):
         self.level = data
         self.manager.unregister("distLevel", self)

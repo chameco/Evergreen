@@ -5,7 +5,6 @@ from .. import level
 from .. import errors
 from .. import net
 from .. import chameleon
-#from .. import connection
 import os
 import sys
 import socket
@@ -17,6 +16,7 @@ import select
 pygame.init()
 #pygame.display.set_mode((0, 0), pygame.FULLSCREEN|pygame.HWSURFACE|pygame.DOUBLEBUF)
 pygame.display.set_mode()
+pygame.event.set_blocked([pygame.MOUSEMOTION, pygame.MOUSEBUTTONUP, pygame.MOUSEBUTTONDOWN])
 class serverWrapper():
     def __init__(self, serversocket):
         self.socket = serversocket
@@ -52,14 +52,12 @@ class networkController(chameleon.listener):
         self.manager.reg("entityPosReceived", self)
         self.manager.reg("update", self)
         self.server = server
-        self.state = None
+        self.blockState = None
         self.entityState = None
     def ev_initialStateReceived(self, data):
         print "Initial State Recieved"
-        print data
-        self.state = level.level.load(data, self.manager)
-        print self.state.blockState
-        self.manager.alert(chameleon.event("distState", self.state))# We do it this way so everyone has the same reference to the newly-loaded state. Probably unnessesary, but I like it.
+        self.blockState = base.copyableGroup.load(data)
+        self.manager.alert(chameleon.event("distState", self.blockState))# We do it this way so everyone has the same reference to the newly-loaded state. Probably unnessesary, but I like it.
     def ev_entityPosReceived(self, data):
         #print "Entity Positions Received"
         self.entityState = base.copyableGroup.load(data)
@@ -89,12 +87,16 @@ class networkView(chameleon.listener):
         self.manager.reg("logout", self)
         self.server = server
     def ev_w(self, data):
+        #print "w"
         self.server.postEvent("up", data)
     def ev_s(self, data):
+        #print "s"
         self.server.postEvent("down", data)
     def ev_a(self, data):
+        #print "a"
         self.server.postEvent("left", data)
     def ev_d(self, data):
+        #print "d"
         self.server.postEvent("right", data)
     def ev_space(self, data):
         self.server.postEvent("attack", data)
@@ -130,7 +132,7 @@ class localStateView(chameleon.listener):
         self.manager.reg("distState", self)
         self.manager.reg("distEntityPos", self)
         self.manager.reg("update", self)
-        self.state = None
+        self.blockState = None
         self.char = None
         self.chargroup = pygame.sprite.GroupSingle()
         self.entityState = None
@@ -139,10 +141,12 @@ class localStateView(chameleon.listener):
         self.screenrect = self.screen.get_rect()
         self.clearcallback = lambda surf, rect : surf.fill((0, 0, 0), rect)
     def ev_distState(self, data):
-        self.state = data
-        for sprite in self.state.blockState:
+        if self.blockState:
+            self.blockState.clear()
+        self.blockState = data
+        for sprite in self.blockState:
             sprite.image = spritepack.getImage(sprite.imgname)
-        self.state.blockState.draw(self.surfBuf) #We need to perform an initial draw here so we don't need extra logic in ev_update for whether or not to call self.state.clear().
+        self.blockState.draw(self.surfBuf) #We need to perform an initial draw here so we don't need extra logic in ev_update for whether or not to call self.state.clear().
     def ev_distEntityPos(self, data):
         if self.entityState:
             self.entityState.clear(self.surfBuf, self.clearcallback)

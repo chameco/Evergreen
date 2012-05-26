@@ -12,7 +12,7 @@ setup(
     scripts=["runserver.py", "runclient.py"],
     package_dir={"src" : "src"},
     package_data={"src.server" : ["server.ini"], "src.client.spritepacks.default" : ["*.png"]},
-    ext_modules = [Extension("src.chameleon", [join("src", "wrapper.cpp")], libraries=["util", "pthread", "dl", "boost_python-py27"], extra_compile_args=["-Wl,-h -Wl,chameleon.so -shared -Wl,--start-group " + join("src", "wrapper.o") + "-Wl,-Bstatic  -Wl,-Bdynamic -lutil -lpthread -ldl -lboost_python-py27 -Wl,--end-group -g"])],
+    ext_modules = [Extension("src.chameleon", [join("src", "wrapper.cpp")], libraries=["boost_python-py27"])],
     data_files=["entity.db"],
     requires=["pygame"]
 )

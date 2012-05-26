@@ -1,4 +1,4 @@
-import errors
+from . import errors
 import os
 import pygame
 pygame.init()
