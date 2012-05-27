@@ -59,23 +59,20 @@ class networkSubsystem(chameleon.manager, chameleon.listener):
         self.manager = manager
         self.setResponse("kill", self.ev_kill)
         self.setResponse("getLevel", self.ev_getLevel)
-        #self.setResponse("getEntityState", self.ev_getEntityState)
         self.setResponse("spawnEntity", self.ev_spawnEntity)
         self.setResponse("distLevel", self.ev_distLevel)
-        #self.setResponse("distEntityState", self.ev_distEntityState)
+        self.setResponse("switchLevel", self.ev_distLevel)
         self.setResponse("update", self.ev_update)
         self.reg("kill", self)
         self.reg("getLevel", self)
-        #self.reg("getEntityState", self)
         self.reg("spawnEntity", self)
         self.manager.reg("distLevel", self)
-        #self.manager.reg("distEntityState", self)
+        self.manager.reg("switchLevel", self)
         self.manager.reg("update", self)
         self.client = clientWrapper(clientsocket)
         self.dbWrap = db.entityDBWrapper("entity.db")
         self.plugins = []
         self.killFlag = False
-        self.firstLevelFlag = True
         try:
             self.controlledEntity = self.dbWrap.fetchEntity(self.client.avatarID, self)
         except errors.dbError as e:
@@ -94,10 +91,12 @@ class networkSubsystem(chameleon.manager, chameleon.listener):
             print self.plugins
     def registerPlugin(self, plugin):
         self.plugins.append(plugin(self, self.controlledEntity))
-    def alertUp(self, event):
-        self.manager.alert(event)
+    #def alertUp(self, event):
+    #    self.manager.alert(event)
+    #@utils.trace
     def ev_update(self, data):
         self.alert(chameleon.event("update", None))
+    #@utils.trace
     def ev_kill(self, data):
         if not self.killFlag:#We need extra precautions if unregistering while alerting.
             print "KILL!"
@@ -111,12 +110,15 @@ class networkSubsystem(chameleon.manager, chameleon.listener):
             self.dbWrap.saveEntity(self.controlledEntity)
             self.controlledEntity.kill()
             self.killFlag = True
+    #@utils.trace
     def ev_getLevel(self, data):
-        self.manager.alert(chameleon.event("getLevel", self.controlledEntity.curLevel))
+        self.manager.alert(chameleon.event("getLevel", self.controlledEntity))
+    #@utils.trace
     def ev_spawnEntity(self, data):
         self.manager.alert(chameleon.event("spawnEntity", data))
-    def ev_distLevel(self, data):
-        if data[1] == self.controlledEntity.curLevel and self.firstLevelFlag == False and not data:
+    #@utils.trace
+    def ev_switchLevel(self, data):
+        if data[1] == self.controlledEntity.data["name"]:
             print "switch"
             self.controlledEntity.kill()
             self.controlledEntity.data["coords"] = data[0].startcoords
@@ -124,15 +126,10 @@ class networkSubsystem(chameleon.manager, chameleon.listener):
             self.manager.alert(chameleon.event("spawnEntity", (self.controlledEntity, self.controlledEntity.curLevel)))
             self.alert(chameleon.event("distLevel", data[0]))
             self.alert(chameleon.event("sendBlockState", None))
-        else:
-            self.controlledEntity.data["coords"] = data[0].startcoords
-            self.controlledEntity.rect = pygame.rect.Rect(self.controlledEntity.data["coords"], (50, 50))
+    #@utils.trace
+    def ev_distLevel(self, data):
+        if data[1] == self.controlledEntity.data["name"]:
             self.alert(chameleon.event("distLevel", data[0]))
-            self.alert(chameleon.event("sendBlockState", None))
-            self.firstLevelFlag = False
-    def ev_distEntityState(self, data):
-        if data[1] == self.controlledEntity.curLevel:
-            self.alert(chameleon.event("distEntityState", data[0]))
 class networkView(chameleon.listener):
     def __init__(self, manager, client):
         chameleon.listener.__init__(self)
@@ -146,16 +143,20 @@ class networkView(chameleon.listener):
         self.client = client
         self.level = None
         self.manager.alert(chameleon.event("getLevel", None))
+        self.manager.alert(chameleon.event("sendBlockState", None))
+    #@utils.trace
     def ev_update(self, data):
         try:
             self.client.postEvent("entityPosReceived", self.level.entityState.serialize())
         except IOError:
             self.manager.alert(chameleon.event("kill", None))
+    #@utils.trace
     def ev_sendBlockState(self, data):
         try:
             self.client.postEvent("initialStateReceived", self.level.blockState.serialize())
         except IOError:
             self.manager.alert(chameleon.event("kill", None))
+    #@utils.trace
     def ev_distLevel(self, data):
         print "Distribute Level"
         self.level = data
@@ -166,6 +167,7 @@ class networkController(chameleon.listener):
         self.setResponse("update", self.ev_update)
         self.manager.reg("update", self)
         self.client = client
+    #@utils.trace
     def ev_update(self, data):
         try:
             data = self.client.getData()
@@ -191,12 +193,14 @@ class networkSubsystemDelegator(chameleon.listener):
         self.socket.bind(("", CONFIG["port"]))
         self.socket.listen(5)
         atexit.register(self.socket.close)
+    #@utils.trace
     def ev_update(self, data):
         if len(self.netSubsystems) <= CONFIG["maxplayers"]:
             if len(select.select([self.socket], [], [], 0)[0]):
                 client = self.socket.accept()[0]
                 self.netSubsystems.append(networkSubsystem(self.manager, client))
         #print self.netSubsystems
+    #@utils.trace
     def ev_removeNetSubsystem(self, data):
         try:
             self.netSubsystems.remove(data)
@@ -209,16 +213,12 @@ class spinner(chameleon.manager):
         self.levelManager = levelManager(self)
         self.netSubDelegator = networkSubsystemDelegator(self)
     def main(self):
-        #curtime = time.time()
         while 1:
             self.alert(chameleon.event("update", None))
-            #delta = time.time() - curtime
-            #if delta >= 0.1:
-            #    t = list(self.level.blockState.sprites())
-            #    t.extend(self.level.entityState.sprites())
-            #    self.level.entityState.update(t)#Need to change this to support collisions with other entities. DO THIS NOW!
-            #    curtime = time.time()
 manager = spinner()
 def run():
     """We need this method to expose manager.main() to runserver.py in an appealing manner."""
-    manager.main()
+    try:#FOR TRACING, REMOVE LATER!
+        manager.main()
+    except:
+        return

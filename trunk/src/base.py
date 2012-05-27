@@ -50,7 +50,7 @@ class stairsUp(block):
     def hit(self, hitter):
         print "stairsup"
         hitter.curLevel -= 1
-        hitter.manager.alert(chameleon.event("getLevel", hitter.curLevel))
+        hitter.manager.alert(chameleon.event("switchLevel", hitter))
 class stairsDown(block):
     def __init__(self, coords):
         block.__init__(self, coords)
@@ -58,7 +58,7 @@ class stairsDown(block):
     def hit(self, hitter):
         print "stairsdown"
         hitter.curLevel += 1
-        hitter.manager.alert(chameleon.event("getLevel", hitter.curLevel))
+        hitter.manager.alert(chameleon.event("switchLevel", hitter))
 class entity(physicalObject): #On the character creation webpage we'll need to add some additional attributes, such as name.
     def __init__(self, coords, data=None, manager=None): #0 is north, 1 is south, 3 is west, 4 is east
         physicalObject.__init__(self, coords)
