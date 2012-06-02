@@ -1,6 +1,21 @@
-from . import chameleon
+#Copyright 2011 Samuel Breese. Distributed under the terms of the GNU General Public License.
+#This file is part of Evergreen.
+#
+#    Evergreen is free software: you can redistribute it and/or modify
+#    it under the terms of the GNU General Public License as published by
+#    the Free Software Foundation, either version 3 of the License, or
+#    (at your option) any later version.
+#
+#    Evergreen is distributed in the hope that it will be useful,
+#    but WITHOUT ANY WARRANTY; without even the implied warranty of
+#    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+#    GNU General Public License for more details.
+#
+#    You should have received a copy of the GNU General Public License
+#    along with Evergreen.  If not, see <http://www.gnu.org/licenses/>.
 from . import utils
 from . import errors
+import chameleon
 import pygame
 pygame.init()
 import sys
@@ -46,18 +61,23 @@ class stone(block):
 class stairsUp(block):
     def __init__(self, coords):
         block.__init__(self, coords)
+        print "stairsupinit"
         self.imgname = "up"
     def hit(self, hitter):
         print "stairsup"
+        print "curLevel: " + str(hitter.curLevel)
         hitter.curLevel -= 1
+        print hitter
         hitter.manager.alert(chameleon.event("switchLevel", hitter))
 class stairsDown(block):
     def __init__(self, coords):
         block.__init__(self, coords)
+        print "stairsdowninit"
         self.imgname = "down"
     def hit(self, hitter):
         print "stairsdown"
         hitter.curLevel += 1
+        print hitter
         hitter.manager.alert(chameleon.event("switchLevel", hitter))
 class entity(physicalObject): #On the character creation webpage we'll need to add some additional attributes, such as name.
     def __init__(self, coords, data=None, manager=None): #0 is north, 1 is south, 3 is west, 4 is east

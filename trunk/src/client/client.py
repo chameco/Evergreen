@@ -1,10 +1,18 @@
-#!/usr/bin/python
-import spritepacks.default as spritepack# This should eventually be loaded conditionally based on a config file.
-from .. import base
-from .. import level
-from .. import errors
-from .. import net
-from .. import chameleon
+#Copyright 2011 Samuel Breese. Distributed under the terms of the GNU General Public License.
+#This file is part of Evergreen.
+#
+#    Evergreen is free software: you can redistribute it and/or modify
+#    it under the terms of the GNU General Public License as published by
+#    the Free Software Foundation, either version 3 of the License, or
+#    (at your option) any later version.
+#
+#    Evergreen is distributed in the hope that it will be useful,
+#    but WITHOUT ANY WARRANTY; without even the implied warranty of
+#    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+#    GNU General Public License for more details.
+#
+#    You should have received a copy of the GNU General Public License
+#    along with Evergreen.  If not, see <http://www.gnu.org/licenses/>.
 import os
 import sys
 import socket
@@ -13,23 +21,56 @@ import pygame
 import cPickle as pickle
 import re
 import select
+import chameleon
+import ConfigParser
+import argparse
 pygame.init()
-#pygame.display.set_mode((0, 0), pygame.FULLSCREEN|pygame.HWSURFACE|pygame.DOUBLEBUF)
-pygame.display.set_mode()
-pygame.event.set_blocked([pygame.MOUSEMOTION, pygame.MOUSEBUTTONUP, pygame.MOUSEBUTTONDOWN])
+CONFIG = {}
+CONFIG["basedir"] = os.path.abspath(".")
+CONFIG["packagedir"] = os.path.join(CONFIG["basedir"], "src")
+CONFIG["clientdir"] = os.path.join(CONFIG["packagedir"], "client")
+configParser = ConfigParser.ConfigParser()
+configParser.read(os.path.join(CONFIG["clientdir"], "client.ini"))
+CONFIG["playername"] = configParser.get("player", "name")
+CONFIG["port"] = configParser.getint("network", "port")
+CONFIG["host"] = configParser.get("network", "host")
+CONFIG["fullscreen"] = configParser.getboolean("video", "fullscreen")
+CONFIG["spritepack"] = configParser.get("video", "spritepack")
+PARSER = argparse.ArgumentParser(description="Launch the Evergreen client")
+PARSER.add_argument("--playername", dest="playername", default=CONFIG["playername"], type=str, help="specify player name (overrides the configuration file)")
+PARSER.add_argument("--port", dest="port", default=CONFIG["port"], type=int, help="specify server port (overrides the configuration file)")
+PARSER.add_argument("--host", dest="host", default=CONFIG["host"], type=str, help="specify server address (overrides the configuration file)")
+PARSER.add_argument("--fullscreen", dest="fullscreen", default=CONFIG["fullscreen"], type=int, help="specify whether or not to run in fullscreen (0 or 1, overrides the configuration file)")
+PARSER.add_argument("--spritepack", dest="spritepack", default=CONFIG["spritepack"], type=str, help="specify spritepack to use (overrides the configuration file)")
+ARGS = PARSER.parse_args()
+CONFIG["playername"] = ARGS.playername
+CONFIG["port"] = ARGS.port
+CONFIG["host"] = ARGS.host
+CONFIG["fullscreen"] = ARGS.fullscreen
+CONFIG["spritepack"] = ARGS.spritepack
+if CONFIG["fullscreen"]:
+    pygame.display.set_mode((0, 0), pygame.FULLSCREEN|pygame.HWSURFACE|pygame.DOUBLEBUF)
+else:
+    pygame.display.set_mode()
+from .. import base
+from .. import level
+from .. import errors
+from .. import utils
+exec("import spritepacks." + CONFIG["spritepack"] + " as spritepack")
+pygame.event.set_blocked([pygame.MOUSEMOTION, pygame.MOUSEBUTTONUP, pygame.MOUSEBUTTONDOWN])#Mouse events fill up the queue, causing major lag.
 class serverWrapper():
     def __init__(self, serversocket):
         self.socket = serversocket
         self.poll = select.poll()
         self.poll.register(self.socket, select.POLLIN)
-        self.socket.send(sys.argv[3])
+        self.socket.send(CONFIG["playername"])
         ack = self.socket.recv(6)
         if ack != "idAck":
             raise errors.serverError("Error: server refuses to acknowledge ID message.")
     def postEvent(self, event, data):
         #print event
         #print data
-        self.socket.send(pickle.dumps(net.netEvent(event, data)), 2)
+        self.socket.send(pickle.dumps(utils.netEvent(event, data)), 2)
     def getData(self):
         #print "getData"
         request = ""
@@ -45,19 +86,20 @@ class networkController(chameleon.listener):
     def __init__(self, manager, server):
         chameleon.listener.__init__(self)
         self.manager = manager
-        self.setResponse("initialStateReceived", self.ev_initialStateReceived)
+        self.setResponse("blockStateReceived", self.ev_blockStateReceived)
         self.setResponse("entityPosReceived", self.ev_entityPosReceived)
         self.setResponse("update", self.ev_update)
-        self.manager.reg("initialStateReceived", self)
+        self.manager.reg("blockStateReceived", self)
         self.manager.reg("entityPosReceived", self)
         self.manager.reg("update", self)
         self.server = server
         self.blockState = None
         self.entityState = None
-    def ev_initialStateReceived(self, data):
-        print "Initial State Recieved"
+    def ev_blockStateReceived(self, data):
+        print "Block State Received"
         self.blockState = base.copyableGroup.load(data)
-        self.manager.alert(chameleon.event("distState", self.blockState))# We do it this way so everyone has the same reference to the newly-loaded state. Probably unnessesary, but I like it.
+        self.manager.alert(chameleon.event("distBlockState", self.blockState))# We do it this way so everyone has the same reference to the newly-loaded state. Probably unnessesary, but I like it.
+        self.server.postEvent("ackBlockState", None)
     def ev_entityPosReceived(self, data):
         #print "Entity Positions Received"
         self.entityState = base.copyableGroup.load(data)
@@ -126,10 +168,10 @@ class localStateView(chameleon.listener):
     def __init__(self, manager):
         chameleon.listener.__init__(self)
         self.manager = manager
-        self.setResponse("distState", self.ev_distState)
+        self.setResponse("distBlockState", self.ev_distBlockState)
         self.setResponse("distEntityPos", self.ev_distEntityPos)
         self.setResponse("update", self.ev_update)
-        self.manager.reg("distState", self)
+        self.manager.reg("distBlockState", self)
         self.manager.reg("distEntityPos", self)
         self.manager.reg("update", self)
         self.blockState = None
@@ -140,9 +182,14 @@ class localStateView(chameleon.listener):
         self.screen = pygame.display.get_surface()
         self.screenrect = self.screen.get_rect()
         self.clearcallback = lambda surf, rect : surf.fill((0, 0, 0), rect)
-    def ev_distState(self, data):
-        if self.blockState:
-            self.blockState.clear()
+    def ev_distBlockState(self, data):
+        print "diststate"
+        if self.blockState is not None: #This whole section is only called upon level switch, so it's not performance critical.
+            print "new blockstate"
+            if self.entityState:
+                self.entityState.clear(self.surfBuf, self.clearcallback)
+                self.entityState = None #Keep entityState from being blit in ev_update.
+            self.blockState.clear(self.surfBuf, self.clearcallback)
         self.blockState = data
         for sprite in self.blockState:
             sprite.image = spritepack.getImage(sprite.imgname)
@@ -157,8 +204,7 @@ class localStateView(chameleon.listener):
             else:
                 sprite.images = spritepack.getEntityImage("entity")
             sprite.image = sprite.images[sprite.data["facing"]][0]
-        self.char = [char for char in self.entityState.sprites() if char.data["name"] == sys.argv[3]][0]
-        #self.entityState.remove(self.char)
+        self.char = [char for char in self.entityState.sprites() if char.data["name"] == CONFIG["playername"]][0]
         self.chargroup.add(self.char)
         self.entityState.draw(self.surfBuf)
         self.chargroup.draw(self.surfBuf)
@@ -187,7 +233,7 @@ class spinner(chameleon.manager):
         chameleon.manager.__init__(self)
         self.errHandler = errorHandler(self)
         self.socket = socket.socket()
-        self.socket.connect((sys.argv[1], int(sys.argv[2])))
+        self.socket.connect((CONFIG["host"], CONFIG["port"]))
         self.server = serverWrapper(self.socket)
         self.netView = networkView(self, self.server)
         self.netControl = networkController(self, self.server)

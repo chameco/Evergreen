@@ -1,11 +1,24 @@
+#Copyright 2011 Samuel Breese. Distributed under the terms of the GNU General Public License.
+#This file is part of Evergreen.
+#
+#    Evergreen is free software: you can redistribute it and/or modify
+#    it under the terms of the GNU General Public License as published by
+#    the Free Software Foundation, either version 3 of the License, or
+#    (at your option) any later version.
+#
+#    Evergreen is distributed in the hope that it will be useful,
+#    but WITHOUT ANY WARRANTY; without even the implied warranty of
+#    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+#    GNU General Public License for more details.
+#
+#    You should have received a copy of the GNU General Public License
+#    along with Evergreen.  If not, see <http://www.gnu.org/licenses/>.
 from . import errors
 import os
 import sys
+import chameleon
 import pygame
 pygame.init()
-LOGNAME = sys.argv[0] + ".log"
-PREVLOG = []
-INDENTLEVEL = 0
 def serializable(cls):
     try:
         if callable(cls.__dict__["serialize"]) and isinstance(cls.__dict__["load"], staticmethod):
@@ -31,16 +44,14 @@ def loadImage(path):
     t = pygame.image.load(path).convert()
     t.set_colorkey((255, 0, 170))
     return t
-def log(string):
-    global INDENTLEVEL
-    if string not in PREVLOG:
-        PREVLOG.append(string)
-        log = open(LOGNAME, "w")
-        log.write(("=" * INDENTLEVEL) + string + "\n")
-        log.close()
-        if string.split(" ")[0] == "enter":
-            INDENTLEVEL += 1
-        else:
-            INDENTLEVEL -= 1
 def sponge(*args):
     pass
+class netEvent():
+	def __init__(self, event):
+		self.name = event.name
+		self.data = event.data
+	def __init__(self, name, data):
+		self.name = name
+		self.data = data
+	def cham(self):
+		return chameleon.event(self.name, self.data)

@@ -1,8 +1,23 @@
-from . import chameleon
+#Copyright 2011 Samuel Breese. Distributed under the terms of the GNU General Public License.
+#This file is part of Evergreen.
+#
+#    Evergreen is free software: you can redistribute it and/or modify
+#    it under the terms of the GNU General Public License as published by
+#    the Free Software Foundation, either version 3 of the License, or
+#    (at your option) any later version.
+#
+#    Evergreen is distributed in the hope that it will be useful,
+#    but WITHOUT ANY WARRANTY; without even the implied warranty of
+#    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+#    GNU General Public License for more details.
+#
+#    You should have received a copy of the GNU General Public License
+#    along with Evergreen.  If not, see <http://www.gnu.org/licenses/>.
 from . import base
 from . import utils
 import cPickle as pickle
 import time
+import chameleon
 import pygame
 pygame.init()
 class levelManager(chameleon.listener):
@@ -11,9 +26,11 @@ class levelManager(chameleon.listener):
         self.manager = manager
         self.setResponse("update", self.ev_update)
         self.setResponse("getLevel", self.ev_getLevel)
+        self.setResponse("switchLevel", self.ev_switchLevel)
         self.setResponse("spawnEntity", self.ev_spawnEntity)
         self.manager.reg("update", self)
         self.manager.reg("getLevel", self)
+        self.manager.reg("switchLevel", self)
         self.manager.reg("spawnEntity", self)
         self.curtime = time.time()
     #@utils.trace
@@ -29,6 +46,9 @@ class levelManager(chameleon.listener):
     #@utils.trace
     def ev_getLevel(self, data):
         self.manager.alert(chameleon.event("distLevel", (self.levels[data.curLevel], data.data["name"])))
+    def ev_switchLevel(self, data):
+        print data
+        self.manager.alert(chameleon.event("distSwitchLevel", (self.levels[data.curLevel], data.data["name"])))
     #@utils.trace
     def ev_spawnEntity(self, data):
         print "spawn entity"
