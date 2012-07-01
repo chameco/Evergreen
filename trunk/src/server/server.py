@@ -13,6 +13,8 @@
 #
 #    You should have received a copy of the GNU General Public License
 #    along with Evergreen.  If not, see <http://www.gnu.org/licenses/>.
+import pygame
+pygame.init()
 from .. import base
 from .. import utils
 from .. import level
@@ -28,8 +30,6 @@ import time
 import chameleon
 import atexit
 import logging
-import pygame
-pygame.init()
 CONFIG = {}
 CONFIG["basedir"] = os.path.abspath(".")
 CONFIG["packagedir"] = os.path.join(CONFIG["basedir"], "src")
@@ -58,7 +58,6 @@ class clientWrapper():
         self.poll.register(self.socket, select.POLLIN)
         self.avatarID = self.socket.recv(256)
         print self.avatarID
-        self.socket.send("idAck")
     def postEvent(self, event, data):
         self.socket.send(pickle.dumps(utils.netEvent(event, data), 2))
     def getData(self):
@@ -80,43 +79,49 @@ class networkSubsystem(chameleon.manager, chameleon.listener):
     def __init__(self, manager, clientsocket):
         chameleon.manager.__init__(self)
         chameleon.listener.__init__(self)
-        self.manager = manager
-        self.setResponse("kill", self.ev_kill)
-        self.setResponse("getLevel", self.ev_getLevel)
-        self.setResponse("spawnEntity", self.ev_spawnEntity)
-        self.setResponse("distLevel", self.ev_distLevel)
-        self.setResponse("distSwitchLevel", self.ev_distSwitchLevel)
-        self.setResponse("update", self.ev_update)
-        self.reg("kill", self)
-        self.reg("getLevel", self)
-        self.reg("spawnEntity", self)
-        self.manager.reg("distLevel", self)
-        self.manager.reg("distSwitchLevel", self)
-        self.manager.reg("update", self)
-        self.client = clientWrapper(clientsocket)
-        self.dbWrap = db.entityDBWrapper("entity.db")
         self.plugins = []
+        self.manager = manager
+        self.client = clientWrapper(clientsocket)
+        self.setResponse("kill", self.ev_kill)
+        print "distEntity_" + self.client.avatarID
+        self.setResponse("distEntity_" + self.client.avatarID, self.ev_distEntity)
+        self.reg("kill", self)
+        self.manager.reg("distEntity_" + self.client.avatarID, self)
         try:
-            self.controlledEntity = self.dbWrap.fetchEntity(self.client.avatarID, self.manager)
+            self.manager.alert(chameleon.event("fetchEntity", self.client.avatarID))
         except errors.dbError as e:
             print "Unknown character"
             self.alert(chameleon.event("kill", None))
-        else:
-            self.manager.alert(chameleon.event("spawnEntity", (self.controlledEntity, self.controlledEntity.curLevel)))
-            self.plugins.append(networkController(self, self.client))
-            self.plugins.append(networkView(self, self.client))
-            print CONFIG
-            for plugin, option in CONFIG["plugins"]:
-                if option:
-                    exec("from plugins import " + plugin)
-                    exec("plugin = " + plugin + "." + plugin)
-                    self.registerPlugin(plugin)
-            print self.plugins
     def registerPlugin(self, plugin):
         self.plugins.append(plugin(self, self.controlledEntity))
+    def ev_distEntity(self, data):
+        print "distEntity"
+        self.manager.unregister("distEntity_" + self.client.avatarID, self)
+        self.controlledEntity = data
+        self.setResponse("getLevel", self.ev_getLevel)
+        self.setResponse("distLevel", self.ev_distLevel)
+        self.setResponse("distSwitchLevel", self.ev_distSwitchLevel)
+        self.setResponse("entityMoved", self.ev_entityMoved)
+        self.setResponse("entitySpawned", self.ev_entitySpawned)
+        self.setResponse("update", self.ev_update)
+        self.reg("getLevel", self)
+        self.manager.reg("distLevel", self)
+        self.manager.reg("distSwitchLevel", self)
+        self.manager.reg("entityMoved", self)
+        self.manager.reg("entitySpawned", self)
+        self.manager.reg("update", self)
+        self.manager.alert(chameleon.event("spawnEntity", (self.controlledEntity, self.controlledEntity.curLevel)))
+        self.plugins.append(networkController(self, self.client))
+        self.plugins.append(networkView(self, self.client))
+        print CONFIG
+        for plugin, option in CONFIG["plugins"]:
+            if option:
+                exec("from plugins import " + plugin)
+                exec("plugin = " + plugin + "." + plugin)
+                self.registerPlugin(plugin)
+        print self.plugins
     def ev_update(self, data):
         self.alert(chameleon.event("update", None))
-    #@utils.trace
     def ev_kill(self, data):
         print "KILL!"
         self.client.close()
@@ -124,71 +129,72 @@ class networkSubsystem(chameleon.manager, chameleon.listener):
         self.manager.unregister("update", self)
         self.plugins = []
         self.manager.alert(chameleon.event("removeNetSubsystem", self))
-        self.dbWrap.saveEntity(self.controlledEntity)
         self.controlledEntity.kill()
-    #@utils.trace
+        self.manager.alert(chameleon.event("killEntity", self.controlledEntity))
+        self.manager.alert(chameleon.event("saveEntity", self.controlledEntity))
     def ev_getLevel(self, data):
         self.manager.alert(chameleon.event("getLevel", self.controlledEntity))
-    #@utils.trace
-    def ev_spawnEntity(self, data):
-        self.manager.alert(chameleon.event("spawnEntity", data))
-    #@utils.trace
     def ev_distSwitchLevel(self, data):
         print data
         if data[1] == self.controlledEntity.data["name"]:
             print "switch"
             self.controlledEntity.kill()
+            self.manager.alert(chameleon.event("killEntity", self.controlledEntity))
             self.controlledEntity.data["coords"] = data[0].startcoords
-            self.controlledEntity.rect = pygame.rect.Rect(self.controlledEntity.data["coords"], (50, 50))
+            self.controlledEntity.rect = pygame.rect.Rect(self.controlledEntity.data["coords"], (32, 32))
             self.manager.alert(chameleon.event("spawnEntity", (self.controlledEntity, self.controlledEntity.curLevel)))
             print "after alert spawn entity"
             self.alert(chameleon.event("distLevel", data[0]))
             self.alert(chameleon.event("updateBlockState", None))
-    #@utils.trace
     def ev_distLevel(self, data):
         if data[1] == self.controlledEntity.data["name"]:
                 self.alert(chameleon.event("distLevel", data[0]))
+    def ev_entityMoved(self, data):
+        print "entityMoved"
+        if data[2] == self.controlledEntity.curLevel:
+            self.alert(chameleon.event("entityMoved", (data[0], data[1])))
+    def ev_entitySpawned(self, data):
+        if data[1] == self.controlledEntity.curLevel:
+            self.alert(chameleon.event("entitySpawned", data[0]))
 class networkView(chameleon.listener):
     def __init__(self, manager, client):
         chameleon.listener.__init__(self)
         self.manager = manager
-        self.setResponse("update", self.ev_update)
         self.setResponse("distLevel", self.ev_distLevel)
         self.setResponse("sendBlockState", self.ev_sendBlockState)
-        self.setResponse("ackBlockState", self.ev_ackBlockState)
         self.setResponse("updateBlockState", self.ev_updateBlockState)
-        self.manager.reg("update", self)
+        self.setResponse("entityMoved", self.ev_entityMoved)
+        self.setResponse("entitySpawned", self.ev_entitySpawned)
         self.manager.reg("distLevel", self)
         self.manager.reg("sendBlockState", self)
-        self.manager.reg("ackBlockState", self)
         self.manager.reg("updateBlockState", self)
+        self.manager.reg("entityMoved", self)
+        self.manager.reg("entitySpawned", self)
         self.client = client
         self.level = None
         self.manager.alert(chameleon.event("getLevel", None))
         self.manager.alert(chameleon.event("sendBlockState", None))
         self.needsToSend = False
-    #@utils.trace
-    def ev_update(self, data):
-        try:
-            self.client.postEvent("entityPosReceived", self.level.entityState.serialize())
-            if self.needsToSend:
-                self.manager.alert(chameleon.event("sendBlockState", None))
-        except IOError:
-            self.manager.alert(chameleon.event("kill", None))
-    #@utils.trace
     def ev_sendBlockState(self, data):
         try:
-            self.client.postEvent("blockStateReceived", self.level.blockState.serialize())
+            self.client.postEvent("blockStateReceived", (self.level.blockState.serialize(), self.level.floorState.serialize(), self.level.entityState.serialize()))
         except IOError:
             self.manager.alert(chameleon.event("kill", None))
-    def ev_ackBlockState(self, data):
-        print "ackBlockState"
-        self.needsToSend = False
     def ev_updateBlockState(self, data):
-        self.needsToSend = True
+        self.manager.alert(chameleon.event("sendBlockState", None))
     def ev_distLevel(self, data):
         print "distribute level"
         self.level = data
+    def ev_entityMoved(self, data):
+        try:
+            self.client.postEvent("entityMoved", (data[0].serialize(), data[1]))
+        except IOError:
+            self.manager.alert(chameleon.event("kill", None))
+    def ev_entitySpawned(self, data):
+        try:
+            self.client.postEvent("entitySpawned", data.serialize())
+        except IOError:
+            self.manager.alert(chameleon.event("kill", None))
 class networkController(chameleon.listener):
     def __init__(self, manager, client):
         chameleon.listener.__init__(self)
@@ -241,9 +247,9 @@ class spinner(chameleon.manager):
         if __debug__:
             self.logManager = logManager(self)
         exec("from levels." + CONFIG["levelpack"] + " import levelManager")
+        self.dbManager = db.dbManager(self)
         self.levelManager = levelManager(self)
         self.netSubDelegator = networkSubsystemDelegator(self)
-        self.scheduleQueue = []
     def main(self):
         while 1:
             self.alert(chameleon.event("update", None))

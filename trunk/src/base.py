@@ -15,9 +15,9 @@
 #    along with Evergreen.  If not, see <http://www.gnu.org/licenses/>.
 from . import utils
 from . import errors
+from OpenGL import GL
 import chameleon
 import pygame
-pygame.init()
 import sys
 import cPickle as pickle
 @utils.serializable
@@ -26,8 +26,30 @@ class drawnObject(pygame.sprite.Sprite):
         pygame.sprite.Sprite.__init__(self)
         #print coords
         self.image = None
-        self.rect = pygame.rect.Rect(coords, (50, 50))
+        self.rect = pygame.rect.Rect(coords, (32, 32))
         self.data = {}
+    def draw(self, scale = 1):
+        texwidth = self.image.width * scale
+        texheight = self.image.height * scale
+
+        originx = texwidth / 2
+        originy = texheight / 2
+
+        GL.glPushMatrix()
+        GL.glTranslatef(self.rect.x, self.rect.y, 0)
+
+        #glColor4f(color.r, color.g, color.b, color.a)
+
+        GL.glBindTexture(GL.GL_TEXTURE_2D, self.image.surface)
+
+        GL.glBegin(GL.GL_TRIANGLE_STRIP)
+        GL.glTexCoord2f(0, self.image.height_ratio); GL.glVertex2f(-originx, texheight - originy)
+        GL.glTexCoord2f(self.image.width_ratio, self.image.height_ratio); GL.glVertex2f(texwidth - originx, texheight - originy)
+        GL.glTexCoord2f(0, 1); GL.glVertex2f(-originx, -originy)
+        GL.glTexCoord2f(self.image.width_ratio, 1); GL.glVertex2f(texwidth - originx, -originy)
+        GL.glEnd()
+		
+        GL.glPopMatrix()
     def serialize(self):
         return {"type" : self.__class__, "coords" : (self.rect.x, self.rect.y), "data" : self.data}
     @staticmethod
@@ -45,6 +67,13 @@ class drawnObject(pygame.sprite.Sprite):
                 return data["type"](data["coords"], manager)
             else:
                 return data["type"](data["coords"])
+class floor(drawnObject):
+    def __init__(self, coords):
+        drawnObject.__init__(self, coords)
+class woodFloor(floor):
+    def __init__(self, coords):
+        floor.__init__(self, coords)
+        self.imgname = "woodFloor"
 class physicalObject(drawnObject): #Abstract Base Class
     def __init__(self, coords):
         drawnObject.__init__(self, coords)
@@ -79,18 +108,31 @@ class stairsDown(block):
         hitter.curLevel += 1
         print hitter
         hitter.manager.alert(chameleon.event("switchLevel", hitter))
+class stairsWarp(block):
+    def __init__(self, coords, warp):
+        block.__init__(self, coords)
+        print "stairswarpinit"
+        self.warp = warp
+        self.imgname = "warp"
+    def hit(self, hitter):
+        print "stairswarp"
+        hitter.curLevel = self.warp
+        print hitter
+        hitter.manager.alert(chameleon.event("switchLevel", hitter))
 class entity(physicalObject): #On the character creation webpage we'll need to add some additional attributes, such as name.
+    amountCreated = 0
     def __init__(self, coords, data=None, manager=None): #0 is north, 1 is south, 3 is west, 4 is east
         physicalObject.__init__(self, coords)
         if data is None:
-            data = {"facing" : 0}
+            data = {"facing" : 0, "name" : self.__class__.__name__ + str(self.__class__.amountCreated)}
+        self.__class__.amountCreated += 1
         self.data = data
         if manager:
             self.manager = manager
         self.curLevel = 0
         self.requestx = 0
         self.requesty = 0
-        self.attrs = {"speed" : 10, "attack" : 1} #data is replicated, attrs are serverside. SPEED MUST BE A FACTOR OF 50!
+        self.attrs = {"speed" : 8, "attack" : 1} #data is replicated, attrs are serverside. SPEED MUST BE A FACTOR OF BLOCK SIZE!
         self.imgname = "entity" #Just for testing
     def moveup(self, down):
         #print "up"
@@ -122,13 +164,13 @@ class entity(physicalObject): #On the character creation webpage we'll need to a
             self.requestx = 0 if self.requestx >= 1 else self.requestx
     def attack(self, allSprites):
         if self.data["facing"] == 0:
-            collider = pygame.rect.Rect(self.rect.left + 15, self.rect.top - 25, 20, 20)
+            collider = pygame.rect.Rect(self.rect.left + 8, self.rect.top - 16, 16, 16)
         elif self.data["facing"] == 1:
-            collider = pygame.rect.Rect(self.rect.left + 15, self.rect.bottom + 5, 20, 20)
+            collider = pygame.rect.Rect(self.rect.left + 8, self.rect.bottom + 16, 16, 16)
         elif self.data["facing"] == 2:
-            collider = pygame.rect.Rect(self.rect.left - 25, self.rect.top + 15, 20, 20)
+            collider = pygame.rect.Rect(self.rect.left - 16, self.rect.top + 8, 16, 16)
         elif self.data["facing"] == 3:
-            collider = pygame.rect.Rect(self.rect.right + 5, self.rect.top + 15, 20, 20)
+            collider = pygame.rect.Rect(self.rect.right + 16, self.rect.top + 8, 16, 16)
         sl = collider.collidelistall(allSprites)
         for index in sl:
             allSprites[index].hit(self)
@@ -147,6 +189,8 @@ class entity(physicalObject): #On the character creation webpage we'll need to a
         #if both != -1:
         #    requesty = requestx = 0
         self.rect.move_ip(requestx, requesty)
+        if self.requestx or self.requesty:
+            self.manager.alert(chameleon.event("entityMoved", (self, (self.rect.x, self.rect.y), self.curLevel)))
         #print self.rect
         #~ if self.health <= 0:
             #~ self.kill()

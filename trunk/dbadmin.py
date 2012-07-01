@@ -22,7 +22,7 @@ def main():
     conn = sqlite3.connect("entity.db")
     if sys.argv[1] == "add":
         cur = conn.cursor()
-        new = base.entity((100, 100), data={"facing" : 0, "name" : sys.argv[2]})
+        new = base.entity((int(sys.argv[3]), int(sys.argv[4])), data={"facing" : 0, "name" : sys.argv[2]})
         temp = pickle.dumps(new.serialize())
         cur.execute("insert into chars values (?,?)", (sys.argv[2], temp))
         conn.commit()

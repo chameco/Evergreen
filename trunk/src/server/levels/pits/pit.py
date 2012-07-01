@@ -19,10 +19,8 @@ class pitwall(base.block):
         base.block.__init__(self, coords)
         self.imgname = "pitwall"
 class pitcreature(base.entity):
-    def __init__(self, coords, data=None):#We might as well expose health, for health bars and stuff.
-        if data is None:
-            data = {"facing" : 0}
-        base.entity.__init__(self, coords, data)
+    def __init__(self, coords, data=None, manager=None):
+        base.entity.__init__(self, coords, data, manager)
         self.wasjusthit = 0
         self.prev = 0
     def update(self, allSprites):
@@ -40,8 +38,7 @@ class pitcreature(base.entity):
         self.wasjusthit = 2
         self.data["health"] -= self.attrs["attack"]
 class pittooth(pitcreature):
-    def __init__(self, rect, data=None):
-        if data is None:
-            data = {"facing" : 0, "name" : "pittooth", "health" : 5}
-        pitcreature.__init__(self, rect, data)
+    def __init__(self, rect, data=None, manager=None):
+        pitcreature.__init__(self, rect, data, manager)
+        self.data["health"] = 5
         self.imgname = "pittooth"

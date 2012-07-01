@@ -18,7 +18,7 @@ import os
 import sys
 import chameleon
 import pygame
-pygame.init()
+import random
 def serializable(cls):
     try:
         if callable(cls.__dict__["serialize"]) and isinstance(cls.__dict__["load"], staticmethod):
@@ -41,8 +41,12 @@ def loadLevelPack(name, manager):
     print ns
     return [value.lvl(manager) for value in ns.values()]
 def loadImage(path):
-    t = pygame.image.load(path).convert()
-    t.set_colorkey((255, 0, 170))
+    #t = pygame.image.load(path).convert()
+    #t.set_colorkey((255, 0, 170))
+    try:
+        t = pygame.image.load(path).convert_alpha()
+    except pygame.error: #We haven't initialized the display surface, so OpenGL mode is enabled.
+        t = pygame.image.load(path)
     return t
 def sponge(*args):
     pass

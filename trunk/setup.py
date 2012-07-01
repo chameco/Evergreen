@@ -27,8 +27,7 @@ setup(
     packages=["src", "src.server", "src.server.levels", "src.server.levels.test", "src.server.plugins", "src.client", "src.client.spritepacks", "src.client.spritepacks.default"],
     scripts=["runserver.py", "runclient.py"],
     package_dir={"src" : "src"},
-    package_data={"src.server" : ["server.ini"], "src.client.spritepacks.default" : ["*.png"]},
-    #ext_modules = [Extension("src.chameleon", [join("src", "wrapper.cpp")], libraries=["boost_python-py27"])],
+    package_data={"src.server" : ["server.ini"], "src.client" : ["client.ini"], "src.client.spritepacks.default" : ["*.png"]},
     data_files=["entity.db"],
     install_requires=["pygame>=1.9", "ev-chameleon>=1.0"],
     dependency_links=["http://www.pygame.org/download.shtml"]

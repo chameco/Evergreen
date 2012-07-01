@@ -24,7 +24,6 @@ import select
 import chameleon
 import ConfigParser
 import argparse
-pygame.init()
 CONFIG = {}
 CONFIG["basedir"] = os.path.abspath(".")
 CONFIG["packagedir"] = os.path.join(CONFIG["basedir"], "src")
@@ -35,38 +34,45 @@ CONFIG["playername"] = configParser.get("player", "name")
 CONFIG["port"] = configParser.getint("network", "port")
 CONFIG["host"] = configParser.get("network", "host")
 CONFIG["fullscreen"] = configParser.getboolean("video", "fullscreen")
+CONFIG["opengl"] = configParser.getboolean("video", "opengl")
 CONFIG["spritepack"] = configParser.get("video", "spritepack")
+CONFIG["font"] = configParser.get("video", "font")
 PARSER = argparse.ArgumentParser(description="Launch the Evergreen client")
 PARSER.add_argument("--playername", dest="playername", default=CONFIG["playername"], type=str, help="specify player name (overrides the configuration file)")
 PARSER.add_argument("--port", dest="port", default=CONFIG["port"], type=int, help="specify server port (overrides the configuration file)")
 PARSER.add_argument("--host", dest="host", default=CONFIG["host"], type=str, help="specify server address (overrides the configuration file)")
 PARSER.add_argument("--fullscreen", dest="fullscreen", default=CONFIG["fullscreen"], type=int, help="specify whether or not to run in fullscreen (0 or 1, overrides the configuration file)")
+PARSER.add_argument("--opengl", dest="opengl", default=CONFIG["opengl"], type=int, help="specify whether or not to use OpenGL (0 or 1, overrides the configuration file)")
 PARSER.add_argument("--spritepack", dest="spritepack", default=CONFIG["spritepack"], type=str, help="specify spritepack to use (overrides the configuration file)")
+PARSER.add_argument("--font", dest="font", default=CONFIG["font"], type=str, help="specify font to use (overrides the configuration file)")
 ARGS = PARSER.parse_args()
 CONFIG["playername"] = ARGS.playername
 CONFIG["port"] = ARGS.port
 CONFIG["host"] = ARGS.host
 CONFIG["fullscreen"] = ARGS.fullscreen
+CONFIG["opengl"] = ARGS.opengl
 CONFIG["spritepack"] = ARGS.spritepack
-if CONFIG["fullscreen"]:
-    pygame.display.set_mode((0, 0), pygame.FULLSCREEN|pygame.HWSURFACE|pygame.DOUBLEBUF)
+CONFIG["font"] = ARGS.font
+if CONFIG["opengl"]:
+    from gloss import *
 else:
-    pygame.display.set_mode()
+    pygame.init() #If OpenGL is enabled, we do all of this in load_content so we can have a fancy loading screen.
+    pygame.event.set_blocked([pygame.MOUSEMOTION, pygame.MOUSEBUTTONUP, pygame.MOUSEBUTTONDOWN])#Mouse events fill up the queue, causing major lag.
+    if CONFIG["fullscreen"]:
+        pygame.display.set_mode((0, 0), pygame.FULLSCREEN|pygame.HWSURFACE|pygame.DOUBLEBUF)
+    else:
+        pygame.display.set_mode()
+    exec("import spritepacks." + CONFIG["spritepack"] + " as spritepack")
 from .. import base
 from .. import level
 from .. import errors
 from .. import utils
-exec("import spritepacks." + CONFIG["spritepack"] + " as spritepack")
-pygame.event.set_blocked([pygame.MOUSEMOTION, pygame.MOUSEBUTTONUP, pygame.MOUSEBUTTONDOWN])#Mouse events fill up the queue, causing major lag.
 class serverWrapper():
     def __init__(self, serversocket):
         self.socket = serversocket
         self.poll = select.poll()
         self.poll.register(self.socket, select.POLLIN)
         self.socket.send(CONFIG["playername"])
-        ack = self.socket.recv(6)
-        if ack != "idAck":
-            raise errors.serverError("Error: server refuses to acknowledge ID message.")
     def postEvent(self, event, data):
         #print event
         #print data
@@ -97,8 +103,11 @@ class networkController(chameleon.listener):
         self.entityState = None
     def ev_blockStateReceived(self, data):
         print "Block State Received"
-        self.blockState = base.copyableGroup.load(data)
-        self.manager.alert(chameleon.event("distBlockState", self.blockState))# We do it this way so everyone has the same reference to the newly-loaded state. Probably unnessesary, but I like it.
+        print base
+        self.blockState = base.copyableGroup.load(data[0])
+        self.floorState = base.copyableGroup.load(data[1])
+        self.entityState = base.copyableGroup.load(data[2])
+        self.manager.alert(chameleon.event("distLevel", (self.blockState, self.floorState, self.entityState)))# We do it this way so everyone has the same reference to the newly-loaded state. Probably unnessesary, but I like it.
         self.server.postEvent("ackBlockState", None)
     def ev_entityPosReceived(self, data):
         #print "Entity Positions Received"
@@ -175,6 +184,7 @@ class localStateView(chameleon.listener):
         self.manager.reg("distEntityPos", self)
         self.manager.reg("update", self)
         self.blockState = None
+        self.floorState = None
         self.char = None
         self.chargroup = pygame.sprite.GroupSingle()
         self.entityState = None
@@ -190,10 +200,15 @@ class localStateView(chameleon.listener):
                 self.entityState.clear(self.surfBuf, self.clearcallback)
                 self.entityState = None #Keep entityState from being blit in ev_update.
             self.blockState.clear(self.surfBuf, self.clearcallback)
-        self.blockState = data
+            self.floorState.clear(self.surfBuf, self.clearcallback)
+        self.blockState = data[0]
+        self.floorState = data[1]
         for sprite in self.blockState:
             sprite.image = spritepack.getImage(sprite.imgname)
+        for sprite in self.floorState:
+            sprite.image = spritepack.getImage(sprite.imgname)
         self.blockState.draw(self.surfBuf) #We need to perform an initial draw here so we don't need extra logic in ev_update for whether or not to call self.state.clear().
+        self.floorState.draw(self.surfBuf)
     def ev_distEntityPos(self, data):
         if self.entityState:
             self.entityState.clear(self.surfBuf, self.clearcallback)
@@ -213,8 +228,12 @@ class localStateView(chameleon.listener):
             self.screenrect.center = self.char.rect.center
             self.chargroup.clear(self.surfBuf, self.clearcallback)
             self.entityState.clear(self.surfBuf, self.clearcallback)
-            self.chargroup.draw(self.surfBuf)
+            self.floorState.clear(self.surfBuf, self.clearcallback)
+            self.blockState.clear(self.surfBuf, self.clearcallback) #Unneeded
+            self.blockState.draw(self.surfBuf) #Unneeded
+            self.floorState.draw(self.surfBuf)
             self.entityState.draw(self.surfBuf)
+            self.chargroup.draw(self.surfBuf)
         self.screen.fill((0, 0, 0))
         self.screen.blit(self.surfBuf, (0, 0), self.screenrect)
         pygame.display.flip()
@@ -239,11 +258,111 @@ class spinner(chameleon.manager):
         self.netControl = networkController(self, self.server)
         self.keyControl = keyController(self)
         self.localView = localStateView(self)
-    def main(self):
+    def run(self):
         clock = pygame.time.Clock()
         while 1:
             clock.tick(40)
             self.alert(chameleon.event("update", None))
-evMan = spinner()
+if CONFIG["opengl"]:
+    class glGame(GlossGame, chameleon.manager, chameleon.listener):
+        def __init__(self):
+            GlossGame.__init__(self, "Evergreen")
+            chameleon.manager.__init__(self)
+            chameleon.listener.__init__(self)
+            self.setResponse("distLevel", self.ev_distLevel)
+            self.setResponse("entityMoved", self.ev_entityMoved)
+            self.setResponse("entitySpawned", self.ev_entitySpawned)
+            self.reg("distLevel", self)
+            self.reg("entityMoved", self)
+            self.reg("entitySpawned", self)
+            self.on_key_down = self.keydown
+            self.on_key_up = self.keyup
+            self.on_quit = self.quit
+            self.blockState = []
+            self.floorState = []
+            self.char = None
+            self.entities = {}
+            self.images = {}
+            self.entityimages = {}
+        def ev_distLevel(self, data):
+            print "diststate"
+            Gloss.clear(Color.BLACK)
+            self.blockState = []
+            self.floorState = []
+            self.entities = {}
+            blockState = data[0]
+            floorState = data[1]
+            entityState = data[2]
+            for sprite in blockState.sprites():
+                sprite.image = self.images[sprite.imgname]
+                self.blockState.append(sprite)
+            for sprite in floorState.sprites():
+                sprite.image = self.images[sprite.imgname]
+                self.blockState.append(sprite)
+            for sprite in entityState.sprites():
+                sprite.images = self.entityimages[sprite.imgname]
+                sprite.image = sprite.images[sprite.data["facing"]][0]
+                self.entities[sprite.data["name"]] = sprite
+            self.drawSprites()
+        def ev_entityMoved(self, data):
+            print "entityMoved"
+            sprite = base.drawnObject.load(data[0])
+            if sprite.data["name"] in self.entities:
+                sprite.images = self.entityimages[sprite.imgname]
+                sprite.image = sprite.images[sprite.data["facing"]][0]
+                self.entities[sprite.data["name"]] = sprite
+        def ev_entitySpawned(self, data):
+            print "entitySpawned"
+            sprite = base.drawnObject.load(data)
+            sprite.images = self.entityimages[sprite.imgname]
+            sprite.image = sprite.images[sprite.data["facing"]][0]
+            self.entities[sprite.data["name"]] = sprite
+        def preload_content(self):
+            self.loadingFont = SpriteFont(os.path.join("src", "client", "spritepacks", CONFIG["spritepack"], CONFIG["font"]))
+        def draw_loading_screen(self):
+            Gloss.clear(Color.BLACK)
+            self.loadingFont.draw(text="loading...")
+        def load_content(self):
+            pygame.event.set_blocked([pygame.MOUSEMOTION, pygame.MOUSEBUTTONUP, pygame.MOUSEBUTTONDOWN])
+            exec("import spritepacks." + CONFIG["spritepack"] + " as s")
+            global spritepack
+            spritepack = s
+            spritepack.loadImages()
+            for key in spritepack.IMAGES:
+                self.images[key] = Texture(spritepack.getImage(key))
+            for key in spritepack.ENTITYIMAGES:
+                self.entityimages[key] = [(Texture(image[0]), Texture(image[1])) for image in spritepack.getEntityImage(key)]
+            self.errHandler = errorHandler(self)
+            self.socket = socket.socket()
+            self.socket.connect((CONFIG["host"], CONFIG["port"]))
+            self.server = serverWrapper(self.socket)
+            self.netView = networkView(self, self.server)
+            self.netControl = networkController(self, self.server)
+        def keydown(self, event):
+            self.alert(chameleon.event(pygame.key.name(event.key), True))
+        def keyup(self, event):
+            self.alert(chameleon.event(pygame.key.name(event.key), False))
+        def quit(self):
+            self.alert(chameleon.event("logout", None))
+        def draw(self):
+            self.alert(chameleon.event("update", None))
+            self.drawSprites()
+        def drawSprites(self):
+            if self.entities:
+                glTranslatef(Gloss.screen_resolution[0]/2 - self.entities[CONFIG["playername"]].rect.x, Gloss.screen_resolution[1]/2 - self.entities[CONFIG["playername"]].rect.y, 0)
+                Gloss.clear(Color.BLACK)
+                for block in self.blockState:
+                    block.draw() #Unneeded
+                for floor in self.floorState:
+                    floor.draw()
+                for entity in self.entities.values():
+                    entity.draw()
+                glLoadIdentity();
+if CONFIG["opengl"]:
+    evMan = glGame()
+    if CONFIG["fullscreen"]:
+        Gloss.full_screen = True
+else:
+    evMan = spinner()
 def run():
-    evMan.main()
+    evMan.run()
