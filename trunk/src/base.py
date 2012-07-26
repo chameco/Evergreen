@@ -121,7 +121,7 @@ class stairsWarp(block):
         hitter.manager.alert(chameleon.event("switchLevel", hitter))
 class entity(physicalObject): #On the character creation webpage we'll need to add some additional attributes, such as name.
     amountCreated = 0
-    def __init__(self, coords, data=None, manager=None): #0 is north, 1 is south, 3 is west, 4 is east
+    def __init__(self, coords, data=None, manager=None, curLevel=0): #0 is north, 1 is south, 3 is west, 4 is east
         physicalObject.__init__(self, coords)
         if data is None:
             data = {"facing" : 0, "name" : self.__class__.__name__ + str(self.__class__.amountCreated)}
@@ -129,7 +129,7 @@ class entity(physicalObject): #On the character creation webpage we'll need to a
         self.data = data
         if manager:
             self.manager = manager
-        self.curLevel = 0
+        self.curLevel = curLevel
         self.requestx = 0
         self.requesty = 0
         self.attrs = {"speed" : 8, "attack" : 1} #data is replicated, attrs are serverside. SPEED MUST BE A FACTOR OF BLOCK SIZE!
@@ -175,7 +175,6 @@ class entity(physicalObject): #On the character creation webpage we'll need to a
         for index in sl:
             allSprites[index].hit(self)
     def update(self, allSprites):
-        #print self.rect
         requestx = self.requestx
         requesty = self.requesty
         temp = [sprite for sprite in allSprites if sprite is not self]
@@ -185,15 +184,9 @@ class entity(physicalObject): #On the character creation webpage we'll need to a
         y = self.rect.move(0, requesty).collidelist(temp)
         if y != -1:
             requesty = 0
-        #both = self.rect.move(requestx, requesty).collidelist(temp)#This stops the weird diagonal corners thingy.
-        #if both != -1:
-        #    requesty = requestx = 0
         self.rect.move_ip(requestx, requesty)
         if self.requestx or self.requesty:
             self.manager.alert(chameleon.event("entityMoved", (self, (self.rect.x, self.rect.y), self.curLevel)))
-        #print self.rect
-        #~ if self.health <= 0:
-            #~ self.kill()
 @utils.serializable
 class copyableGroup(pygame.sprite.Group):
     def serialize(self):

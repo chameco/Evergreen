@@ -59,10 +59,12 @@ class levelManager(chameleon.listener):
     def ev_killEntity(self, data): #We need this only because for some reason unknown to man, pygame.sprite.Sprite.kill() doesn't work.
         for l in self.levels:
             l.entityState = base.copyableGroup([s for s in l.entityState if s.data["name"] != data.data["name"]])
+        self.manager.alert(chameleon.event("entityKilled", (data, data.curLevel)))
 @utils.serializable
 class level():
-    def __init__(self, manager):
+    def __init__(self, manager, index):
         self.manager = manager
+        self.index = index
         self.blocks =  {"#" : base.stone}
         self.blockState = base.copyableGroup()
         self.entityState = base.copyableGroup()
@@ -92,7 +94,7 @@ class level():
                 x += 32
             else:
                 if issubclass(self.blocks[c], base.entity):
-                    self.entityState.add(self.blocks[c]((x, y), manager=self.manager))
+                    self.entityState.add(self.blocks[c]((x, y), manager=self.manager, curLevel=self.index))
                 elif issubclass(self.blocks[c], base.floor):
                     self.floorState.add(self.blocks[c]((x, y)))
                 else:

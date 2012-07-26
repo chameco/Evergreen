@@ -55,6 +55,7 @@ from .. import base
 from .. import level
 from .. import errors
 from .. import utils
+exec("import spritepacks." + CONFIG["spritepack"] + " as spritepack")
 class serverWrapper():
     def __init__(self, serversocket):
         self.socket = serversocket
@@ -72,7 +73,7 @@ class serverWrapper():
             request += self.socket.recv(8192)
             #print request
         if request != "":
-            return pickle.loads(request).cham()
+            return [pickle.loads(x).cham() for x in request.split("\n")]
         return None
     def close(self):
         self.socket.close()
@@ -80,16 +81,15 @@ class networkController(chameleon.listener):
     def __init__(self, manager, server):
         chameleon.listener.__init__(self)
         self.manager = manager
-        self.setResponse("blockStateReceived", self.ev_blockStateReceived)
-        self.setResponse("entityPosReceived", self.ev_entityPosReceived)
+        self.setResponse("levelReceived", self.ev_levelReceived)
         self.setResponse("update", self.ev_update)
-        self.manager.reg("blockStateReceived", self)
-        self.manager.reg("entityPosReceived", self)
+        self.manager.reg("levelReceived", self)
         self.manager.reg("update", self)
         self.server = server
         self.blockState = None
+        self.floorState = None
         self.entityState = None
-    def ev_blockStateReceived(self, data):
+    def ev_levelReceived(self, data):
         print "Block State Received"
         print base
         self.blockState = base.copyableGroup.load(data[0])
@@ -97,17 +97,12 @@ class networkController(chameleon.listener):
         self.entityState = base.copyableGroup.load(data[2])
         self.manager.alert(chameleon.event("distLevel", (self.blockState, self.floorState, self.entityState)))# We do it this way so everyone has the same reference to the newly-loaded state. Probably unnessesary, but I like it.
         self.server.postEvent("ackBlockState", None)
-    def ev_entityPosReceived(self, data):
-        #print "Entity Positions Received"
-        self.entityState = base.copyableGroup.load(data)
-        #print self.entityState.sprites()
-        self.manager.alert(chameleon.event("distEntityPos", self.entityState))
     def ev_update(self, data):
-        #self.server.postEvent("requestEntityPos", None)
-        response = self.server.getData()
+        responses = self.server.getData()
         #print response
-        if response:
-            self.manager.alert(response)
+        if responses:
+            for response in responses:
+                self.manager.alert(response)
 class networkView(chameleon.listener):
     def __init__(self, manager, server):
         chameleon.listener.__init__(self)
@@ -149,19 +144,18 @@ class glGame(GlossGame, chameleon.manager, chameleon.listener):
         self.setResponse("distLevel", self.ev_distLevel)
         self.setResponse("entityMoved", self.ev_entityMoved)
         self.setResponse("entitySpawned", self.ev_entitySpawned)
+        self.setResponse("entityKilled", self.ev_entityKilled)
         self.reg("distLevel", self)
         self.reg("entityMoved", self)
         self.reg("entitySpawned", self)
+        self.reg("entityKilled", self)
         self.on_key_down = self.keydown
         self.on_key_up = self.keyup
         self.on_quit = self.quit
         self.blockState = []
         self.floorState = []
-        self.char = None
         self.entities = {}
-        self.images = {}
-        self.entityimages = {}
-   def ev_distLevel(self, data):
+    def ev_distLevel(self, data):
         print "diststate"
         Gloss.clear(Color.BLACK)
         self.blockState = []
@@ -171,29 +165,32 @@ class glGame(GlossGame, chameleon.manager, chameleon.listener):
         floorState = data[1]
         entityState = data[2]
         for sprite in blockState.sprites():
-            sprite.image = self.images[sprite.imgname]
+            sprite.image = spritepack.getImage(sprite.imgname)
             self.blockState.append(sprite)
         for sprite in floorState.sprites():
-            sprite.image = self.images[sprite.imgname]
+            sprite.image = spritepack.getImage(sprite.imgname)
             self.blockState.append(sprite)
         for sprite in entityState.sprites():
-            sprite.images = self.entityimages[sprite.imgname]
+            sprite.images = spritepack.getEntityImage(sprite.imgname)
             sprite.image = sprite.images[sprite.data["facing"]][0]
             self.entities[sprite.data["name"]] = sprite
         self.drawSprites()
     def ev_entityMoved(self, data):
-        print "entityMoved"
         sprite = base.drawnObject.load(data[0])
         if sprite.data["name"] in self.entities:
-            sprite.images = self.entityimages[sprite.imgname]
+            sprite.images = spritepack.getEntityImage(sprite.imgname)
             sprite.image = sprite.images[sprite.data["facing"]][0]
             self.entities[sprite.data["name"]] = sprite
     def ev_entitySpawned(self, data):
         print "entitySpawned"
         sprite = base.drawnObject.load(data)
-        sprite.images = self.entityimages[sprite.imgname]
+        sprite.images = spritepack.getEntityImage(sprite.imgname)
         sprite.image = sprite.images[sprite.data["facing"]][0]
         self.entities[sprite.data["name"]] = sprite
+    def ev_entityKilled(self, data):
+        print "entityKilled"
+        sprite = base.drawnObject.load(data)
+        del self.entities[sprite.data["name"]]
     def preload_content(self):
         self.loadingFont = SpriteFont(os.path.join("src", "client", "spritepacks", CONFIG["spritepack"], CONFIG["font"]))
     def draw_loading_screen(self):
@@ -201,15 +198,7 @@ class glGame(GlossGame, chameleon.manager, chameleon.listener):
         self.loadingFont.draw(text="loading...")
     def load_content(self):
         pygame.event.set_blocked([pygame.MOUSEMOTION, pygame.MOUSEBUTTONUP, pygame.MOUSEBUTTONDOWN])
-        exec("import spritepacks." + CONFIG["spritepack"] + " as s")
-        global spritepack
-        spritepack = s
         spritepack.loadImages()
-        for key in spritepack.IMAGES:
-            self.images[key] = Texture(spritepack.getImage(key))
-        for key in spritepack.ENTITYIMAGES:
-            self.entityimages[key] = [(Texture(image[0]), Texture(image[1])) for image in spritepack.getEntityImage(key)]
-        self.errHandler = errorHandler(self)
         self.socket = socket.socket()
         self.socket.connect((CONFIG["host"], CONFIG["port"]))
         self.server = serverWrapper(self.socket)
@@ -225,7 +214,7 @@ class glGame(GlossGame, chameleon.manager, chameleon.listener):
         self.alert(chameleon.event("update", None))
         self.drawSprites()
     def drawSprites(self):
-        if self.entities:
+        if CONFIG["playername"] in self.entities:
             glTranslatef(Gloss.screen_resolution[0]/2 - self.entities[CONFIG["playername"]].rect.x, Gloss.screen_resolution[1]/2 - self.entities[CONFIG["playername"]].rect.y, 0)
             Gloss.clear(Color.BLACK)
             for block in self.blockState:

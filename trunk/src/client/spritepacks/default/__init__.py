@@ -1,25 +1,26 @@
 from .... import utils
+from ...gloss import *
 import os
 import pygame
 IMAGES = {}
 ENTITYIMAGES = {}
+PATH = "src/client/spritepacks/default"
 def loadImages():
     pygame.init()
     global IMAGES
     global ENTITYIMAGES
-    PATH = "src/client/spritepacks/default"
     IMAGES = {
-    "red" : utils.loadImage(os.path.join(PATH, "red.png")),
-    "up" : utils.loadImage(os.path.join(PATH, "up.png")),
-    "down" : utils.loadImage(os.path.join(PATH, "down.png")),
-    "warp" : utils.loadImage(os.path.join(PATH, "warp.png")),
-    "stone" : utils.loadImage(os.path.join(PATH, "stone.png")),
-    "woodFloor" : utils.loadImage(os.path.join(PATH, "woodfloor.png")),
-    "pitwall" : utils.loadImage(os.path.join(PATH, "pitwall.png")),
+    "red" : textureLoad("red.png"),
+    "up" : textureLoad("up.png"),
+    "down" : textureLoad("down.png"),
+    "warp" : textureLoad("warp.png"),
+    "stone" : textureLoad("stone.png"),
+    "woodFloor" : textureLoad("woodfloor.png"),
+    "pitwall" : textureLoad("pitwall.png"),
     }
     ENTITYIMAGES = {
-    "entity" : ((utils.loadImage(os.path.join(PATH, "playerb.png")), utils.loadImage(os.path.join(PATH, "playerba.png"))), (utils.loadImage(os.path.join(PATH, "playerf.png")), utils.loadImage(os.path.join(PATH, "playerfa.png"))), (utils.loadImage(os.path.join(PATH, "playerl.png")), utils.loadImage(os.path.join(PATH, "playerla.png"))), (utils.loadImage(os.path.join(PATH, "playerr.png")), utils.loadImage(os.path.join(PATH, "playerra.png")))),
-    "pittooth" : ((utils.loadImage(os.path.join(PATH, "pittooth.png")), IMAGES["stone"]), (IMAGES["stone"], IMAGES["stone"]), (IMAGES["stone"], IMAGES["stone"]), (IMAGES["stone"], IMAGES["stone"]), (utils.loadImage(os.path.join(PATH, "red.png")), IMAGES["stone"])),
+    "entity" : ((textureLoad("playerb.png"), textureLoad("playerba.png")), (textureLoad("playerf.png"), textureLoad("playerfa.png")), (textureLoad("playerl.png"), textureLoad("playerla.png")), (textureLoad("playerr.png"), textureLoad("playerra.png"))),
+    "pittooth" : ((textureLoad("pittooth.png"), None), (None, None), (None, None), (None, None), (textureLoad("red.png"), None)),
     }
 def getImage(name):
     return IMAGES[name]
@@ -27,3 +28,6 @@ def getEntityImage(name):
     return ENTITYIMAGES[name]
 def hasEntityImage(name):
     return name in ENTITYIMAGES
+def textureLoad(name):
+    image = utils.loadImage(os.path.join(PATH, name))
+    return Texture(image)

@@ -59,7 +59,7 @@ class clientWrapper():
         self.avatarID = self.socket.recv(256)
         print self.avatarID
     def postEvent(self, event, data):
-        self.socket.send(pickle.dumps(utils.netEvent(event, data), 2))
+        self.socket.send(pickle.dumps(utils.netEvent(event, data), 2) + "\n")
     def getData(self):
         #print "getData"
         request = ""
@@ -103,12 +103,14 @@ class networkSubsystem(chameleon.manager, chameleon.listener):
         self.setResponse("distSwitchLevel", self.ev_distSwitchLevel)
         self.setResponse("entityMoved", self.ev_entityMoved)
         self.setResponse("entitySpawned", self.ev_entitySpawned)
+        self.setResponse("entityKilled", self.ev_entityKilled)
         self.setResponse("update", self.ev_update)
         self.reg("getLevel", self)
         self.manager.reg("distLevel", self)
         self.manager.reg("distSwitchLevel", self)
         self.manager.reg("entityMoved", self)
         self.manager.reg("entitySpawned", self)
+        self.manager.reg("entityKilled", self)
         self.manager.reg("update", self)
         self.manager.alert(chameleon.event("spawnEntity", (self.controlledEntity, self.controlledEntity.curLevel)))
         self.plugins.append(networkController(self, self.client))
@@ -145,7 +147,7 @@ class networkSubsystem(chameleon.manager, chameleon.listener):
             self.manager.alert(chameleon.event("spawnEntity", (self.controlledEntity, self.controlledEntity.curLevel)))
             print "after alert spawn entity"
             self.alert(chameleon.event("distLevel", data[0]))
-            self.alert(chameleon.event("updateBlockState", None))
+            self.alert(chameleon.event("sendLevel", None))
     def ev_distLevel(self, data):
         if data[1] == self.controlledEntity.data["name"]:
                 self.alert(chameleon.event("distLevel", data[0]))
@@ -156,32 +158,34 @@ class networkSubsystem(chameleon.manager, chameleon.listener):
     def ev_entitySpawned(self, data):
         if data[1] == self.controlledEntity.curLevel:
             self.alert(chameleon.event("entitySpawned", data[0]))
+    def ev_entityKilled(self, data):
+        print "entityKilled"
+        if data[1] == self.controlledEntity.curLevel:
+            self.alert(chameleon.event("entityKilled", data[0]))
 class networkView(chameleon.listener):
     def __init__(self, manager, client):
         chameleon.listener.__init__(self)
         self.manager = manager
         self.setResponse("distLevel", self.ev_distLevel)
-        self.setResponse("sendBlockState", self.ev_sendBlockState)
-        self.setResponse("updateBlockState", self.ev_updateBlockState)
+        self.setResponse("sendLevel", self.ev_sendLevel)
         self.setResponse("entityMoved", self.ev_entityMoved)
         self.setResponse("entitySpawned", self.ev_entitySpawned)
+        self.setResponse("entityKilled", self.ev_entityKilled)
         self.manager.reg("distLevel", self)
-        self.manager.reg("sendBlockState", self)
-        self.manager.reg("updateBlockState", self)
+        self.manager.reg("sendLevel", self)
         self.manager.reg("entityMoved", self)
         self.manager.reg("entitySpawned", self)
+        self.manager.reg("entityKilled", self)
         self.client = client
         self.level = None
         self.manager.alert(chameleon.event("getLevel", None))
-        self.manager.alert(chameleon.event("sendBlockState", None))
+        self.manager.alert(chameleon.event("sendLevel", None))
         self.needsToSend = False
-    def ev_sendBlockState(self, data):
+    def ev_sendLevel(self, data):
         try:
-            self.client.postEvent("blockStateReceived", (self.level.blockState.serialize(), self.level.floorState.serialize(), self.level.entityState.serialize()))
+            self.client.postEvent("levelReceived", (self.level.blockState.serialize(), self.level.floorState.serialize(), self.level.entityState.serialize()))
         except IOError:
             self.manager.alert(chameleon.event("kill", None))
-    def ev_updateBlockState(self, data):
-        self.manager.alert(chameleon.event("sendBlockState", None))
     def ev_distLevel(self, data):
         print "distribute level"
         self.level = data
@@ -193,6 +197,12 @@ class networkView(chameleon.listener):
     def ev_entitySpawned(self, data):
         try:
             self.client.postEvent("entitySpawned", data.serialize())
+        except IOError:
+            self.manager.alert(chameleon.event("kill", None))
+    def ev_entityKilled(self, data):
+        print "entityKilled: networkView"
+        try:
+            self.client.postEvent("entityKilled", data.serialize())
         except IOError:
             self.manager.alert(chameleon.event("kill", None))
 class networkController(chameleon.listener):
