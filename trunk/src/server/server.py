@@ -59,7 +59,7 @@ class clientWrapper():
         self.avatarID = self.socket.recv(256)
         print self.avatarID
     def postEvent(self, event, data):
-        self.socket.send(pickle.dumps(utils.netEvent(event, data), 2) + "\n")
+        self.socket.send(pickle.dumps(utils.netEvent(event, data)) + "\t")
     def getData(self):
         #print "getData"
         request = ""

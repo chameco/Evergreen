@@ -65,7 +65,7 @@ class serverWrapper():
     def postEvent(self, event, data):
         #print event
         #print data
-        self.socket.send(pickle.dumps(utils.netEvent(event, data)), 2)
+        self.socket.send(pickle.dumps(utils.netEvent(event, data)))
     def getData(self):
         #print "getData"
         request = ""
@@ -73,7 +73,8 @@ class serverWrapper():
             request += self.socket.recv(8192)
             #print request
         if request != "":
-            return [pickle.loads(x).cham() for x in request.split("\n")]
+            t = request.split("\t")
+            return [pickle.loads(x).cham() for x in t if len(x)]
         return None
     def close(self):
         self.socket.close()
