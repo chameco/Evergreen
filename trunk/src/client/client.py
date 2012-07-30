@@ -65,7 +65,7 @@ class serverWrapper():
     def postEvent(self, event, data):
         #print event
         #print data
-        self.socket.send(pickle.dumps(utils.netEvent(event, data)))
+        self.socket.send(pickle.dumps(utils.netEvent(event, data), 2))
     def getData(self):
         #print "getData"
         request = ""
@@ -73,7 +73,7 @@ class serverWrapper():
             request += self.socket.recv(8192)
             #print request
         if request != "":
-            t = request.split("\t")
+            t = request.split("\xEE")#An unused delimiter character
             return [pickle.loads(x).cham() for x in t if len(x)]
         return None
     def close(self):
@@ -146,10 +146,12 @@ class glGame(GlossGame, chameleon.manager, chameleon.listener):
         self.setResponse("entityMoved", self.ev_entityMoved)
         self.setResponse("entitySpawned", self.ev_entitySpawned)
         self.setResponse("entityKilled", self.ev_entityKilled)
+        self.setResponse("gameOver", self.ev_gameOver)
         self.reg("distLevel", self)
         self.reg("entityMoved", self)
         self.reg("entitySpawned", self)
         self.reg("entityKilled", self)
+        self.reg("gameOver", self)
         self.on_key_down = self.keydown
         self.on_key_up = self.keyup
         self.on_quit = self.quit
@@ -192,6 +194,10 @@ class glGame(GlossGame, chameleon.manager, chameleon.listener):
         print "entityKilled"
         sprite = base.drawnObject.load(data)
         del self.entities[sprite.data["name"]]
+    def ev_gameOver(self, data):
+        print "GAME OVER"
+        Gloss.clear(Color.BLACK)
+        self.loadingFont.draw(text="GAME OVER")
     def preload_content(self):
         self.loadingFont = SpriteFont(os.path.join("src", "client", "spritepacks", CONFIG["spritepack"], CONFIG["font"]))
     def draw_loading_screen(self):

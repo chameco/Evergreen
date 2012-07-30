@@ -59,7 +59,7 @@ class clientWrapper():
         self.avatarID = self.socket.recv(256)
         print self.avatarID
     def postEvent(self, event, data):
-        self.socket.send(pickle.dumps(utils.netEvent(event, data)) + "\t")
+        self.socket.send(pickle.dumps(utils.netEvent(event, data), 2) + "\xEE")#An unused delimiter character
     def getData(self):
         #print "getData"
         request = ""
@@ -162,6 +162,10 @@ class networkSubsystem(chameleon.manager, chameleon.listener):
         print "entityKilled"
         if data[1] == self.controlledEntity.curLevel:
             self.alert(chameleon.event("entityKilled", data[0]))
+    def ev_gameOver(self, data):
+        print "GAME OVER"
+        if data is self.controlledEntity:
+            self.alert(chameleon.event("gameOver", None))
 class networkView(chameleon.listener):
     def __init__(self, manager, client):
         chameleon.listener.__init__(self)
@@ -171,16 +175,17 @@ class networkView(chameleon.listener):
         self.setResponse("entityMoved", self.ev_entityMoved)
         self.setResponse("entitySpawned", self.ev_entitySpawned)
         self.setResponse("entityKilled", self.ev_entityKilled)
+        self.setResponse("gameOver", self.ev_gameOver)
         self.manager.reg("distLevel", self)
         self.manager.reg("sendLevel", self)
         self.manager.reg("entityMoved", self)
         self.manager.reg("entitySpawned", self)
         self.manager.reg("entityKilled", self)
+        self.manager.reg("gameOver", self)
         self.client = client
         self.level = None
         self.manager.alert(chameleon.event("getLevel", None))
         self.manager.alert(chameleon.event("sendLevel", None))
-        self.needsToSend = False
     def ev_sendLevel(self, data):
         try:
             self.client.postEvent("levelReceived", (self.level.blockState.serialize(), self.level.floorState.serialize(), self.level.entityState.serialize()))
@@ -204,6 +209,12 @@ class networkView(chameleon.listener):
         try:
             self.client.postEvent("entityKilled", data.serialize())
         except IOError:
+            self.manager.alert(chameleon.event("kill", None))
+    def ev_gameOver(self, data):
+        print "GAME OVER: networkView"
+        try:
+            self.client.postEvent("gameOver", None)
+        finally:
             self.manager.alert(chameleon.event("kill", None))
 class networkController(chameleon.listener):
     def __init__(self, manager, client):

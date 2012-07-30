@@ -1,0 +1,687 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_PROGRAM_AUTHOR	Darren Hiebert	/dhiebert@users.sourceforge.net/
+!_TAG_PROGRAM_NAME	Exuberant Ctags	//
+!_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
+!_TAG_PROGRAM_VERSION	5.9~svn20110310	//
+ARGS	src/client/client.py	/^ARGS = PARSER.parse_args()$/;"	v
+BubbleTroubleGame	src/gloss/examples/example_bubbletrouble.py	/^class BubbleTroubleGame(GlossGame):$/;"	c
+BubbleTrouble_Bubble	src/gloss/examples/example_bubbletrouble.py	/^class BubbleTrouble_Bubble:$/;"	c
+CONFIG	src/client/client.py	/^CONFIG = {}$/;"	v
+CONFIG	src/server/server.py	/^CONFIG = {}$/;"	v
+Color	src/client/gloss.py	/^class Color(object):$/;"	c
+Color	src/gloss/documentation.html	/^<h2><a name="Color">Color<\/a><\/h2>$/;"	a
+Color	src/gloss/examples/gloss.py	/^class Color(object):$/;"	c
+Color	src/gloss/gloss.py	/^class Color(object):$/;"	c
+Dot	src/gloss/examples/example_lines.py	/^class Dot(object):$/;"	c
+ENTITYIMAGES	src/client/spritepacks/default/__init__.py	/^ENTITYIMAGES = {}$/;"	v
+Gloss	src/client/gloss.py	/^class Gloss(object):$/;"	c
+Gloss	src/gloss/documentation.html	/^<h2><a name="Gloss">Gloss<\/a><\/h2>$/;"	a
+Gloss	src/gloss/examples/gloss.py	/^class Gloss(object):$/;"	c
+Gloss	src/gloss/gloss.py	/^class Gloss(object):$/;"	c
+GlossGame	src/client/gloss.py	/^class GlossGame(object):$/;"	c
+GlossGame	src/gloss/documentation.html	/^<h2><a name="GlossGame">GlossGame<\/a><\/h2>$/;"	a
+GlossGame	src/gloss/examples/gloss.py	/^class GlossGame(object):$/;"	c
+GlossGame	src/gloss/gloss.py	/^class GlossGame(object):$/;"	c
+GlossTest	src/gloss/examples/example_bounce.py	/^class GlossTest(GlossGame):$/;"	c
+GlossTest	src/gloss/examples/example_boxes.py	/^class GlossTest(GlossGame):$/;"	c
+GlossTest	src/gloss/examples/example_lines.py	/^class GlossTest(GlossGame):$/;"	c
+GlossTest	src/gloss/examples/example_loadingscreen.py	/^class GlossTest(GlossGame):$/;"	c
+GlossTest	src/gloss/examples/example_matrixoverride.py	/^class GlossTest(GlossGame):$/;"	c
+GlossTest	src/gloss/examples/example_multilerp.py	/^class GlossTest(GlossGame):$/;"	c
+GlossTest	src/gloss/examples/example_onclick.py	/^class GlossTest(GlossGame):$/;"	c
+GlossTest	src/gloss/examples/example_particles.py	/^class GlossTest(GlossGame):$/;"	c
+GlossTest	src/gloss/examples/example_pygame.py	/^class GlossTest(GlossGame):$/;"	c
+GlossTest	src/gloss/examples/example_rendertarget.py	/^class GlossTest(GlossGame):$/;"	c
+GlossTest	src/gloss/examples/example_scaling.py	/^class GlossTest(GlossGame):$/;"	c
+GlossTest	src/gloss/examples/example_smoothstep.py	/^class GlossTest(GlossGame):$/;"	c
+GlossTest	src/gloss/examples/example_spritefont.py	/^class GlossTest(GlossGame):$/;"	c
+GlossTest	src/gloss/examples/example_triangles.py	/^class GlossTest(GlossGame):$/;"	c
+IMAGES	src/client/spritepacks/default/__init__.py	/^IMAGES = {}$/;"	v
+PARSER	src/client/client.py	/^PARSER = argparse.ArgumentParser(description="Launch the Evergreen client")$/;"	v
+PATH	src/client/spritepacks/default/__init__.py	/^PATH = "src\/client\/spritepacks\/default"$/;"	v
+PI_OVER_2	src/client/gloss.py	/^	PI_OVER_2 = math.pi \/ 2.0$/;"	v	class:Gloss
+PI_OVER_2	src/gloss/examples/gloss.py	/^	PI_OVER_2 = math.pi \/ 2.0$/;"	v	class:Gloss
+PI_OVER_2	src/gloss/gloss.py	/^	PI_OVER_2 = math.pi \/ 2.0$/;"	v	class:Gloss
+PI_OVER_4	src/client/gloss.py	/^	PI_OVER_4 = math.pi \/ 4.0$/;"	v	class:Gloss
+PI_OVER_4	src/gloss/examples/gloss.py	/^	PI_OVER_4 = math.pi \/ 4.0$/;"	v	class:Gloss
+PI_OVER_4	src/gloss/gloss.py	/^	PI_OVER_4 = math.pi \/ 4.0$/;"	v	class:Gloss
+Particle	src/client/gloss.py	/^class Particle:$/;"	c
+Particle	src/gloss/examples/gloss.py	/^class Particle:$/;"	c
+Particle	src/gloss/gloss.py	/^class Particle:$/;"	c
+ParticleSystem	src/client/gloss.py	/^class ParticleSystem(object):$/;"	c
+ParticleSystem	src/gloss/documentation.html	/^<h2><a name="ParticleSystem">ParticleSystem<\/a><\/h2>$/;"	a
+ParticleSystem	src/gloss/examples/gloss.py	/^class ParticleSystem(object):$/;"	c
+ParticleSystem	src/gloss/gloss.py	/^class ParticleSystem(object):$/;"	c
+Point	src/client/gloss.py	/^class Point(object):$/;"	c
+Point	src/gloss/documentation.html	/^<h2><a name="Point">Point<\/a><\/h2>$/;"	a
+Point	src/gloss/examples/gloss.py	/^class Point(object):$/;"	c
+Point	src/gloss/gloss.py	/^class Point(object):$/;"	c
+RenderTarget	src/client/gloss.py	/^class RenderTarget:$/;"	c
+RenderTarget	src/gloss/documentation.html	/^<h2><a name="RenderTarget">RenderTarget<\/a><\/h2>$/;"	a
+RenderTarget	src/gloss/examples/gloss.py	/^class RenderTarget:$/;"	c
+RenderTarget	src/gloss/gloss.py	/^class RenderTarget:$/;"	c
+Sharpshooter	src/gloss/examples/example_sharpshooter.py	/^class Sharpshooter(GlossGame):$/;"	c
+SkeletonGame	src/gloss/skeleton_game.py	/^class SkeletonGame(GlossGame):$/;"	c
+Sprite	src/client/gloss.py	/^class Sprite(object):$/;"	c
+Sprite	src/gloss/documentation.html	/^<h2><a name="Sprite">Sprite<\/a><\/h2>$/;"	a
+Sprite	src/gloss/examples/gloss.py	/^class Sprite(object):$/;"	c
+Sprite	src/gloss/gloss.py	/^class Sprite(object):$/;"	c
+SpriteFont	src/client/gloss.py	/^class SpriteFont(object):$/;"	c
+SpriteFont	src/gloss/documentation.html	/^<h2><a name="SpriteFont">SpriteFont<\/a><\/h2>$/;"	a
+SpriteFont	src/gloss/examples/gloss.py	/^class SpriteFont(object):$/;"	c
+SpriteFont	src/gloss/gloss.py	/^class SpriteFont(object):$/;"	c
+SpriteFontLetter	src/client/gloss.py	/^class SpriteFontLetter(object):$/;"	c
+SpriteFontLetter	src/gloss/examples/gloss.py	/^class SpriteFontLetter(object):$/;"	c
+SpriteFontLetter	src/gloss/gloss.py	/^class SpriteFontLetter(object):$/;"	c
+TWO_PI	src/client/gloss.py	/^	TWO_PI = math.pi * 2.0$/;"	v	class:Gloss
+TWO_PI	src/gloss/examples/gloss.py	/^	TWO_PI = math.pi * 2.0$/;"	v	class:Gloss
+TWO_PI	src/gloss/gloss.py	/^	TWO_PI = math.pi * 2.0$/;"	v	class:Gloss
+Target	src/gloss/examples/example_sharpshooter.py	/^class Target(object):$/;"	c
+Texture	src/client/gloss.py	/^class Texture(object):$/;"	c
+Texture	src/gloss/documentation.html	/^<h2><a name="Texture">Texture<\/a><\/h2>$/;"	a
+Texture	src/gloss/examples/gloss.py	/^class Texture(object):$/;"	c
+Texture	src/gloss/gloss.py	/^class Texture(object):$/;"	c
+VERSION	src/client/gloss.py	/^ 	VERSION = 0.9$/;"	v	class:Gloss
+VERSION	src/gloss/examples/gloss.py	/^ 	VERSION = 0.9$/;"	v	class:Gloss
+VERSION	src/gloss/gloss.py	/^ 	VERSION = 0.9$/;"	v	class:Gloss
+__all__	src/client/spritepacks/__init__.py	/^__all__ = ["default"]$/;"	v
+__all__	src/server/levels/__init__.py	/^__all__ = []$/;"	v
+__all__	src/server/levels/test/__init__.py	/^__all__ = ["first"]$/;"	v
+__del__	src/client/gloss.py	/^	def __del__(self):$/;"	m	class:ParticleSystem	file:
+__del__	src/client/gloss.py	/^	def __del__(self):$/;"	m	class:RenderTarget	file:
+__del__	src/client/gloss.py	/^	def __del__(self):$/;"	m	class:Sprite	file:
+__del__	src/client/gloss.py	/^	def __del__(self):$/;"	m	class:Texture	file:
+__del__	src/gloss/examples/gloss.py	/^	def __del__(self):$/;"	m	class:ParticleSystem	file:
+__del__	src/gloss/examples/gloss.py	/^	def __del__(self):$/;"	m	class:RenderTarget	file:
+__del__	src/gloss/examples/gloss.py	/^	def __del__(self):$/;"	m	class:Sprite	file:
+__del__	src/gloss/examples/gloss.py	/^	def __del__(self):$/;"	m	class:Texture	file:
+__del__	src/gloss/gloss.py	/^	def __del__(self):$/;"	m	class:ParticleSystem	file:
+__del__	src/gloss/gloss.py	/^	def __del__(self):$/;"	m	class:RenderTarget	file:
+__del__	src/gloss/gloss.py	/^	def __del__(self):$/;"	m	class:Sprite	file:
+__del__	src/gloss/gloss.py	/^	def __del__(self):$/;"	m	class:Texture	file:
+__init__	src/base.py	/^    def __init__(self, coords):$/;"	m	class:block
+__init__	src/base.py	/^    def __init__(self, coords):$/;"	m	class:drawnObject
+__init__	src/base.py	/^    def __init__(self, coords):$/;"	m	class:floor
+__init__	src/base.py	/^    def __init__(self, coords):$/;"	m	class:physicalObject
+__init__	src/base.py	/^    def __init__(self, coords):$/;"	m	class:stairsDown
+__init__	src/base.py	/^    def __init__(self, coords):$/;"	m	class:stairsUp
+__init__	src/base.py	/^    def __init__(self, coords):$/;"	m	class:stone
+__init__	src/base.py	/^    def __init__(self, coords):$/;"	m	class:woodFloor
+__init__	src/base.py	/^    def __init__(self, coords, data=None, manager=None, curLevel=0): #0 is north, 1 is south, 3 is west, 4 is east$/;"	m	class:entity
+__init__	src/base.py	/^    def __init__(self, coords, data=None, manager=None, curLevel=0):$/;"	m	class:player
+__init__	src/base.py	/^    def __init__(self, coords, warp):$/;"	m	class:stairsWarp
+__init__	src/client/client.py	/^    def __init__(self):$/;"	m	class:glGame
+__init__	src/client/client.py	/^    def __init__(self, manager, server):$/;"	m	class:networkController
+__init__	src/client/client.py	/^    def __init__(self, manager, server):$/;"	m	class:networkView
+__init__	src/client/client.py	/^    def __init__(self, serversocket):$/;"	m	class:serverWrapper
+__init__	src/client/gloss.py	/^	def __init__(self):$/;"	m	class:Particle
+__init__	src/client/gloss.py	/^	def __init__(self, filename, size = 18, bold = False, underline = False, startcharacter = 32, endcharacter = 126):$/;"	m	class:SpriteFont
+__init__	src/client/gloss.py	/^	def __init__(self, font, letter):$/;"	m	class:SpriteFontLetter
+__init__	src/client/gloss.py	/^	def __init__(self, name):$/;"	m	class:GlossGame
+__init__	src/client/gloss.py	/^	def __init__(self, r, g, b, a = 1.0):$/;"	m	class:Color
+__init__	src/client/gloss.py	/^	def __init__(self, source):$/;"	m	class:Texture
+__init__	src/client/gloss.py	/^	def __init__(self, texture, position = None):$/;"	m	class:Sprite
+__init__	src/client/gloss.py	/^	def __init__(self, texture, position = None, lifespan = -1, creationspeed = None, initialparticles = 50, particlelifespan = 1000, minspeed = 50, maxspeed = 250, minrotation = 0, maxrotation = 0, minscale = 1.0, maxscale = 1.0, growth = 0.0, wind = None, drag = None, startcolor = Color.WHITE, endcolor = Color.TRANSPARENT_WHITE, onfinish = None, name = ""):$/;"	m	class:ParticleSystem
+__init__	src/client/gloss.py	/^	def __init__(self, width = 512, height = 512):$/;"	m	class:RenderTarget
+__init__	src/client/glrender.py	/^    def __init__(self):$/;"	m	class:glGame
+__init__	src/gloss/examples/example_lines.py	/^	def __init__(self):$/;"	m	class:Dot
+__init__	src/gloss/examples/example_sharpshooter.py	/^	def __init__(self):$/;"	m	class:Target
+__init__	src/gloss/examples/gloss.py	/^	def __init__(self):$/;"	m	class:Particle
+__init__	src/gloss/examples/gloss.py	/^	def __init__(self, filename, size = 18, bold = False, underline = False, startcharacter = 32, endcharacter = 126):$/;"	m	class:SpriteFont
+__init__	src/gloss/examples/gloss.py	/^	def __init__(self, font, letter):$/;"	m	class:SpriteFontLetter
+__init__	src/gloss/examples/gloss.py	/^	def __init__(self, name):$/;"	m	class:GlossGame
+__init__	src/gloss/examples/gloss.py	/^	def __init__(self, r, g, b, a = 1.0):$/;"	m	class:Color
+__init__	src/gloss/examples/gloss.py	/^	def __init__(self, source):$/;"	m	class:Texture
+__init__	src/gloss/examples/gloss.py	/^	def __init__(self, texture, position = None):$/;"	m	class:Sprite
+__init__	src/gloss/examples/gloss.py	/^	def __init__(self, texture, position = None, lifespan = -1, creationspeed = None, initialparticles = 50, particlelifespan = 1000, minspeed = 50, maxspeed = 250, minrotation = 0, maxrotation = 0, minscale = 1.0, maxscale = 1.0, growth = 0.0, wind = None, drag = None, startcolor = Color.WHITE, endcolor = Color.TRANSPARENT_WHITE, onfinish = None, name = ""):$/;"	m	class:ParticleSystem
+__init__	src/gloss/examples/gloss.py	/^	def __init__(self, width = 512, height = 512):$/;"	m	class:RenderTarget
+__init__	src/gloss/gloss.py	/^	def __init__(self):$/;"	m	class:Particle
+__init__	src/gloss/gloss.py	/^	def __init__(self, filename, size = 18, bold = False, underline = False, startcharacter = 32, endcharacter = 126):$/;"	m	class:SpriteFont
+__init__	src/gloss/gloss.py	/^	def __init__(self, font, letter):$/;"	m	class:SpriteFontLetter
+__init__	src/gloss/gloss.py	/^	def __init__(self, name):$/;"	m	class:GlossGame
+__init__	src/gloss/gloss.py	/^	def __init__(self, r, g, b, a = 1.0):$/;"	m	class:Color
+__init__	src/gloss/gloss.py	/^	def __init__(self, source):$/;"	m	class:Texture
+__init__	src/gloss/gloss.py	/^	def __init__(self, texture, position = None):$/;"	m	class:Sprite
+__init__	src/gloss/gloss.py	/^	def __init__(self, texture, position = None, lifespan = -1, creationspeed = None, initialparticles = 50, particlelifespan = 1000, minspeed = 50, maxspeed = 250, minrotation = 0, maxrotation = 0, minscale = 1.0, maxscale = 1.0, growth = 0.0, wind = None, drag = None, startcolor = Color.WHITE, endcolor = Color.TRANSPARENT_WHITE, onfinish = None, name = ""):$/;"	m	class:ParticleSystem
+__init__	src/gloss/gloss.py	/^	def __init__(self, width = 512, height = 512):$/;"	m	class:RenderTarget
+__init__	src/level.py	/^    def __init__(self, manager):$/;"	m	class:levelManager
+__init__	src/level.py	/^    def __init__(self, manager, index):$/;"	m	class:level
+__init__	src/randlev.py	/^    def __init__(self, width, height):$/;"	m	class:randLevel
+__init__	src/server/db.py	/^    def __init__(self, manager):$/;"	m	class:dbManager
+__init__	src/server/db.py	/^    def __init__(self, name, manager):$/;"	m	class:entityDBWrapper
+__init__	src/server/levels/pits/__init__.py	/^    def __init__(self, manager):$/;"	m	class:levelManager
+__init__	src/server/levels/pits/floor1.py	/^    def __init__(self, manager, index):$/;"	m	class:lvl
+__init__	src/server/levels/pits/floor2.py	/^    def __init__(self, manager, index):$/;"	m	class:lvl
+__init__	src/server/levels/pits/pit.py	/^    def __init__(self, coords):$/;"	m	class:pitwall
+__init__	src/server/levels/pits/pit.py	/^    def __init__(self, coords, data=None, manager=None, curLevel=0):$/;"	m	class:pitcreature
+__init__	src/server/levels/pits/pit.py	/^    def __init__(self, rect, data=None, manager=None, curLevel=0):$/;"	m	class:pittooth
+__init__	src/server/levels/test/first.py	/^    def __init__(self):$/;"	m	class:lvl
+__init__	src/server/plugins/movementmanager.py	/^    def __init__(self, manager, controlledEntity):$/;"	m	class:movementmanager
+__init__	src/server/server.py	/^    def __init__(self):$/;"	m	class:spinner
+__init__	src/server/server.py	/^    def __init__(self, clientsocket):$/;"	m	class:clientWrapper
+__init__	src/server/server.py	/^    def __init__(self, manager):$/;"	m	class:logManager
+__init__	src/server/server.py	/^    def __init__(self, manager):$/;"	m	class:networkSubsystemDelegator
+__init__	src/server/server.py	/^    def __init__(self, manager, client):$/;"	m	class:networkController
+__init__	src/server/server.py	/^    def __init__(self, manager, client):$/;"	m	class:networkView
+__init__	src/server/server.py	/^    def __init__(self, manager, clientsocket):$/;"	m	class:networkSubsystem
+__init__	src/utils.py	/^	def __init__(self, event):$/;"	m	class:netEvent
+__init__	src/utils.py	/^	def __init__(self, name, data):$/;"	m	class:netEvent
+__init__	testrand.py	/^    def __init__(self, width, height):$/;"	m	class:randLevel
+activate	src/client/gloss.py	/^	def activate(self):$/;"	m	class:RenderTarget
+activate	src/gloss/examples/gloss.py	/^	def activate(self):$/;"	m	class:RenderTarget
+activate	src/gloss/gloss.py	/^	def activate(self):$/;"	m	class:RenderTarget
+add	src/client/gloss.py	/^	def add(point1, point2):$/;"	m	class:Point
+add	src/gloss/examples/gloss.py	/^	def add(point1, point2):$/;"	m	class:Point
+add	src/gloss/gloss.py	/^	def add(point1, point2):$/;"	m	class:Point
+additive	src/client/gloss.py	/^	additive = False$/;"	v	class:ParticleSystem
+additive	src/gloss/examples/gloss.py	/^	additive = False$/;"	v	class:ParticleSystem
+additive	src/gloss/gloss.py	/^	additive = False$/;"	v	class:ParticleSystem
+amountCreated	src/base.py	/^    amountCreated = 0$/;"	v	class:entity
+attack	src/base.py	/^    def attack(self, allSprites):$/;"	m	class:entity
+author	setup.py	/^    author="Samuel Breese",$/;"	v
+author_email	setup.py	/^    author_email="sbreese@xitol.net",$/;"	v
+auto_particle_systems	src/client/gloss.py	/^	auto_particle_systems = []$/;"	v	class:Gloss
+auto_particle_systems	src/gloss/examples/gloss.py	/^	auto_particle_systems = []$/;"	v	class:Gloss
+auto_particle_systems	src/gloss/gloss.py	/^	auto_particle_systems = []$/;"	v	class:Gloss
+block	src/base.py	/^class block(physicalObject): #Abstract Base Class$/;"	c
+bounce_both	src/client/gloss.py	/^	def bounce_both(point1, point2, amount, overshoot = 20):$/;"	m	class:Point
+bounce_both	src/client/gloss.py	/^	def bounce_both(value1, value2, amount, overshoot = 20):$/;"	m	class:Gloss
+bounce_both	src/gloss/examples/gloss.py	/^	def bounce_both(point1, point2, amount, overshoot = 20):$/;"	m	class:Point
+bounce_both	src/gloss/examples/gloss.py	/^	def bounce_both(value1, value2, amount, overshoot = 20):$/;"	m	class:Gloss
+bounce_both	src/gloss/gloss.py	/^	def bounce_both(point1, point2, amount, overshoot = 20):$/;"	m	class:Point
+bounce_both	src/gloss/gloss.py	/^	def bounce_both(value1, value2, amount, overshoot = 20):$/;"	m	class:Gloss
+bounce_in	src/client/gloss.py	/^	def bounce_in(point1, point2, amount, overshoot = 20):$/;"	m	class:Point
+bounce_in	src/client/gloss.py	/^	def bounce_in(value1, value2, amount, overshoot = 20):$/;"	m	class:Gloss
+bounce_in	src/gloss/examples/gloss.py	/^	def bounce_in(point1, point2, amount, overshoot = 20):$/;"	m	class:Point
+bounce_in	src/gloss/examples/gloss.py	/^	def bounce_in(value1, value2, amount, overshoot = 20):$/;"	m	class:Gloss
+bounce_in	src/gloss/gloss.py	/^	def bounce_in(point1, point2, amount, overshoot = 20):$/;"	m	class:Point
+bounce_in	src/gloss/gloss.py	/^	def bounce_in(value1, value2, amount, overshoot = 20):$/;"	m	class:Gloss
+bounce_out	src/client/gloss.py	/^	def bounce_out(point1, point2, amount, overshoot = 20):$/;"	m	class:Point
+bounce_out	src/client/gloss.py	/^ 	def bounce_out(value1, value2, amount, overshoot = 20):$/;"	f	function:Gloss.bounce_in
+bounce_out	src/gloss/examples/gloss.py	/^	def bounce_out(point1, point2, amount, overshoot = 20):$/;"	m	class:Point
+bounce_out	src/gloss/examples/gloss.py	/^ 	def bounce_out(value1, value2, amount, overshoot = 20):$/;"	f	function:Gloss.bounce_in
+bounce_out	src/gloss/gloss.py	/^	def bounce_out(point1, point2, amount, overshoot = 20):$/;"	m	class:Point
+bounce_out	src/gloss/gloss.py	/^ 	def bounce_out(value1, value2, amount, overshoot = 20):$/;"	f	function:Gloss.bounce_in
+bubbles	src/gloss/examples/example_bubbletrouble.py	/^	bubbles = [] # all the active bubbles right now$/;"	v	class:BubbleTroubleGame
+bump	src/base.py	/^    def bump(self, bumper):$/;"	m	class:physicalObject
+bump	src/server/levels/pits/pit.py	/^    def bump(self, bumper):$/;"	m	class:pittooth
+cham	src/utils.py	/^	def cham(self):$/;"	m	class:netEvent
+choose_bubble_direction	src/gloss/examples/example_bubbletrouble.py	/^	def choose_bubble_direction(self):$/;"	m	class:BubbleTroubleGame
+clamp	src/client/gloss.py	/^	def clamp(value, minval, maxval):$/;"	m	class:Gloss
+clamp	src/gloss/examples/gloss.py	/^	def clamp(value, minval, maxval):$/;"	m	class:Gloss
+clamp	src/gloss/gloss.py	/^	def clamp(value, minval, maxval):$/;"	m	class:Gloss
+clean_up_bubbles	src/gloss/examples/example_bubbletrouble.py	/^	def clean_up_bubbles(self):$/;"	m	class:BubbleTroubleGame
+clear	src/client/gloss.py	/^	def clear(color = Color.CORNFLOWER_BLUE):$/;"	m	class:Gloss
+clear	src/gloss/examples/gloss.py	/^	def clear(color = Color.CORNFLOWER_BLUE):$/;"	m	class:Gloss
+clear	src/gloss/gloss.py	/^	def clear(color = Color.CORNFLOWER_BLUE):$/;"	m	class:Gloss
+click_bubble	src/gloss/examples/example_bubbletrouble.py	/^	def click_bubble(self, clicked):$/;"	m	class:BubbleTroubleGame
+clientWrapper	src/server/server.py	/^class clientWrapper():$/;"	c
+close	src/client/client.py	/^    def close(self):$/;"	m	class:serverWrapper
+close	src/server/server.py	/^    def close(self):$/;"	m	class:clientWrapper
+configError	src/errors.py	/^class configError(coreError): pass$/;"	c
+configParser	src/client/client.py	/^configParser = ConfigParser.ConfigParser()$/;"	v
+configParser	src/server/server.py	/^configParser = ConfigParser.ConfigParser()$/;"	v
+copyableGroup	src/base.py	/^class copyableGroup(pygame.sprite.Group):$/;"	c
+coreError	src/errors.py	/^class coreError(Exception): pass$/;"	c
+create_bubble	src/gloss/examples/example_bubbletrouble.py	/^	def create_bubble(self, offscreen):$/;"	m	class:BubbleTroubleGame
+create_particle	src/client/gloss.py	/^	def create_particle(self):$/;"	m	class:ParticleSystem
+create_particle	src/gloss/examples/gloss.py	/^	def create_particle(self):$/;"	m	class:ParticleSystem
+create_particle	src/gloss/gloss.py	/^	def create_particle(self):$/;"	m	class:ParticleSystem
+create_target	src/gloss/examples/example_sharpshooter.py	/^	def create_target(self):$/;"	m	class:Sharpshooter
+data_files	setup.py	/^    data_files=["entity.db"],$/;"	v
+dbError	src/errors.py	/^class dbError(coreError): pass$/;"	c
+dbManager	src/server/db.py	/^class dbManager(chameleon.listener):$/;"	c
+deactivate	src/client/gloss.py	/^	def deactivate(self):$/;"	m	class:RenderTarget
+deactivate	src/gloss/examples/gloss.py	/^	def deactivate(self):$/;"	m	class:RenderTarget
+deactivate	src/gloss/gloss.py	/^	def deactivate(self):$/;"	m	class:RenderTarget
+dependency_links	setup.py	/^    dependency_links=["http:\/\/www.pygame.org\/download.shtml"]$/;"	v
+description	setup.py	/^    description="An event-driven 2D game engine written in Python and C++.",$/;"	v
+direction_pos	src/gloss/examples/example_bubbletrouble.py	/^	direction_pos = 0 # the last direction used from the list$/;"	v	class:BubbleTroubleGame
+disable_picking	src/client/gloss.py	/^	def disable_picking():$/;"	m	class:Gloss
+disable_picking	src/gloss/examples/gloss.py	/^	def disable_picking():$/;"	m	class:Gloss
+disable_picking	src/gloss/gloss.py	/^	def disable_picking():$/;"	m	class:Gloss
+distance	src/client/gloss.py	/^	def distance(point1, point2):$/;"	m	class:Point
+distance	src/gloss/examples/gloss.py	/^	def distance(point1, point2):$/;"	m	class:Point
+distance	src/gloss/gloss.py	/^	def distance(point1, point2):$/;"	m	class:Point
+distance_squared	src/client/gloss.py	/^	def distance_squared(point1, point2):$/;"	m	class:Point
+distance_squared	src/gloss/examples/gloss.py	/^	def distance_squared(point1, point2):$/;"	m	class:Point
+distance_squared	src/gloss/gloss.py	/^	def distance_squared(point1, point2):$/;"	m	class:Point
+dotify	doc/graph/parse_dot.py	/^def dotify(string):$/;"	f
+draw	src/base.py	/^    def draw(self, scale = 1):$/;"	m	class:drawnObject
+draw	src/client/client.py	/^    def draw(self):$/;"	m	class:glGame
+draw	src/client/gloss.py	/^	def draw(self):$/;"	m	class:GlossGame
+draw	src/client/gloss.py	/^	def draw(self):$/;"	m	class:ParticleSystem
+draw	src/client/gloss.py	/^	def draw(self, position = (0, 0), rotation = 0.0, origin = (0, 0), scale = 1, color = Color.WHITE):$/;"	m	class:Texture
+draw	src/client/gloss.py	/^	def draw(self, position = None, rotation = 0.0, origin = (0, 0), scale = 1, color = Color.WHITE):$/;"	m	class:Sprite
+draw	src/client/gloss.py	/^	def draw(self, position, width = None, height = None, rotation = 0.0, origin = (0, 0), scale = 1, color = Color.WHITE):$/;"	m	class:RenderTarget
+draw	src/client/gloss.py	/^	def draw(self, text = "Hello, Gloss!", position = (0, 0), rotation = 0.0, scale = 1.0, color = Color.WHITE, letterspacing = 0, linespacing = 0):$/;"	m	class:SpriteFont
+draw	src/client/glrender.py	/^    def draw(self):$/;"	m	class:glGame
+draw	src/gloss/examples/example_bounce.py	/^	def draw(self):$/;"	m	class:GlossTest
+draw	src/gloss/examples/example_boxes.py	/^	def draw(self):$/;"	m	class:GlossTest
+draw	src/gloss/examples/example_bubbletrouble.py	/^	def draw(self):$/;"	m	class:BubbleTroubleGame
+draw	src/gloss/examples/example_lines.py	/^	def draw(self):$/;"	m	class:GlossTest
+draw	src/gloss/examples/example_loadingscreen.py	/^	def draw(self):$/;"	m	class:GlossTest
+draw	src/gloss/examples/example_matrixoverride.py	/^	def draw(self):$/;"	m	class:GlossTest
+draw	src/gloss/examples/example_multilerp.py	/^	def draw(self):$/;"	m	class:GlossTest
+draw	src/gloss/examples/example_onclick.py	/^	def draw(self):$/;"	m	class:GlossTest
+draw	src/gloss/examples/example_particles.py	/^	def draw(self):$/;"	m	class:GlossTest
+draw	src/gloss/examples/example_pygame.py	/^	def draw(self):$/;"	m	class:GlossTest
+draw	src/gloss/examples/example_rendertarget.py	/^	def draw(self):$/;"	m	class:GlossTest
+draw	src/gloss/examples/example_scaling.py	/^	def draw(self):$/;"	m	class:GlossTest
+draw	src/gloss/examples/example_sharpshooter.py	/^	def draw(self):$/;"	m	class:Sharpshooter
+draw	src/gloss/examples/example_smoothstep.py	/^	def draw(self):$/;"	m	class:GlossTest
+draw	src/gloss/examples/example_spritefont.py	/^	def draw(self):$/;"	m	class:GlossTest
+draw	src/gloss/examples/example_triangles.py	/^	def draw(self):$/;"	m	class:GlossTest
+draw	src/gloss/examples/gloss.py	/^	def draw(self):$/;"	m	class:GlossGame
+draw	src/gloss/examples/gloss.py	/^	def draw(self):$/;"	m	class:ParticleSystem
+draw	src/gloss/examples/gloss.py	/^	def draw(self, position = (0, 0), rotation = 0.0, origin = (0, 0), scale = 1, color = Color.WHITE):$/;"	m	class:Texture
+draw	src/gloss/examples/gloss.py	/^	def draw(self, position = None, rotation = 0.0, origin = (0, 0), scale = 1, color = Color.WHITE):$/;"	m	class:Sprite
+draw	src/gloss/examples/gloss.py	/^	def draw(self, position, width = None, height = None, rotation = 0.0, origin = (0, 0), scale = 1, color = Color.WHITE):$/;"	m	class:RenderTarget
+draw	src/gloss/examples/gloss.py	/^	def draw(self, text = "Hello, Gloss!", position = (0, 0), rotation = 0.0, scale = 1.0, color = Color.WHITE, letterspacing = 0, linespacing = 0):$/;"	m	class:SpriteFont
+draw	src/gloss/gloss.py	/^	def draw(self):$/;"	m	class:GlossGame
+draw	src/gloss/gloss.py	/^	def draw(self):$/;"	m	class:ParticleSystem
+draw	src/gloss/gloss.py	/^	def draw(self, position = (0, 0), rotation = 0.0, origin = (0, 0), scale = 1, color = Color.WHITE):$/;"	m	class:Texture
+draw	src/gloss/gloss.py	/^	def draw(self, position = None, rotation = 0.0, origin = (0, 0), scale = 1, color = Color.WHITE):$/;"	m	class:Sprite
+draw	src/gloss/gloss.py	/^	def draw(self, position, width = None, height = None, rotation = 0.0, origin = (0, 0), scale = 1, color = Color.WHITE):$/;"	m	class:RenderTarget
+draw	src/gloss/gloss.py	/^	def draw(self, text = "Hello, Gloss!", position = (0, 0), rotation = 0.0, scale = 1.0, color = Color.WHITE, letterspacing = 0, linespacing = 0):$/;"	m	class:SpriteFont
+draw	src/gloss/skeleton_game.py	/^	def draw(self):$/;"	m	class:SkeletonGame
+drawError	src/errors.py	/^class drawError(coreError): pass$/;"	c
+drawSprites	src/client/client.py	/^    def drawSprites(self):$/;"	m	class:glGame
+draw_box	src/client/gloss.py	/^	def draw_box(position = (0, 0), width = 128, height = 128, rotation = 0.0, origin = (0, 0), scale = 1, color = Color.WHITE):$/;"	m	class:Gloss
+draw_box	src/gloss/examples/gloss.py	/^	def draw_box(position = (0, 0), width = 128, height = 128, rotation = 0.0, origin = (0, 0), scale = 1, color = Color.WHITE):$/;"	m	class:Gloss
+draw_box	src/gloss/gloss.py	/^	def draw_box(position = (0, 0), width = 128, height = 128, rotation = 0.0, origin = (0, 0), scale = 1, color = Color.WHITE):$/;"	m	class:Gloss
+draw_line	src/client/gloss.py	/^	def draw_line(start, finish, color = Color.WHITE, width = 1.0):$/;"	m	class:Gloss
+draw_line	src/gloss/examples/gloss.py	/^	def draw_line(start, finish, color = Color.WHITE, width = 1.0):$/;"	m	class:Gloss
+draw_line	src/gloss/gloss.py	/^	def draw_line(start, finish, color = Color.WHITE, width = 1.0):$/;"	m	class:Gloss
+draw_lines	src/client/gloss.py	/^	def draw_lines(lines, color = Color.WHITE, width = 1.0, join = False):$/;"	m	class:Gloss
+draw_lines	src/gloss/examples/gloss.py	/^	def draw_lines(lines, color = Color.WHITE, width = 1.0, join = False):$/;"	m	class:Gloss
+draw_lines	src/gloss/gloss.py	/^	def draw_lines(lines, color = Color.WHITE, width = 1.0, join = False):$/;"	m	class:Gloss
+draw_loading_screen	src/client/client.py	/^    def draw_loading_screen(self):$/;"	m	class:glGame
+draw_loading_screen	src/client/gloss.py	/^	def draw_loading_screen(self):$/;"	m	class:GlossGame
+draw_loading_screen	src/gloss/examples/example_loadingscreen.py	/^	def draw_loading_screen(self):$/;"	m	class:GlossTest
+draw_loading_screen	src/gloss/examples/gloss.py	/^	def draw_loading_screen(self):$/;"	m	class:GlossGame
+draw_loading_screen	src/gloss/gloss.py	/^	def draw_loading_screen(self):$/;"	m	class:GlossGame
+draw_loading_screen	src/gloss/skeleton_game.py	/^	def draw_loading_screen(self):$/;"	m	class:SkeletonGame
+draw_triangle	src/client/gloss.py	/^	def draw_triangle(points = [(0, 0), (-50, 100), (50, 100)], position = (0,0), rotation = 0.0, origin = (0, 0), scale = 1, color = Color.WHITE):$/;"	m	class:Gloss
+draw_triangle	src/gloss/examples/gloss.py	/^	def draw_triangle(points = [(0, 0), (-50, 100), (50, 100)], position = (0,0), rotation = 0.0, origin = (0, 0), scale = 1, color = Color.WHITE):$/;"	m	class:Gloss
+draw_triangle	src/gloss/gloss.py	/^	def draw_triangle(points = [(0, 0), (-50, 100), (50, 100)], position = (0,0), rotation = 0.0, origin = (0, 0), scale = 1, color = Color.WHITE):$/;"	m	class:Gloss
+drawnObject	src/base.py	/^class drawnObject(pygame.sprite.Sprite):$/;"	c
+enable_picking	src/client/gloss.py	/^	def enable_picking():$/;"	m	class:Gloss
+enable_picking	src/gloss/examples/gloss.py	/^	def enable_picking():$/;"	m	class:Gloss
+enable_picking	src/gloss/gloss.py	/^	def enable_picking():$/;"	m	class:Gloss
+enable_texturing	src/client/gloss.py	/^	enable_texturing = True$/;"	v	class:Gloss
+enable_texturing	src/gloss/examples/gloss.py	/^	enable_texturing = True$/;"	v	class:Gloss
+enable_texturing	src/gloss/gloss.py	/^	enable_texturing = True$/;"	v	class:Gloss
+entity	src/base.py	/^class entity(physicalObject): #On the character creation webpage we'll need to add some additional attributes, such as name.$/;"	c
+entityDBWrapper	src/server/db.py	/^class entityDBWrapper():$/;"	c
+evMan	src/client/client.py	/^evMan = glGame()$/;"	v
+ev_a	src/client/client.py	/^    def ev_a(self, data):$/;"	m	class:networkView
+ev_attack	src/server/plugins/movementmanager.py	/^    def ev_attack(self, data):$/;"	m	class:movementmanager
+ev_d	src/client/client.py	/^    def ev_d(self, data):$/;"	m	class:networkView
+ev_distBlockState	src/client/glrender.py	/^    def ev_distBlockState(self, data):$/;"	m	class:glGame
+ev_distEntity	src/server/server.py	/^    def ev_distEntity(self, data):$/;"	m	class:networkSubsystem
+ev_distEntityPos	src/client/glrender.py	/^    def ev_distEntityPos(self, data):$/;"	m	class:glGame
+ev_distLevel	src/client/client.py	/^    def ev_distLevel(self, data):$/;"	m	class:glGame
+ev_distLevel	src/server/plugins/movementmanager.py	/^    def ev_distLevel(self, data):$/;"	m	class:movementmanager
+ev_distLevel	src/server/server.py	/^    def ev_distLevel(self, data):$/;"	m	class:networkSubsystem
+ev_distLevel	src/server/server.py	/^    def ev_distLevel(self, data):$/;"	m	class:networkView
+ev_distSwitchLevel	src/server/server.py	/^    def ev_distSwitchLevel(self, data):$/;"	m	class:networkSubsystem
+ev_down	src/server/plugins/movementmanager.py	/^    def ev_down(self, data):$/;"	m	class:movementmanager
+ev_entityKilled	src/client/client.py	/^    def ev_entityKilled(self, data):$/;"	m	class:glGame
+ev_entityKilled	src/server/server.py	/^    def ev_entityKilled(self, data):$/;"	m	class:networkSubsystem
+ev_entityKilled	src/server/server.py	/^    def ev_entityKilled(self, data):$/;"	m	class:networkView
+ev_entityMoved	src/client/client.py	/^    def ev_entityMoved(self, data):$/;"	m	class:glGame
+ev_entityMoved	src/server/server.py	/^    def ev_entityMoved(self, data):$/;"	m	class:networkSubsystem
+ev_entityMoved	src/server/server.py	/^    def ev_entityMoved(self, data):$/;"	m	class:networkView
+ev_entitySpawned	src/client/client.py	/^    def ev_entitySpawned(self, data):$/;"	m	class:glGame
+ev_entitySpawned	src/server/server.py	/^    def ev_entitySpawned(self, data):$/;"	m	class:networkSubsystem
+ev_entitySpawned	src/server/server.py	/^    def ev_entitySpawned(self, data):$/;"	m	class:networkView
+ev_fetchEntity	src/server/db.py	/^    def ev_fetchEntity(self, data):$/;"	m	class:dbManager
+ev_gameOver	src/client/client.py	/^    def ev_gameOver(self, data):$/;"	m	class:glGame
+ev_gameOver	src/server/server.py	/^    def ev_gameOver(self, data):$/;"	m	class:networkSubsystem
+ev_gameOver	src/server/server.py	/^    def ev_gameOver(self, data):$/;"	m	class:networkView
+ev_getLevel	src/level.py	/^    def ev_getLevel(self, data):$/;"	m	class:levelManager
+ev_getLevel	src/server/server.py	/^    def ev_getLevel(self, data):$/;"	m	class:networkSubsystem
+ev_kill	src/server/server.py	/^    def ev_kill(self, data):$/;"	m	class:networkSubsystem
+ev_killEntity	src/level.py	/^    def ev_killEntity(self, data): #We need this only because for some reason unknown to man, pygame.sprite.Sprite.kill() doesn't work.$/;"	m	class:levelManager
+ev_left	src/server/plugins/movementmanager.py	/^    def ev_left(self, data):$/;"	m	class:movementmanager
+ev_levelReceived	src/client/client.py	/^    def ev_levelReceived(self, data):$/;"	m	class:networkController
+ev_log	src/server/server.py	/^    def ev_log(self, data):$/;"	m	class:logManager
+ev_logout	src/client/client.py	/^    def ev_logout(self, data):$/;"	m	class:networkView
+ev_removeNetSubsystem	src/server/server.py	/^    def ev_removeNetSubsystem(self, data):$/;"	m	class:networkSubsystemDelegator
+ev_right	src/server/plugins/movementmanager.py	/^    def ev_right(self, data):$/;"	m	class:movementmanager
+ev_s	src/client/client.py	/^    def ev_s(self, data):$/;"	m	class:networkView
+ev_saveEntity	src/server/db.py	/^    def ev_saveEntity(self, data):$/;"	m	class:dbManager
+ev_sendLevel	src/server/server.py	/^    def ev_sendLevel(self, data):$/;"	m	class:networkView
+ev_space	src/client/client.py	/^    def ev_space(self, data):$/;"	m	class:networkView
+ev_spawnEntity	src/level.py	/^    def ev_spawnEntity(self, data):$/;"	m	class:levelManager
+ev_switchLevel	src/level.py	/^    def ev_switchLevel(self, data):$/;"	m	class:levelManager
+ev_up	src/server/plugins/movementmanager.py	/^    def ev_up(self, data):$/;"	m	class:movementmanager
+ev_update	src/client/client.py	/^    def ev_update(self, data):$/;"	m	class:networkController
+ev_update	src/level.py	/^    def ev_update(self, data):$/;"	m	class:levelManager
+ev_update	src/server/server.py	/^    def ev_update(self, data):$/;"	m	class:networkController
+ev_update	src/server/server.py	/^    def ev_update(self, data):$/;"	m	class:networkSubsystem
+ev_update	src/server/server.py	/^    def ev_update(self, data):$/;"	m	class:networkSubsystemDelegator
+ev_w	src/client/client.py	/^    def ev_w(self, data):$/;"	m	class:networkView
+fetchEntity	src/server/db.py	/^    def fetchEntity(self, avatarID):$/;"	m	class:entityDBWrapper
+fill	src/client/gloss.py	/^	def fill(texture = None, color = Color.WHITE, top = Color.CORNFLOWER_BLUE, bottom = Color.CORNFLOWER_BLUE, vertical = True):$/;"	m	class:Gloss
+fill	src/gloss/examples/gloss.py	/^	def fill(texture = None, color = Color.WHITE, top = Color.CORNFLOWER_BLUE, bottom = Color.CORNFLOWER_BLUE, vertical = True):$/;"	m	class:Gloss
+fill	src/gloss/gloss.py	/^	def fill(texture = None, color = Color.WHITE, top = Color.CORNFLOWER_BLUE, bottom = Color.CORNFLOWER_BLUE, vertical = True):$/;"	m	class:Gloss
+floor	src/base.py	/^class floor(drawnObject):$/;"	c
+from_bytes	src/client/gloss.py	/^	def from_bytes(r, g, b, a = 255):$/;"	m	class:Color
+from_bytes	src/gloss/examples/gloss.py	/^	def from_bytes(r, g, b, a = 255):$/;"	m	class:Color
+from_bytes	src/gloss/gloss.py	/^	def from_bytes(r, g, b, a = 255):$/;"	m	class:Color
+from_html	src/client/gloss.py	/^	def from_html(col):$/;"	m	class:Color
+from_html	src/gloss/examples/gloss.py	/^	def from_html(col):$/;"	m	class:Color
+from_html	src/gloss/gloss.py	/^	def from_html(col):$/;"	m	class:Color
+from_pygame	src/client/gloss.py	/^	def from_pygame(col):$/;"	m	class:Color
+from_pygame	src/gloss/examples/gloss.py	/^	def from_pygame(col):$/;"	m	class:Color
+from_pygame	src/gloss/gloss.py	/^	def from_pygame(col):$/;"	m	class:Color
+game	src/gloss/examples/example_bounce.py	/^game = GlossTest("Bounce test")$/;"	v
+game	src/gloss/examples/example_boxes.py	/^game = GlossTest("Boxes test")$/;"	v
+game	src/gloss/examples/example_bubbletrouble.py	/^game = BubbleTroubleGame("Bubble Trouble - click the lowest-numbered bubbles!")$/;"	v
+game	src/gloss/examples/example_lines.py	/^game = GlossTest("Lines test")$/;"	v
+game	src/gloss/examples/example_loadingscreen.py	/^game = GlossTest("Loading screen test")$/;"	v
+game	src/gloss/examples/example_matrixoverride.py	/^game = GlossTest("Matrix override")$/;"	v
+game	src/gloss/examples/example_multilerp.py	/^game = GlossTest("Multi-lerp test")$/;"	v
+game	src/gloss/examples/example_onclick.py	/^game = GlossTest("On click test")$/;"	v
+game	src/gloss/examples/example_particles.py	/^game = GlossTest("Particle system test")$/;"	v
+game	src/gloss/examples/example_pygame.py	/^game = GlossTest("Pygame Example")$/;"	v
+game	src/gloss/examples/example_rendertarget.py	/^game = GlossTest("RenderTarget example - press Spacebar to add a sepia tint")$/;"	v
+game	src/gloss/examples/example_scaling.py	/^game = GlossTest("Scaling test")$/;"	v
+game	src/gloss/examples/example_sharpshooter.py	/^game = Sharpshooter("Sharpshooter")$/;"	v
+game	src/gloss/examples/example_smoothstep.py	/^game = GlossTest("Smooth step test")$/;"	v
+game	src/gloss/examples/example_spritefont.py	/^game = GlossTest("SpriteFont test")$/;"	v
+game	src/gloss/examples/example_triangles.py	/^game = GlossTest("Triangles test")$/;"	v
+game	src/gloss/skeleton_game.py	/^game = SkeletonGame("Empty game skeleton")$/;"	v
+generateRoom	src/randlev.py	/^    def generateRoom(self, w=None, h=None):$/;"	m	class:randLevel
+generateRoom	testrand.py	/^    def generateRoom(self, w=None, h=None):$/;"	m	class:randLevel
+getData	src/client/client.py	/^    def getData(self):$/;"	m	class:serverWrapper
+getData	src/server/server.py	/^    def getData(self):$/;"	m	class:clientWrapper
+getEntityImage	src/client/spritepacks/default/__init__.py	/^def getEntityImage(name):$/;"	f
+getImage	src/client/spritepacks/default/__init__.py	/^def getImage(name):$/;"	f
+get_on_click	src/client/gloss.py	/^	def get_on_click(self):$/;"	m	class:Sprite
+get_on_click	src/gloss/examples/gloss.py	/^	def get_on_click(self):$/;"	m	class:Sprite
+get_on_click	src/gloss/gloss.py	/^	def get_on_click(self):$/;"	m	class:Sprite
+get_target_position	src/gloss/examples/example_onclick.py	/^	def get_target_position(self):$/;"	m	class:GlossTest
+glGame	src/client/client.py	/^class glGame(GlossGame, chameleon.manager, chameleon.listener):$/;"	c
+glGame	src/client/glrender.py	/^class glGame(GlossGame, chameleon.manager, chameleon.listener):$/;"	c
+gloss_initialise	src/client/gloss.py	/^	def gloss_initialise(self):$/;"	m	class:GlossGame
+gloss_initialise	src/gloss/examples/gloss.py	/^	def gloss_initialise(self):$/;"	m	class:GlossGame
+gloss_initialise	src/gloss/gloss.py	/^	def gloss_initialise(self):$/;"	m	class:GlossGame
+gloss_internal_draw	src/client/gloss.py	/^	def gloss_internal_draw(self):$/;"	m	class:GlossGame
+gloss_internal_draw	src/gloss/examples/gloss.py	/^	def gloss_internal_draw(self):$/;"	m	class:GlossGame
+gloss_internal_draw	src/gloss/gloss.py	/^	def gloss_internal_draw(self):$/;"	m	class:GlossGame
+gloss_internal_update	src/client/gloss.py	/^	def gloss_internal_update(self):$/;"	m	class:GlossGame
+gloss_internal_update	src/gloss/examples/gloss.py	/^	def gloss_internal_update(self):$/;"	m	class:GlossGame
+gloss_internal_update	src/gloss/gloss.py	/^	def gloss_internal_update(self):$/;"	m	class:GlossGame
+handle_key_presses	src/gloss/examples/example_rendertarget.py	/^	def handle_key_presses(self, event):$/;"	m	class:GlossTest
+handle_mouse_clicks	src/gloss/examples/example_bubbletrouble.py	/^	def handle_mouse_clicks(self, event):$/;"	m	class:BubbleTroubleGame
+handle_mouse_clicks	src/gloss/examples/example_sharpshooter.py	/^	def handle_mouse_clicks(self, event):$/;"	m	class:Sharpshooter
+hasEntityImage	src/client/spritepacks/default/__init__.py	/^def hasEntityImage(name):$/;"	f
+hermite	src/client/gloss.py	/^	def hermite(value1, tangent1, value2, tangent2, amount):$/;"	m	class:Gloss
+hermite	src/gloss/examples/gloss.py	/^	def hermite(value1, tangent1, value2, tangent2, amount):$/;"	m	class:Gloss
+hermite	src/gloss/gloss.py	/^	def hermite(value1, tangent1, value2, tangent2, amount):$/;"	m	class:Gloss
+hit	src/base.py	/^    def hit(self, hitter):$/;"	m	class:physicalObject
+hit	src/base.py	/^    def hit(self, hitter):$/;"	m	class:player
+hit	src/base.py	/^    def hit(self, hitter):$/;"	m	class:stairsDown
+hit	src/base.py	/^    def hit(self, hitter):$/;"	m	class:stairsUp
+hit	src/base.py	/^    def hit(self, hitter):$/;"	m	class:stairsWarp
+hit	src/server/levels/pits/pit.py	/^    def hit(self, hitter):$/;"	m	class:pitcreature
+invalidRequestError	src/errors.py	/^class invalidRequestError(coreError): pass$/;"	c
+joinRoom	src/randlev.py	/^    def joinRoom(self):$/;"	m	class:randLevel
+joinRoom	testrand.py	/^    def joinRoom(self):$/;"	m	class:randLevel
+joysticks	src/client/gloss.py	/^	joysticks = []$/;"	v	class:Gloss
+joysticks	src/gloss/examples/gloss.py	/^	joysticks = []$/;"	v	class:Gloss
+joysticks	src/gloss/gloss.py	/^	joysticks = []$/;"	v	class:Gloss
+keydown	src/client/client.py	/^    def keydown(self, event):$/;"	m	class:glGame
+keyup	src/client/client.py	/^    def keyup(self, event):$/;"	m	class:glGame
+last_clicked_sprite	src/client/gloss.py	/^	last_clicked_sprite = None # the sprite that was clicked most recently$/;"	v	class:Gloss
+last_clicked_sprite	src/gloss/examples/gloss.py	/^	last_clicked_sprite = None # the sprite that was clicked most recently$/;"	v	class:Gloss
+last_clicked_sprite	src/gloss/gloss.py	/^	last_clicked_sprite = None # the sprite that was clicked most recently$/;"	v	class:Gloss
+length	src/client/gloss.py	/^	def length(point):$/;"	m	class:Point
+length	src/gloss/examples/gloss.py	/^	def length(point):$/;"	m	class:Point
+length	src/gloss/gloss.py	/^	def length(point):$/;"	m	class:Point
+length_squared	src/client/gloss.py	/^	def length_squared(point):$/;"	m	class:Point
+length_squared	src/gloss/examples/gloss.py	/^	def length_squared(point):$/;"	m	class:Point
+length_squared	src/gloss/gloss.py	/^	def length_squared(point):$/;"	m	class:Point
+lerp	src/client/gloss.py	/^	def lerp(colorfrom, colorto, amount):$/;"	m	class:Color
+lerp	src/client/gloss.py	/^	def lerp(point1, point2, amount):$/;"	m	class:Point
+lerp	src/client/gloss.py	/^	def lerp(value1, value2, amount):$/;"	m	class:Gloss
+lerp	src/gloss/examples/gloss.py	/^	def lerp(colorfrom, colorto, amount):$/;"	m	class:Color
+lerp	src/gloss/examples/gloss.py	/^	def lerp(point1, point2, amount):$/;"	m	class:Point
+lerp	src/gloss/examples/gloss.py	/^	def lerp(value1, value2, amount):$/;"	m	class:Gloss
+lerp	src/gloss/gloss.py	/^	def lerp(colorfrom, colorto, amount):$/;"	m	class:Color
+lerp	src/gloss/gloss.py	/^	def lerp(point1, point2, amount):$/;"	m	class:Point
+lerp	src/gloss/gloss.py	/^	def lerp(value1, value2, amount):$/;"	m	class:Gloss
+lerp2	src/client/gloss.py	/^	def lerp2(colorfrom, colorto, amount):$/;"	m	class:Color
+lerp2	src/client/gloss.py	/^	def lerp2(point1, point2, amount):$/;"	m	class:Point
+lerp2	src/client/gloss.py	/^	def lerp2(value1, value2, amount):$/;"	m	class:Gloss
+lerp2	src/gloss/examples/gloss.py	/^	def lerp2(colorfrom, colorto, amount):$/;"	m	class:Color
+lerp2	src/gloss/examples/gloss.py	/^	def lerp2(point1, point2, amount):$/;"	m	class:Point
+lerp2	src/gloss/examples/gloss.py	/^	def lerp2(value1, value2, amount):$/;"	m	class:Gloss
+lerp2	src/gloss/gloss.py	/^	def lerp2(colorfrom, colorto, amount):$/;"	m	class:Color
+lerp2	src/gloss/gloss.py	/^	def lerp2(point1, point2, amount):$/;"	m	class:Point
+lerp2	src/gloss/gloss.py	/^	def lerp2(value1, value2, amount):$/;"	m	class:Gloss
+level	src/level.py	/^class level():$/;"	c
+levelManager	src/level.py	/^class levelManager(chameleon.listener):$/;"	c
+levelManager	src/server/levels/pits/__init__.py	/^class levelManager(level.levelManager):$/;"	c
+license	setup.py	/^    license="GNU General Public License",$/;"	v
+load	src/base.py	/^    def load(dump):$/;"	m	class:copyableGroup
+load	src/base.py	/^    def load(dump, manager=None):$/;"	m	class:drawnObject
+load	src/level.py	/^    def load(dump, manager):$/;"	m	class:level
+loadImage	src/utils.py	/^def loadImage(path):$/;"	f
+loadImages	src/client/spritepacks/default/__init__.py	/^def loadImages():$/;"	f
+loadLevel	src/level.py	/^    def loadLevel(self):$/;"	m	class:level
+loadLevel	src/randlev.py	/^    def loadLevel(self):$/;"	m	class:randLevel
+loadLevelPack	src/utils.py	/^def loadLevelPack(name, manager):$/;"	f
+load_content	src/client/client.py	/^    def load_content(self):$/;"	m	class:glGame
+load_content	src/client/gloss.py	/^	def load_content(self):$/;"	m	class:GlossGame
+load_content	src/client/glrender.py	/^    def load_content(self):$/;"	m	class:glGame
+load_content	src/gloss/examples/example_bounce.py	/^	def load_content(self):$/;"	m	class:GlossTest
+load_content	src/gloss/examples/example_bubbletrouble.py	/^	def load_content(self):$/;"	m	class:BubbleTroubleGame
+load_content	src/gloss/examples/example_lines.py	/^	def load_content(self):$/;"	m	class:GlossTest
+load_content	src/gloss/examples/example_loadingscreen.py	/^	def load_content(self):$/;"	m	class:GlossTest
+load_content	src/gloss/examples/example_multilerp.py	/^	def load_content(self):$/;"	m	class:GlossTest
+load_content	src/gloss/examples/example_onclick.py	/^	def load_content(self):$/;"	m	class:GlossTest
+load_content	src/gloss/examples/example_particles.py	/^	def load_content(self):$/;"	m	class:GlossTest
+load_content	src/gloss/examples/example_pygame.py	/^	def load_content(self):$/;"	m	class:GlossTest
+load_content	src/gloss/examples/example_rendertarget.py	/^	def load_content(self):$/;"	m	class:GlossTest
+load_content	src/gloss/examples/example_scaling.py	/^	def load_content(self):$/;"	m	class:GlossTest
+load_content	src/gloss/examples/example_sharpshooter.py	/^	def load_content(self):$/;"	m	class:Sharpshooter
+load_content	src/gloss/examples/example_smoothstep.py	/^	def load_content(self):$/;"	m	class:GlossTest
+load_content	src/gloss/examples/example_spritefont.py	/^	def load_content(self):$/;"	m	class:GlossTest
+load_content	src/gloss/examples/gloss.py	/^	def load_content(self):$/;"	m	class:GlossGame
+load_content	src/gloss/gloss.py	/^	def load_content(self):$/;"	m	class:GlossGame
+load_content	src/gloss/skeleton_game.py	/^	def load_content(self):$/;"	m	class:SkeletonGame
+logManager	src/server/server.py	/^class logManager(chameleon.listener):$/;"	c
+lvl	src/server/levels/pits/floor1.py	/^class lvl(level.level):$/;"	c
+lvl	src/server/levels/pits/floor2.py	/^class lvl(level.level):$/;"	c
+lvl	src/server/levels/test/first.py	/^class lvl(level.level):$/;"	c
+main	dbadmin.py	/^def main():$/;"	f
+main	doc/graph/parse_dot.py	/^def main():$/;"	f
+main	launcher/main.cpp	/^int main(int argc, char **argv) {$/;"	f
+main	src/server/server.py	/^    def main(self):$/;"	m	class:spinner
+manager	src/server/server.py	/^manager = spinner()$/;"	v
+max_number	src/gloss/examples/example_bubbletrouble.py	/^	max_number = 0 # the highest bubble number already used$/;"	v	class:BubbleTroubleGame
+measure_string	src/client/gloss.py	/^	def measure_string(self, text, scale = 1.0, letterspacing = 0, linespacing = 0):$/;"	m	class:SpriteFont
+measure_string	src/gloss/examples/gloss.py	/^	def measure_string(self, text, scale = 1.0, letterspacing = 0, linespacing = 0):$/;"	m	class:SpriteFont
+measure_string	src/gloss/gloss.py	/^	def measure_string(self, text, scale = 1.0, letterspacing = 0, linespacing = 0):$/;"	m	class:SpriteFont
+move	src/client/gloss.py	/^	def move(self, x, y):$/;"	m	class:Sprite
+move	src/gloss/examples/gloss.py	/^	def move(self, x, y):$/;"	m	class:Sprite
+move	src/gloss/gloss.py	/^	def move(self, x, y):$/;"	m	class:Sprite
+move_to	src/client/gloss.py	/^	def move_to(self, x = None, y = None):$/;"	m	class:Sprite
+move_to	src/gloss/examples/gloss.py	/^	def move_to(self, x = None, y = None):$/;"	m	class:Sprite
+move_to	src/gloss/gloss.py	/^	def move_to(self, x = None, y = None):$/;"	m	class:Sprite
+movedown	src/base.py	/^    def movedown(self, down):$/;"	m	class:entity
+moveleft	src/base.py	/^    def moveleft(self, down):$/;"	m	class:entity
+movementmanager	src/server/plugins/movementmanager.py	/^class movementmanager(chameleon.listener):$/;"	c
+moveright	src/base.py	/^    def moveright(self, down):$/;"	m	class:entity
+moveup	src/base.py	/^    def moveup(self, down):$/;"	m	class:entity
+multi_lerp	src/client/gloss.py	/^	def multi_lerp(values, amount):$/;"	m	class:Color
+multi_lerp	src/client/gloss.py	/^	def multi_lerp(values, amount):$/;"	m	class:Gloss
+multi_lerp	src/client/gloss.py	/^	def multi_lerp(values, amount):$/;"	m	class:Point
+multi_lerp	src/gloss/examples/gloss.py	/^	def multi_lerp(values, amount):$/;"	m	class:Color
+multi_lerp	src/gloss/examples/gloss.py	/^	def multi_lerp(values, amount):$/;"	m	class:Gloss
+multi_lerp	src/gloss/examples/gloss.py	/^	def multi_lerp(values, amount):$/;"	m	class:Point
+multi_lerp	src/gloss/gloss.py	/^	def multi_lerp(values, amount):$/;"	m	class:Color
+multi_lerp	src/gloss/gloss.py	/^	def multi_lerp(values, amount):$/;"	m	class:Gloss
+multi_lerp	src/gloss/gloss.py	/^	def multi_lerp(values, amount):$/;"	m	class:Point
+multiply	src/client/gloss.py	/^	def multiply(point1, to):$/;"	m	class:Point
+multiply	src/gloss/examples/gloss.py	/^	def multiply(point1, to):$/;"	m	class:Point
+multiply	src/gloss/gloss.py	/^	def multiply(point1, to):$/;"	m	class:Point
+name	setup.py	/^    name="Evergreen",$/;"	v
+netError	src/errors.py	/^class netError(coreError): pass$/;"	c
+netEvent	src/utils.py	/^class netEvent():$/;"	c
+networkController	src/client/client.py	/^class networkController(chameleon.listener):$/;"	c
+networkController	src/server/server.py	/^class networkController(chameleon.listener):$/;"	c
+networkSubsystem	src/server/server.py	/^class networkSubsystem(chameleon.manager, chameleon.listener):$/;"	c
+networkSubsystemDelegator	src/server/server.py	/^class networkSubsystemDelegator(chameleon.listener):$/;"	c
+networkView	src/client/client.py	/^class networkView(chameleon.listener):$/;"	c
+networkView	src/server/server.py	/^class networkView(chameleon.listener):$/;"	c
+new	src/utils.py	/^        def new(*args, **kwargs):$/;"	f	function:trace
+next_id	src/client/gloss.py	/^	next_id = 1$/;"	v	class:Sprite
+next_id	src/gloss/examples/gloss.py	/^	next_id = 1$/;"	v	class:Sprite
+next_id	src/gloss/gloss.py	/^	next_id = 1$/;"	v	class:Sprite
+next_po2	src/client/gloss.py	/^	def next_po2(value):$/;"	m	class:Gloss
+next_po2	src/gloss/examples/gloss.py	/^	def next_po2(value):$/;"	m	class:Gloss
+next_po2	src/gloss/gloss.py	/^	def next_po2(value):$/;"	m	class:Gloss
+normalize	src/client/gloss.py	/^	def normalize(point):$/;"	m	class:Point
+normalize	src/gloss/examples/gloss.py	/^	def normalize(point):$/;"	m	class:Point
+normalize	src/gloss/gloss.py	/^	def normalize(point):$/;"	m	class:Point
+on_click	src/client/gloss.py	/^	on_click = property(get_on_click, set_on_click)$/;"	v	class:Sprite
+on_click	src/gloss/examples/gloss.py	/^	on_click = property(get_on_click, set_on_click)$/;"	v	class:Sprite
+on_click	src/gloss/gloss.py	/^	on_click = property(get_on_click, set_on_click)$/;"	v	class:Sprite
+package_data	setup.py	/^    package_data={"src.server" : ["server.ini"], "src.client" : ["client.ini"], "src.client.spritepacks.default" : ["*.png"]},$/;"	v
+package_dir	setup.py	/^    package_dir={"src" : "src"},$/;"	v
+packages	setup.py	/^    packages=["src", "src.server", "src.server.levels", "src.server.levels.test", "src.server.plugins", "src.client", "src.client.spritepacks", "src.client.spritepacks.default"],$/;"	v
+particle_system_finished	src/gloss/examples/example_particles.py	/^	def particle_system_finished(self, ps):$/;"	m	class:GlossTest
+physicalObject	src/base.py	/^class physicalObject(drawnObject): #Abstract Base Class$/;"	c
+pick_b	src/client/gloss.py	/^	pick_b = 0$/;"	v	class:Sprite
+pick_b	src/gloss/examples/gloss.py	/^	pick_b = 0$/;"	v	class:Sprite
+pick_b	src/gloss/gloss.py	/^	pick_b = 0$/;"	v	class:Sprite
+pick_g	src/client/gloss.py	/^	pick_g = 0$/;"	v	class:Sprite
+pick_g	src/gloss/examples/gloss.py	/^	pick_g = 0$/;"	v	class:Sprite
+pick_g	src/gloss/gloss.py	/^	pick_g = 0$/;"	v	class:Sprite
+pick_r	src/client/gloss.py	/^	pick_r = 0$/;"	v	class:Sprite
+pick_r	src/gloss/examples/gloss.py	/^	pick_r = 0$/;"	v	class:Sprite
+pick_r	src/gloss/gloss.py	/^	pick_r = 0$/;"	v	class:Sprite
+picking	src/client/gloss.py	/^	picking = False$/;"	v	class:Gloss
+picking	src/gloss/examples/gloss.py	/^	picking = False$/;"	v	class:Gloss
+picking	src/gloss/gloss.py	/^	picking = False$/;"	v	class:Gloss
+pitcreature	src/server/levels/pits/pit.py	/^class pitcreature(base.entity):$/;"	c
+pittooth	src/server/levels/pits/pit.py	/^class pittooth(pitcreature):$/;"	c
+pitwall	src/server/levels/pits/pit.py	/^class pitwall(base.block):$/;"	c
+player	src/base.py	/^class player(entity):$/;"	c
+postEvent	src/client/client.py	/^    def postEvent(self, event, data):$/;"	m	class:serverWrapper
+postEvent	src/server/server.py	/^    def postEvent(self, event, data):$/;"	m	class:clientWrapper
+preload_content	src/client/client.py	/^    def preload_content(self):$/;"	m	class:glGame
+preload_content	src/client/gloss.py	/^	def preload_content(self):$/;"	m	class:GlossGame
+preload_content	src/gloss/examples/example_loadingscreen.py	/^	def preload_content(self):$/;"	m	class:GlossTest
+preload_content	src/gloss/examples/gloss.py	/^	def preload_content(self):$/;"	m	class:GlossGame
+preload_content	src/gloss/gloss.py	/^	def preload_content(self):$/;"	m	class:GlossGame
+preload_content	src/gloss/skeleton_game.py	/^	def preload_content(self):$/;"	m	class:SkeletonGame
+quit	src/client/client.py	/^    def quit(self):$/;"	m	class:glGame
+quit	src/client/gloss.py	/^	def quit(self):$/;"	m	class:GlossGame
+quit	src/gloss/examples/gloss.py	/^	def quit(self):$/;"	m	class:GlossGame
+quit	src/gloss/gloss.py	/^	def quit(self):$/;"	m	class:GlossGame
+r	testrand.py	/^r = randLevel(20, 20)$/;"	v
+randLevel	src/randlev.py	/^class randLevel(level.level):$/;"	c
+randLevel	testrand.py	/^class randLevel(level.level):$/;"	c
+rand_float	src/client/gloss.py	/^	def rand_float(value1, value2):$/;"	m	class:Gloss
+rand_float	src/gloss/examples/gloss.py	/^	def rand_float(value1, value2):$/;"	m	class:Gloss
+rand_float	src/gloss/gloss.py	/^	def rand_float(value1, value2):$/;"	m	class:Gloss
+random_position	src/gloss/examples/example_particles.py	/^	def random_position(self):$/;"	m	class:GlossTest
+registerPlugin	src/server/server.py	/^    def registerPlugin(self, plugin):$/;"	m	class:networkSubsystem
+run	src/client/client.py	/^def run():$/;"	f
+run	src/client/gloss.py	/^	def run(self):$/;"	m	class:GlossGame
+run	src/gloss/examples/gloss.py	/^	def run(self):$/;"	m	class:GlossGame
+run	src/gloss/gloss.py	/^	def run(self):$/;"	m	class:GlossGame
+run	src/server/server.py	/^def run():$/;"	f
+running_slowly	src/client/gloss.py	/^	running_slowly = False$/;"	v	class:Gloss
+running_slowly	src/gloss/examples/gloss.py	/^	running_slowly = False$/;"	v	class:Gloss
+running_slowly	src/gloss/gloss.py	/^	running_slowly = False$/;"	v	class:Gloss
+saveEntity	src/server/db.py	/^    def saveEntity(self, entity):$/;"	m	class:entityDBWrapper
+save_screenshot	src/client/gloss.py	/^	def save_screenshot(filename):$/;"	m	class:Gloss
+save_screenshot	src/gloss/examples/gloss.py	/^	def save_screenshot(filename):$/;"	m	class:Gloss
+save_screenshot	src/gloss/gloss.py	/^	def save_screenshot(filename):$/;"	m	class:Gloss
+scripts	setup.py	/^    scripts=["runserver.py", "runclient.py"],$/;"	v
+select_object	src/client/gloss.py	/^	def select_object(pos):$/;"	m	class:Gloss
+select_object	src/gloss/examples/gloss.py	/^	def select_object(pos):$/;"	m	class:Gloss
+select_object	src/gloss/gloss.py	/^	def select_object(pos):$/;"	m	class:Gloss
+serializable	src/utils.py	/^def serializable(cls):$/;"	f
+serialize	src/base.py	/^    def serialize(self):$/;"	m	class:copyableGroup
+serialize	src/base.py	/^    def serialize(self):$/;"	m	class:drawnObject
+serialize	src/level.py	/^    def serialize(self):$/;"	m	class:level
+serverError	src/errors.py	/^class serverError(coreError): pass$/;"	c
+serverWrapper	src/client/client.py	/^class serverWrapper():$/;"	c
+set_on_click	src/client/gloss.py	/^	def set_on_click(self, value):$/;"	m	class:Sprite
+set_on_click	src/gloss/examples/gloss.py	/^	def set_on_click(self, value):$/;"	m	class:Sprite
+set_on_click	src/gloss/gloss.py	/^	def set_on_click(self, value):$/;"	m	class:Sprite
+set_scene_tint	src/client/gloss.py	/^	def set_scene_tint(color):$/;"	m	class:Gloss
+set_scene_tint	src/gloss/examples/gloss.py	/^	def set_scene_tint(color):$/;"	m	class:Gloss
+set_scene_tint	src/gloss/gloss.py	/^	def set_scene_tint(color):$/;"	m	class:Gloss
+smooth_step	src/client/gloss.py	/^	def smooth_step(colorfrom, colorto, amount):$/;"	m	class:Color
+smooth_step	src/client/gloss.py	/^	def smooth_step(point1, point2, amount):$/;"	m	class:Point
+smooth_step	src/client/gloss.py	/^	def smooth_step(value1, value2, amount):$/;"	m	class:Gloss
+smooth_step	src/gloss/examples/gloss.py	/^	def smooth_step(colorfrom, colorto, amount):$/;"	m	class:Color
+smooth_step	src/gloss/examples/gloss.py	/^	def smooth_step(point1, point2, amount):$/;"	m	class:Point
+smooth_step	src/gloss/examples/gloss.py	/^	def smooth_step(value1, value2, amount):$/;"	m	class:Gloss
+smooth_step	src/gloss/gloss.py	/^	def smooth_step(colorfrom, colorto, amount):$/;"	m	class:Color
+smooth_step	src/gloss/gloss.py	/^	def smooth_step(point1, point2, amount):$/;"	m	class:Point
+smooth_step	src/gloss/gloss.py	/^	def smooth_step(value1, value2, amount):$/;"	m	class:Gloss
+smooth_step2	src/client/gloss.py	/^	def smooth_step2(colorfrom, colorto, amount):$/;"	m	class:Color
+smooth_step2	src/client/gloss.py	/^	def smooth_step2(point1, point2, amount):$/;"	m	class:Point
+smooth_step2	src/client/gloss.py	/^	def smooth_step2(value1, value2, amount):$/;"	m	class:Gloss
+smooth_step2	src/gloss/examples/gloss.py	/^	def smooth_step2(colorfrom, colorto, amount):$/;"	m	class:Color
+smooth_step2	src/gloss/examples/gloss.py	/^	def smooth_step2(point1, point2, amount):$/;"	m	class:Point
+smooth_step2	src/gloss/examples/gloss.py	/^	def smooth_step2(value1, value2, amount):$/;"	m	class:Gloss
+smooth_step2	src/gloss/gloss.py	/^	def smooth_step2(colorfrom, colorto, amount):$/;"	m	class:Color
+smooth_step2	src/gloss/gloss.py	/^	def smooth_step2(point1, point2, amount):$/;"	m	class:Point
+smooth_step2	src/gloss/gloss.py	/^	def smooth_step2(value1, value2, amount):$/;"	m	class:Gloss
+spinner	src/server/server.py	/^class spinner(chameleon.manager):$/;"	c
+sponge	src/utils.py	/^def sponge(*args):$/;"	f
+sprite_click_tracking	src/client/gloss.py	/^	sprite_click_tracking = False # set to True when any sprite has an OnClick method attached$/;"	v	class:Gloss
+sprite_click_tracking	src/gloss/examples/gloss.py	/^	sprite_click_tracking = False # set to True when any sprite has an OnClick method attached$/;"	v	class:Gloss
+sprite_click_tracking	src/gloss/gloss.py	/^	sprite_click_tracking = False # set to True when any sprite has an OnClick method attached$/;"	v	class:Gloss
+sprites	src/client/gloss.py	/^	sprites = []$/;"	v	class:Gloss
+sprites	src/gloss/examples/gloss.py	/^	sprites = []$/;"	v	class:Gloss
+sprites	src/gloss/gloss.py	/^	sprites = []$/;"	v	class:Gloss
+stairsDown	src/base.py	/^class stairsDown(block):$/;"	c
+stairsUp	src/base.py	/^class stairsUp(block):$/;"	c
+stairsWarp	src/base.py	/^class stairsWarp(block):$/;"	c
+stone	src/base.py	/^class stone(block):$/;"	c
+subtract	src/client/gloss.py	/^	def subtract(point1, point2):$/;"	m	class:Point
+subtract	src/gloss/examples/gloss.py	/^	def subtract(point1, point2):$/;"	m	class:Point
+subtract	src/gloss/gloss.py	/^	def subtract(point1, point2):$/;"	m	class:Point
+target_clicked	src/gloss/examples/example_onclick.py	/^	def target_clicked(self, target):$/;"	m	class:GlossTest
+target_clicked	src/gloss/examples/example_scaling.py	/^	def target_clicked(self, target):$/;"	m	class:GlossTest
+textureLoad	src/client/spritepacks/default/__init__.py	/^def textureLoad(name):$/;"	f
+to_radians	src/client/gloss.py	/^	def to_radians(degrees):$/;"	m	class:Gloss
+to_radians	src/gloss/examples/gloss.py	/^	def to_radians(degrees):$/;"	m	class:Gloss
+to_radians	src/gloss/gloss.py	/^	def to_radians(degrees):$/;"	m	class:Gloss
+total_seconds	src/client/gloss.py	/^	total_seconds = 0$/;"	v	class:Gloss
+total_seconds	src/gloss/examples/gloss.py	/^	total_seconds = 0$/;"	v	class:Gloss
+total_seconds	src/gloss/gloss.py	/^	total_seconds = 0$/;"	v	class:Gloss
+trace	src/utils.py	/^def trace(func):$/;"	f
+update	src/base.py	/^    def update(self, allSprites):$/;"	m	class:entity
+update	src/base.py	/^    def update(self, allSprites):$/;"	m	class:player
+update	src/client/gloss.py	/^	def update(self):$/;"	m	class:GlossGame
+update	src/client/gloss.py	/^	def update(self):$/;"	m	class:ParticleSystem
+update	src/gloss/examples/example_bounce.py	/^	def update(self):$/;"	m	class:GlossTest
+update	src/gloss/examples/example_bubbletrouble.py	/^	def update(self):$/;"	m	class:BubbleTroubleGame
+update	src/gloss/examples/example_lines.py	/^	def update(self):$/;"	m	class:GlossTest
+update	src/gloss/examples/example_rendertarget.py	/^	def update(self):$/;"	m	class:GlossTest
+update	src/gloss/examples/example_sharpshooter.py	/^	def update(self):$/;"	m	class:Sharpshooter
+update	src/gloss/examples/example_smoothstep.py	/^	def update(self):$/;"	m	class:GlossTest
+update	src/gloss/examples/example_spritefont.py	/^	def update(self):$/;"	m	class:GlossTest
+update	src/gloss/examples/gloss.py	/^	def update(self):$/;"	m	class:GlossGame
+update	src/gloss/examples/gloss.py	/^	def update(self):$/;"	m	class:ParticleSystem
+update	src/gloss/gloss.py	/^	def update(self):$/;"	m	class:GlossGame
+update	src/gloss/gloss.py	/^	def update(self):$/;"	m	class:ParticleSystem
+update	src/gloss/skeleton_game.py	/^	def update(self):$/;"	m	class:SkeletonGame
+update	src/server/levels/pits/pit.py	/^    def update(self, allSprites):$/;"	m	class:pitcreature
+url	setup.py	/^    url="https:\/\/github.com\/chameco\/Evergreen",$/;"	v
+version	setup.py	/^    version="0.2",$/;"	v
+woodFloor	src/base.py	/^class woodFloor(floor):$/;"	c

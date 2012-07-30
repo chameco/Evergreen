@@ -40,9 +40,11 @@ class pitcreature(base.entity):
     def hit(self, hitter):
         print "hit"
         self.wasjusthit = 2
-        self.data["health"] -= self.attrs["attack"]
+        self.data["health"] -= hitter.attrs["attack"]
 class pittooth(pitcreature):
     def __init__(self, rect, data=None, manager=None, curLevel=0):
         pitcreature.__init__(self, rect, data, manager, curLevel)
         self.data["health"] = 5
         self.imgname = "pittooth"
+    def bump(self, bumper):
+        bumper.hit(self)

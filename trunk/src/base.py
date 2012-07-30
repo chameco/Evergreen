@@ -80,6 +80,9 @@ class physicalObject(drawnObject): #Abstract Base Class
     def hit(self, hitter):
         print "hit"
         pass
+    def bump(self, bumper):
+        print "bump"
+        pass
 class block(physicalObject): #Abstract Base Class
     def __init__(self, coords):
         physicalObject.__init__(self, coords)
@@ -121,7 +124,7 @@ class stairsWarp(block):
         hitter.manager.alert(chameleon.event("switchLevel", hitter))
 class entity(physicalObject): #On the character creation webpage we'll need to add some additional attributes, such as name.
     amountCreated = 0
-    def __init__(self, coords, data=None, manager=None, curLevel=0): #0 is north, 1 is south, 3 is west, 4 is east
+    def __init__(self, coords, data=None, manager=None, curLevel=0):
         physicalObject.__init__(self, coords)
         if data is None:
             data = {"facing" : 0, "name" : self.__class__.__name__ + str(self.__class__.amountCreated)}
@@ -178,15 +181,44 @@ class entity(physicalObject): #On the character creation webpage we'll need to a
         requestx = self.requestx
         requesty = self.requesty
         temp = [sprite for sprite in allSprites if sprite is not self]
-        x = self.rect.move(requestx, 0).collidelist(temp)
-        if x != -1:
+        bumped = []
+        x = self.rect.move(requestx, 0).collidelistall(temp)
+        if len(x):
             requestx = 0
-        y = self.rect.move(0, requesty).collidelist(temp)
-        if y != -1:
+            bumped.extend(x)
+        y = self.rect.move(0, requesty).collidelistall(temp)
+        if len(y):
             requesty = 0
+            bumped.extend(y)
         self.rect.move_ip(requestx, requesty)
         if self.requestx or self.requesty:
             self.manager.alert(chameleon.event("entityMoved", (self, (self.rect.x, self.rect.y), self.curLevel)))
+        for index in bumped:
+            allSprites[index].bump(self)
+class player(entity):
+    def __init__(self, coords, data=None, manager=None, curLevel=0):
+        entity.__init__(self, coords, data, manager, curLevel)
+        self.wasjusthit = 0
+        self.prev = 0
+    def update(self, allSprites):
+        entity.update(self, allSprites)
+        if self.wasjusthit == 2:
+            self.prev = self.data["facing"]
+            self.data["facing"] = 4
+            self.wasjusthit = 1
+            self.manager.alert(chameleon.event("entityMoved", (self, (self.rect.x, self.rect.y), self.curLevel)))
+        elif self.wasjusthit == 1:
+            self.data["facing"] = self.prev
+            self.wasjusthit = 0
+            self.manager.alert(chameleon.event("entityMoved", (self, (self.rect.x, self.rect.y), self.curLevel)))
+        if self.data["health"] <= 0:
+            self.manager.alert(chameleon.event("killEntity", self))
+            self.kill()
+            self.manager.alert(chameleon.event("gameOver", self))
+    def hit(self, hitter):
+        print "player hit"
+        self.wasjusthit = 2
+        self.data["health"] -= hitter.attrs["attack"]
 @utils.serializable
 class copyableGroup(pygame.sprite.Group):
     def serialize(self):
