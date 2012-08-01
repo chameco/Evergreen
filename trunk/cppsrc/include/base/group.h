@@ -11,12 +11,12 @@ namespace base {
 	class group {
 		public:
 			group();
-			void add(base::physicalObject *object);
-			void remove(base::physicalObject *object);
-			string serialize();
-			static group *load(string _dump);
+			template<class Archive>
+			virtual void serialize(Archive &ar, const unsigned int version);
+			void add(base::drawnObject *object);
+			void remove(base::drawnObject *object);
 		private:
-			list<base::physicalObject *> intern;
+			list<base::drawnObject *> intern;
 	};
 }
 #endif

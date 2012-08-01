@@ -7,12 +7,13 @@
 #include "chameleon.h"
 #include "base/block.h"
 #include "base/physicalObject.h"
+#include "base/entity.h"
 namespace base {
 	using namespace std;
 	class stairsDown : public base::block {
 		public:
 			stairsDown(vector<int> *_coords);
-			void hit(base::physicalObject *hitter);
+			void hit(base::entity *hitter);
 	};
 }
 #endif

@@ -14,7 +14,7 @@ namespace base {
 			void hit(base::physicalObject *hitter);
 		private:
 			int wasjusthit;
-			int prev;
+			string prev;
 	};
 }
 #endif
