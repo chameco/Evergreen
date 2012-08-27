@@ -1,18 +1,3 @@
-#Copyright 2011 Samuel Breese. Distributed under the terms of the GNU General Public License.
-#This file is part of Evergreen.
-#
-#    Evergreen is free software: you can redistribute it and/or modify
-#    it under the terms of the GNU General Public License as published by
-#    the Free Software Foundation, either version 3 of the License, or
-#    (at your option) any later version.
-#
-#    Evergreen is distributed in the hope that it will be useful,
-#    but WITHOUT ANY WARRANTY; without even the implied warranty of
-#    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-#    GNU General Public License for more details.
-#
-#    You should have received a copy of the GNU General Public License
-#    along with Evergreen.  If not, see <http://www.gnu.org/licenses/>.
 from setuptools import setup, Extension
 from os.path import join
 import os
@@ -25,10 +10,10 @@ setup(
     url="https://github.com/chameco/Evergreen",
     license="GNU General Public License",
     packages=["src", "src.server", "src.server.levels", "src.server.levels.test", "src.server.plugins", "src.client", "src.client.spritepacks", "src.client.spritepacks.default"],
-    scripts=["runserver.py", "runclient.py"],
+    scripts=["evg_client", "evg_server"],
     package_dir={"src" : "src"},
     package_data={"src.server" : ["server.ini"], "src.client" : ["client.ini"], "src.client.spritepacks.default" : ["*.png"]},
     data_files=["entity.db"],
-    install_requires=["pygame>=1.9", "ev-chameleon>=1.0"],
+    install_requires=["pygame>=1.9"],
     dependency_links=["http://www.pygame.org/download.shtml"]
 )

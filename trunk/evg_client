@@ -1,0 +1,2 @@
+from src.client import client
+client.run()

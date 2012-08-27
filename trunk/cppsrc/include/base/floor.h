@@ -10,6 +10,8 @@ namespace base {
 	class floor : public base::drawnObject {
 		public:
 			floor(vector<int> *_coords);
+			virtual base::drawnObject *clone() {return this;}
+			virtual string getType() {return "floor";}
 	};
 }
 #endif

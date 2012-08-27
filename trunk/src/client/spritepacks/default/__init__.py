@@ -19,7 +19,7 @@ def loadImages():
     "pitwall" : textureLoad("pitwall.png"),
     }
     ENTITYIMAGES = {
-    "entity" : ((textureLoad("playerb.png"), textureLoad("playerba.png")), (textureLoad("playerf.png"), textureLoad("playerfa.png")), (textureLoad("playerl.png"), textureLoad("playerla.png")), (textureLoad("playerr.png"), textureLoad("playerra.png"))),
+    "entity" : ((textureLoad("playerb.png"), textureLoad("playerba.png")), (textureLoad("playerf.png"), textureLoad("playerfa.png")), (textureLoad("playerl.png"), textureLoad("playerla.png")), (textureLoad("playerr.png"), textureLoad("playerra.png")), (textureLoad("red.png"), textureLoad("red.png"))),
     "pittooth" : ((textureLoad("pittooth.png"), None), (None, None), (None, None), (None, None), (textureLoad("red.png"), None)),
     }
 def getImage(name):

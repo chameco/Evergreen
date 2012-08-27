@@ -17,7 +17,7 @@ from ... import base
 from ... import utils
 from ... import level
 from ... import errors
-import chameleon
+from ... import chameleon
 import copy
 class movementmanager(chameleon.listener):
     def __init__(self, manager, controlledEntity):

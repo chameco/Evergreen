@@ -1,11 +1,15 @@
 CC = g++
-SERVERSRC = spinner.cpp
-SERVER_DBSRC = dbManager.cpp
-SERVER_NETWORKSRC = networkSubsystemDelegator.cpp networkSubsystem.cpp networkView.cpp networkController.cpp
-BASESRC = image.cpp group.cpp drawnObject.cpp floor.cpp woodFloor.cpp physicalObject.cpp block.cpp stone.cpp stairsUp.cpp stairsDown.cpp stairsWarp.cpp entity.cpp player.cpp
-NETWORKSRC = wrapper.cpp
-LEVELSRC = level.cpp levelManager.cpp
-CLIENTSRC = glGame.cpp  networkView.cpp networkController.cpp
+CPPFLAGS = "-Iinclude"
+SERVERSRC = src/server/spinner.o
+SERVER_DBSRC = src/server/db/dbManager.o
+SERVER_NETWORKSRC = src/server/network/networkSubsystemDelegator.o src/server/network/networkSubsystem.o \
+					src/server/network/networkView.o src/server/network/networkController.o
+BASESRC = src/base/image.o src/base/group.o src/base/drawnObject.o src/base/floor.o src/base/woodFloor.o \
+		  src/base/physicalObject.o src/base/block.o src/base/stone.o src/base/stairsUp.o src/base/stairsDown.o \
+		  src/base/stairsWarp.o src/base/entity.o src/base/player.o
+NETWORKSRC = src/network/wrapper.o
+LEVELSRC = src/level/level.o src/level/levelManager.o
+CLIENTSRC = src/client/glGame.o  src/client/networkView.o src/client/networkController.o
 
 all : evergreen_server evergreen_client
 
@@ -16,36 +20,31 @@ evergreen_client : client base level network
 	$(CC) src/client/*.o src/base/*.o src/level/*.o src/network/*.o -lboost-regex -o evergreen_client
 
 server : $(SERVERSRC) $(SERVER_DBSRC) $(SERVER_NETWORKSRC)
-	cd src/server
-	$(CC) -c $(SERVERSRC) -I../../include
-	cd db
-	$(CC) -c $(SERVER_DBSRC) -I../../../include
-	cd ../network
-	$(CC) -c $(SERVER_NETWORKSRC) -I../../../include
-	cd ../../..
+
+server_clean :
+	rm -f src/server/*.o src/server/db/*.o src/server/network/*.o
 
 client : $(CLIENTSRC)
-	cd src/client
-	$(CC) -c $(CLIENTSRC) -I../../include
-	cd ../..
+
+client_clean :
+	rm -f src/client/*.o
 
 base : $(BASESRC)
-	cd src/base
-	$(CC) -c $(BASESRC) -I../../include
-	cd ../..
+
+base_clean :
+	rm -f src/base/*.o
 
 network : $(NETWORKSRC)
-	cd src/network
-	$(CC) -c $(NETWORKSRC) -I../../include
-	cd ../..
+
+network_clean :
+	rm -f src/network/*.o
 
 level : $(LEVELSRC)
-	cd src/level
-	$(CC) -c $(LEVELSRC) -I../../include
-	cd ../..
 
-clean :
-	rm -f src/base/*.o src/level/*.o src/network/*.o src/client/*.o src/server/*.o src/server/db/*.o src/server/network/*.o
+level_clean :
+	rm -f src/level/*.o
+
+clean : server_clean client_clean base_clean network_clean level_clean
 
 builddeb:
 	# build the source package in the parent directory

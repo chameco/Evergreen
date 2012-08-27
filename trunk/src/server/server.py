@@ -1,24 +1,10 @@
-#Copyright 2011 Samuel Breese. Distributed under the terms of the GNU General Public License.
-#This file is part of Evergreen.
-#
-#    Evergreen is free software: you can redistribute it and/or modify
-#    it under the terms of the GNU General Public License as published by
-#    the Free Software Foundation, either version 3 of the License, or
-#    (at your option) any later version.
-#
-#    Evergreen is distributed in the hope that it will be useful,
-#    but WITHOUT ANY WARRANTY; without even the implied warranty of
-#    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-#    GNU General Public License for more details.
-#
-#    You should have received a copy of the GNU General Public License
-#    along with Evergreen.  If not, see <http://www.gnu.org/licenses/>.
 import pygame
 pygame.init()
 from .. import base
 from .. import utils
 from .. import level
 from .. import errors
+from .. import chameleon
 from . import db
 import sys
 import os
@@ -27,7 +13,6 @@ import socket
 import ConfigParser
 import select
 import time
-import chameleon
 import atexit
 import logging
 CONFIG = {}
@@ -59,7 +44,9 @@ class clientWrapper():
         self.avatarID = self.socket.recv(256)
         print self.avatarID
     def postEvent(self, event, data):
-        self.socket.send(pickle.dumps(utils.netEvent(event, data), 2) + "\xEE")#An unused delimiter character
+        if event == "gameOver":
+            print "GAME OVER: postEvent"
+        self.socket.sendall(pickle.dumps(utils.netEvent(event, data), 2) + "\xEE")#An unused delimiter character
     def getData(self):
         #print "getData"
         request = ""
@@ -104,6 +91,7 @@ class networkSubsystem(chameleon.manager, chameleon.listener):
         self.setResponse("entityMoved", self.ev_entityMoved)
         self.setResponse("entitySpawned", self.ev_entitySpawned)
         self.setResponse("entityKilled", self.ev_entityKilled)
+        self.setResponse("gameOver", self.ev_gameOver)
         self.setResponse("update", self.ev_update)
         self.reg("getLevel", self)
         self.manager.reg("distLevel", self)
@@ -111,6 +99,7 @@ class networkSubsystem(chameleon.manager, chameleon.listener):
         self.manager.reg("entityMoved", self)
         self.manager.reg("entitySpawned", self)
         self.manager.reg("entityKilled", self)
+        self.manager.reg("gameOver", self)
         self.manager.reg("update", self)
         self.manager.alert(chameleon.event("spawnEntity", (self.controlledEntity, self.controlledEntity.curLevel)))
         self.plugins.append(networkController(self, self.client))
@@ -166,6 +155,10 @@ class networkSubsystem(chameleon.manager, chameleon.listener):
         print "GAME OVER"
         if data is self.controlledEntity:
             self.alert(chameleon.event("gameOver", None))
+    def ev_displayText(self, data):
+        print "displayText"
+        if data[1] is self.controlledEntity:
+            self.alert(chameleon.event("displayText", data[0]))
 class networkView(chameleon.listener):
     def __init__(self, manager, client):
         chameleon.listener.__init__(self)
@@ -176,12 +169,14 @@ class networkView(chameleon.listener):
         self.setResponse("entitySpawned", self.ev_entitySpawned)
         self.setResponse("entityKilled", self.ev_entityKilled)
         self.setResponse("gameOver", self.ev_gameOver)
+        self.setResponse("displayText", self.ev_displayText)
         self.manager.reg("distLevel", self)
         self.manager.reg("sendLevel", self)
         self.manager.reg("entityMoved", self)
         self.manager.reg("entitySpawned", self)
         self.manager.reg("entityKilled", self)
         self.manager.reg("gameOver", self)
+        self.manager.reg("displayText", self)
         self.client = client
         self.level = None
         self.manager.alert(chameleon.event("getLevel", None))
@@ -214,7 +209,14 @@ class networkView(chameleon.listener):
         print "GAME OVER: networkView"
         try:
             self.client.postEvent("gameOver", None)
+        except IOError:
+            print "Game Over: ERROR"
         finally:
+            self.manager.alert(chameleon.event("kill", None))
+    def ev_displayText(self, data):
+        try:
+            self.client.postEvent("displayText", data) #Should just be a string.
+        except IOError:
             self.manager.alert(chameleon.event("kill", None))
 class networkController(chameleon.listener):
     def __init__(self, manager, client):

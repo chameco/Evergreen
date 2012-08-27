@@ -1,0 +1,588 @@
+	includes.vim	/^cnoremap  gggHG$/;"	m
+	includes.vim	/^inoremap  gggHG$/;"	m
+	includes.vim	/^nnoremap  gggHG$/;"	m
+	includes.vim	/^onoremap  gggHG$/;"	m
+	srcs.vim	/^cnoremap  gggHG$/;"	m
+	srcs.vim	/^inoremap  gggHG$/;"	m
+	srcs.vim	/^nnoremap  gggHG$/;"	m
+	srcs.vim	/^onoremap  gggHG$/;"	m
+	includes.vim	/^vnoremap  "+y$/;"	m
+	srcs.vim	/^vnoremap  "+y$/;"	m
+	includes.vim	/^imap  yypi<End>$/;"	m
+	srcs.vim	/^imap  yypi<End>$/;"	m
+		includes.vim	/^imap 	 <Plug>SuperTabForward$/;"	m
+		srcs.vim	/^imap 	 <Plug>SuperTabForward$/;"	m
+	includes.vim	/^imap  <Plug>SuperTabForward$/;"	m
+	srcs.vim	/^imap  <Plug>SuperTabForward$/;"	m
+	includes.vim	/^imap  <Plug>SuperTabBackward$/;"	m
+	srcs.vim	/^imap  <Plug>SuperTabBackward$/;"	m
+	includes.vim	/^noremap  $/;"	m
+	srcs.vim	/^noremap  $/;"	m
+	includes.vim	/^imap  $/;"	m
+	includes.vim	/^nnoremap <silent>  :if expand("%") == ""$/;"	m
+	includes.vim	/^onoremap  :update$/;"	m
+	includes.vim	/^vnoremap  :update$/;"	m
+	srcs.vim	/^imap  $/;"	m
+	srcs.vim	/^nnoremap <silent>  :if expand("%") == ""$/;"	m
+	srcs.vim	/^onoremap  :update$/;"	m
+	srcs.vim	/^vnoremap  :update$/;"	m
+	includes.vim	/^cmap  +$/;"	m
+	includes.vim	/^nmap  "+gP$/;"	m
+	includes.vim	/^omap  "+gP$/;"	m
+	srcs.vim	/^cmap  +$/;"	m
+	srcs.vim	/^nmap  "+gP$/;"	m
+	srcs.vim	/^omap  "+gP$/;"	m
+	includes.vim	/^vnoremap  "+x$/;"	m
+	srcs.vim	/^vnoremap  "+x$/;"	m
+	includes.vim	/^inoremap  $/;"	m
+	includes.vim	/^noremap  $/;"	m
+	srcs.vim	/^inoremap  $/;"	m
+	srcs.vim	/^noremap  $/;"	m
+	includes.vim	/^inoremap  u$/;"	m
+	includes.vim	/^noremap  u$/;"	m
+	srcs.vim	/^inoremap  u$/;"	m
+	srcs.vim	/^noremap  u$/;"	m
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_PROGRAM_AUTHOR	Darren Hiebert	/dhiebert@users.sourceforge.net/
+!_TAG_PROGRAM_NAME	Exuberant Ctags	//
+!_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
+!_TAG_PROGRAM_VERSION	5.9~svn20110310	//
+0	includes.vim	/^normal! 0$/;"	m
+0	srcs.vim	/^normal! 0$/;"	m
+013l	srcs.vim	/^normal! 013l$/;"	m
+01l	srcs.vim	/^normal! 01l$/;"	m
+021l	includes.vim	/^normal! 021l$/;"	m
+027l	srcs.vim	/^normal! 027l$/;"	m
+032l	srcs.vim	/^normal! 032l$/;"	m
+037l	srcs.vim	/^normal! 037l$/;"	m
+039l	srcs.vim	/^normal! 039l$/;"	m
+045l	srcs.vim	/^normal! 045l$/;"	m
+050l	srcs.vim	/^normal! 050l$/;"	m
+08l	srcs.vim	/^normal! 08l$/;"	m
+<BS>	includes.vim	/^vnoremap <BS> d$/;"	m
+<BS>	srcs.vim	/^vnoremap <BS> d$/;"	m
+<C-F4>	includes.vim	/^cnoremap <C-F4> c$/;"	m
+<C-F4>	includes.vim	/^inoremap <C-F4> c$/;"	m
+<C-F4>	includes.vim	/^nnoremap <C-F4> c$/;"	m
+<C-F4>	includes.vim	/^onoremap <C-F4> c$/;"	m
+<C-F4>	includes.vim	/^vnoremap <C-F4> c$/;"	m
+<C-F4>	srcs.vim	/^cnoremap <C-F4> c$/;"	m
+<C-F4>	srcs.vim	/^inoremap <C-F4> c$/;"	m
+<C-F4>	srcs.vim	/^nnoremap <C-F4> c$/;"	m
+<C-F4>	srcs.vim	/^onoremap <C-F4> c$/;"	m
+<C-F4>	srcs.vim	/^vnoremap <C-F4> c$/;"	m
+<C-Insert>	includes.vim	/^vnoremap <C-Insert> "+y$/;"	m
+<C-Insert>	srcs.vim	/^vnoremap <C-Insert> "+y$/;"	m
+<C-Tab>	includes.vim	/^cnoremap <C-Tab> w$/;"	m
+<C-Tab>	includes.vim	/^inoremap <C-Tab> 	$/;"	m
+<C-Tab>	includes.vim	/^nnoremap <C-Tab> w$/;"	m
+<C-Tab>	includes.vim	/^onoremap <C-Tab> w$/;"	m
+<C-Tab>	includes.vim	/^vnoremap <C-Tab> w$/;"	m
+<C-Tab>	srcs.vim	/^cnoremap <C-Tab> w$/;"	m
+<C-Tab>	srcs.vim	/^inoremap <C-Tab> 	$/;"	m
+<C-Tab>	srcs.vim	/^nnoremap <C-Tab> w$/;"	m
+<C-Tab>	srcs.vim	/^onoremap <C-Tab> w$/;"	m
+<C-Tab>	srcs.vim	/^vnoremap <C-Tab> w$/;"	m
+<F10>	includes.vim	/^imap <F10> :set paste$/;"	m
+<F10>	includes.vim	/^map <F10> :set paste$/;"	m
+<F10>	srcs.vim	/^imap <F10> :set paste$/;"	m
+<F10>	srcs.vim	/^map <F10> :set paste$/;"	m
+<F11>	includes.vim	/^imap <F11> <Nop>$/;"	m
+<F11>	includes.vim	/^map <F11> :set nopaste$/;"	m
+<F11>	srcs.vim	/^imap <F11> <Nop>$/;"	m
+<F11>	srcs.vim	/^map <F11> :set nopaste$/;"	m
+<Plug>NetrwBrowseX	includes.vim	/^nnoremap <silent> <Plug>NetrwBrowseX :call netrw#NetrwBrowseX(expand("<cWORD>"),0)$/;"	m
+<Plug>NetrwBrowseX	srcs.vim	/^nnoremap <silent> <Plug>NetrwBrowseX :call netrw#NetrwBrowseX(expand("<cWORD>"),0)$/;"	m
+<S-Del>	includes.vim	/^vnoremap <S-Del> "+x$/;"	m
+<S-Del>	srcs.vim	/^vnoremap <S-Del> "+x$/;"	m
+<S-Insert>	includes.vim	/^cmap <S-Insert> +$/;"	m
+<S-Insert>	includes.vim	/^imap <S-Insert> $/;"	m
+<S-Insert>	includes.vim	/^nmap <S-Insert> "+gP$/;"	m
+<S-Insert>	includes.vim	/^omap <S-Insert> "+gP$/;"	m
+<S-Insert>	includes.vim	/^vmap <S-Insert> $/;"	m
+<S-Insert>	srcs.vim	/^cmap <S-Insert> +$/;"	m
+<S-Insert>	srcs.vim	/^imap <S-Insert> $/;"	m
+<S-Insert>	srcs.vim	/^nmap <S-Insert> "+gP$/;"	m
+<S-Insert>	srcs.vim	/^omap <S-Insert> "+gP$/;"	m
+<S-Insert>	srcs.vim	/^vmap <S-Insert> $/;"	m
+<S-Tab>	includes.vim	/^imap <S-Tab> <Plug>SuperTabBackward$/;"	m
+<S-Tab>	srcs.vim	/^imap <S-Tab> <Plug>SuperTabBackward$/;"	m
+BASESRC	Makefile	/^BASESRC = image.cpp group.cpp drawnObject.cpp floor.cpp woodFloor.cpp physicalObject.cpp block.cpp stone.cpp stairsUp.cpp stairsDown.cpp stairsWarp.cpp entity.cpp player.cpp$/;"	m
+BLOCK_H	include/base/block.h	2;"	d
+CC	Makefile	/^CC = g++$/;"	m
+CLIENTSRC	Makefile	/^CLIENTSRC = glGame.cpp  networkView.cpp networkController.cpp$/;"	m
+CLIENT_NETWORKCONTROLLER_H	include/client/networkController.h	2;"	d
+CLIENT_NETWORKVIEW_H	include/client/networkView.h	2;"	d
+DBMANAGER_H	include/server/db/dbManager.h	2;"	d
+DRAWNOBJECT_H	include/base/drawnObject.h	2;"	d
+ENTITY_H	include/base/entity.h	2;"	d
+FLOOR_H	include/base/floor.h	2;"	d
+GLGAME_H	include/client/glGame.h	2;"	d
+GROUP_H	include/base/group.h	2;"	d
+IMAGE_H	include/base/image.h	2;"	d
+LEVELMANAGER_H	include/level/levelManager.h	2;"	d
+LEVELSRC	Makefile	/^LEVELSRC = level.cpp levelManager.cpp$/;"	m
+LEVEL_H	include/level/level.h	2;"	d
+NETWORKSRC	Makefile	/^NETWORKSRC = wrapper.cpp$/;"	m
+NETWORKSUBSYSTEMDELEGATOR_H	include/server/network/networkSubsystemDelegator.h	2;"	d
+NETWORKSUBSYSTEM_H	include/server/network/networkSubsystem.h	2;"	d
+PHYSICALOBJECT_H	include/base/physicalObject.h	2;"	d
+PLAYER_H	include/base/player.h	2;"	d
+SERVERSRC	Makefile	/^SERVERSRC = spinner.cpp$/;"	m
+SERVER_DBSRC	Makefile	/^SERVER_DBSRC = dbManager.cpp$/;"	m
+SERVER_NETWORKCONTROLLER_H	include/server/network/networkController.h	2;"	d
+SERVER_NETWORKSRC	Makefile	/^SERVER_NETWORKSRC = networkSubsystemDelegator.cpp networkSubsystem.cpp networkView.cpp networkController.cpp$/;"	m
+SERVER_NETWORKVIEW_H	include/server/network/networkView.h	2;"	d
+SPINNER_H	include/server/spinner.h	2;"	d
+STAIRSDOWN_H	include/base/stairsDown.h	2;"	d
+STAIRSUP_H	include/base/stairsUp.h	2;"	d
+STAIRSWARP_H	include/base/stairsWarp.h	2;"	d
+STONE_H	include/base/stone.h	2;"	d
+SessionLoad	includes.vim	/^let SessionLoad = 1$/;"	v
+SessionLoad	srcs.vim	/^let SessionLoad = 1$/;"	v
+WOODFLOOR_H	include/base/woodFloor.h	2;"	d
+add	include/base/group.h	/^			void add(base::drawnObject *object);$/;"	p	class:base::group	access:public	signature:(base::drawnObject *object)
+amountCreated	include/base/entity.h	/^			static amountCreated;$/;"	m	class:base::entity	access:private
+amountCreated	include/base/entity.h	/^		static int amountCreated = 0;$/;"	m	class:base::entity	access:private
+attack	include/base/entity.h	/^			void attack(base::group *allSprites);$/;"	p	class:base::entity	access:public	signature:(base::group *allSprites)
+attack	src/entity.cpp	/^void base::entity::attack(base::group *allSprites) {$/;"	f	class:base::entity	signature:(base::group *allSprites)
+attrs	include/base/entity.h	/^			map<string, int> attrs;$/;"	m	class:base::entity	access:private
+base	include/base/block.h	/^namespace base {$/;"	n
+base	include/base/drawnObject.h	/^namespace base {$/;"	n
+base	include/base/entity.h	/^namespace base {$/;"	n
+base	include/base/floor.h	/^namespace base {$/;"	n
+base	include/base/group.h	/^namespace base {$/;"	n
+base	include/base/image.h	/^namespace base {$/;"	n
+base	include/base/physicalObject.h	/^namespace base {$/;"	n
+base	include/base/player.h	/^namespace base {$/;"	n
+base	include/base/stairsDown.h	/^namespace base {$/;"	n
+base	include/base/stairsUp.h	/^namespace base {$/;"	n
+base	include/base/stairsWarp.h	/^namespace base {$/;"	n
+base	include/base/stone.h	/^namespace base {$/;"	n
+base	include/base/woodFloor.h	/^namespace base {$/;"	n
+base::block	include/base/block.h	/^	class block : public base::physicalObject {$/;"	c	namespace:base	inherits:base::physicalObject
+base::block::block	include/base/block.h	/^			block(vector<int> *_coords);$/;"	p	class:base::block	access:public	signature:(vector<int> *_coords)
+base::block::block	src/block.cpp	/^base::block::block(vector<int> *_coords) : base::physicalObject(_coords) {}$/;"	f	class:base::block	signature:(vector<int> *_coords)
+base::drawnObject	include/base/drawnObject.h	/^	class drawnObject {$/;"	c	namespace:base
+base::drawnObject::coords	include/base/drawnObject.h	/^			vector<int> *coords;$/;"	m	class:base::drawnObject	access:private
+base::drawnObject::data	include/base/drawnObject.h	/^			map<string, string> *data;$/;"	m	class:base::drawnObject	access:private
+base::drawnObject::draw	include/base/drawnObject.h	/^			void draw(int scale=1);$/;"	p	class:base::drawnObject	access:public	signature:(int scale=1)
+base::drawnObject::draw	src/drawnObject.cpp	/^void base::drawnObject::draw(int scale) {$/;"	f	class:base::drawnObject	signature:(int scale)
+base::drawnObject::drawnObject	include/base/drawnObject.h	/^			drawnObject(vector<int> *_coords);$/;"	p	class:base::drawnObject	access:public	signature:(vector<int> *_coords)
+base::drawnObject::drawnObject	src/drawnObject.cpp	/^base::drawnObject::drawnObject(vector<int> *_coords) {$/;"	f	class:base::drawnObject	signature:(vector<int> *_coords)
+base::drawnObject::height	include/base/drawnObject.h	/^			int height;$/;"	m	class:base::drawnObject	access:private
+base::drawnObject::image	include/base/drawnObject.h	/^			base::image *image;$/;"	m	class:base::drawnObject	access:private
+base::drawnObject::imgname	include/base/drawnObject.h	/^			string imgname;\/\/For loading client-side.$/;"	m	class:base::drawnObject	access:private
+base::drawnObject::serialize	include/base/drawnObject.h	/^			virtual void serialize(Archive &ar, const unsigned int version);$/;"	p	class:base::drawnObject	access:public	signature:(Archive &ar, const unsigned int version)
+base::drawnObject::serialize	src/drawnObject.cpp	/^void base::drawnObject::serialize(Archive &ar, const unsigned int version) {$/;"	f	class:base::drawnObject	signature:(Archive &ar, const unsigned int version)
+base::drawnObject::update	include/base/drawnObject.h	/^			virtual void update(base::group *allSprites) =0;$/;"	p	class:base::drawnObject	access:public	signature:(base::group *allSprites)
+base::drawnObject::width	include/base/drawnObject.h	/^			int width;$/;"	m	class:base::drawnObject	access:private
+base::entity	include/base/entity.h	/^	class entity : public base::physicalObject {$/;"	c	namespace:base	inherits:base::physicalObject
+base::entity::amountCreated	include/base/entity.h	/^			static amountCreated;$/;"	m	class:base::entity	access:private
+base::entity::amountCreated	include/base/entity.h	/^		static int amountCreated = 0;$/;"	m	class:base::entity	access:private
+base::entity::attack	include/base/entity.h	/^			void attack(base::group *allSprites);$/;"	p	class:base::entity	access:public	signature:(base::group *allSprites)
+base::entity::attack	src/entity.cpp	/^void base::entity::attack(base::group *allSprites) {$/;"	f	class:base::entity	signature:(base::group *allSprites)
+base::entity::attrs	include/base/entity.h	/^			map<string, int> attrs;$/;"	m	class:base::entity	access:private
+base::entity::curlevel	include/base/entity.h	/^			int curlevel;$/;"	m	class:base::entity	access:private
+base::entity::entity	include/base/entity.h	/^			entity(vector<int> *_coords, map<string, string> *_data=NULL, chameleon::event::manager *_manager=NULL, int _curLevel=0);$/;"	p	class:base::entity	access:public	signature:(vector<int> *_coords, map<string, string> *_data=NULL, chameleon::event::manager *_manager=NULL, int _curLevel=0)
+base::entity::entity	src/entity.cpp	/^base::entity::entity(vector<int> *_coords, map<string, string> *_data, chameleon::event::manager *_manager, int _curLevel) : base::physicalObject(_coords) {$/;"	f	class:base::entity	signature:(vector<int> *_coords, map<string, string> *_data, chameleon::event::manager *_manager, int _curLevel)
+base::entity::getAttr	include/base/entity.h	/^			int getAttr(string key) {return attrs[key];}$/;"	f	class:base::entity	access:public	signature:(string key)
+base::entity::getManager	include/base/entity.h	/^			chameleon::event::manager *getManager() {return manager;}$/;"	f	class:base::entity	access:public	signature:()
+base::entity::manager	include/base/entity.h	/^			chameleon::event::manager *manager;$/;"	m	class:base::entity	access:private
+base::entity::movedown	include/base/entity.h	/^			void movedown(bool down);$/;"	p	class:base::entity	access:public	signature:(bool down)
+base::entity::movedown	src/entity.cpp	/^void base::entity::movedown(bool down) {$/;"	f	class:base::entity	signature:(bool down)
+base::entity::moveleft	include/base/entity.h	/^			void moveleft(bool down);$/;"	p	class:base::entity	access:public	signature:(bool down)
+base::entity::moveleft	src/entity.cpp	/^void base::entity::moveleft(bool down) {$/;"	f	class:base::entity	signature:(bool down)
+base::entity::moveright	include/base/entity.h	/^			void moveright(bool down);$/;"	p	class:base::entity	access:public	signature:(bool down)
+base::entity::moveright	src/entity.cpp	/^void base::entity::moveright(bool down) {$/;"	f	class:base::entity	signature:(bool down)
+base::entity::moveup	include/base/entity.h	/^			void moveup(bool down);$/;"	p	class:base::entity	access:public	signature:(bool down)
+base::entity::moveup	src/entity.cpp	/^void base::entity::moveup(bool down) {$/;"	f	class:base::entity	signature:(bool down)
+base::entity::requestx	include/base/entity.h	/^			int requestx;$/;"	m	class:base::entity	access:private
+base::entity::requesty	include/base/entity.h	/^			int requesty;$/;"	m	class:base::entity	access:private
+base::entity::setCurLevel	include/base/entity.h	/^			void setCurLevel(int _curLevel) {curLevel = _curLevel;}$/;"	f	class:base::entity	access:public	signature:(int _curLevel)
+base::entity::update	include/base/entity.h	/^			void update(base::group *allSprites);$/;"	p	class:base::entity	access:public	signature:(base::group *allSprites)
+base::entity::update	src/entity.cpp	/^void base::entity::update(base::group *allSprites) {$/;"	f	class:base::entity	signature:(base::group *allSprites)
+base::floor	include/base/floor.h	/^	class floor : public base::drawnObject {$/;"	c	namespace:base	inherits:base::drawnObject
+base::floor::floor	include/base/floor.h	/^			floor(vector<int> *_coords);$/;"	p	class:base::floor	access:public	signature:(vector<int> *_coords)
+base::floor::floor	src/floor.cpp	/^base::floor::floor(vector<int> *_coords) : base::drawnObject(_coords) {}$/;"	f	class:base::floor	signature:(vector<int> *_coords)
+base::group	include/base/group.h	/^	class group {$/;"	c	namespace:base
+base::group::add	include/base/group.h	/^			void add(base::drawnObject *object);$/;"	p	class:base::group	access:public	signature:(base::drawnObject *object)
+base::group::group	include/base/group.h	/^			group();$/;"	p	class:base::group	access:public	signature:()
+base::group::intern	include/base/group.h	/^			list<base::drawnObject *> intern;$/;"	m	class:base::group	access:private
+base::group::remove	include/base/group.h	/^			void remove(base::drawnObject *object);$/;"	p	class:base::group	access:public	signature:(base::drawnObject *object)
+base::group::serialize	include/base/group.h	/^			virtual void serialize(Archive &ar, const unsigned int version);$/;"	p	class:base::group	access:public	signature:(Archive &ar, const unsigned int version)
+base::group::serialize	src/group.cpp	/^void base::group::serialize(Archive &ar, const unsigned int version) {$/;"	f	class:base::group	signature:(Archive &ar, const unsigned int version)
+base::image	include/base/image.h	/^	class image {$/;"	c	namespace:base
+base::image::draw	include/base/image.h	/^			void draw(vector<int> *coords, int scale = 1);$/;"	p	class:base::image	access:public	signature:(vector<int> *coords, int scale = 1)
+base::image::height	include/base/image.h	/^			int height;$/;"	m	class:base::image	access:private
+base::image::image	include/base/image.h	/^			image(string name);$/;"	p	class:base::image	access:public	signature:(string name)
+base::image::texture	include/base/image.h	/^			GLuint texture;$/;"	m	class:base::image	access:private
+base::image::width	include/base/image.h	/^			int width;$/;"	m	class:base::image	access:private
+base::physicalObject	include/base/physicalObject.h	/^	class physicalObject : public base::drawnObject {$/;"	c	namespace:base	inherits:base::drawnObject
+base::physicalObject::bump	include/base/physicalObject.h	/^			virtual void bump(base::entity *bumper) =0;$/;"	p	class:base::physicalObject	access:public	signature:(base::entity *bumper)
+base::physicalObject::physicalObject	include/base/physicalObject.h	/^			physicalObject(vector<int> *_coords):$/;"	p	class:base::physicalObject	access:public	signature:(vector<int> *_coords)
+base::physicalObject::physicalObject	src/physicalObject.cpp	/^base::physicalObject::physicalObject(vector<int> *_coords) : base::drawnObject(_coords) {}$/;"	f	class:base::physicalObject	signature:(vector<int> *_coords)
+base::player	include/base/player.h	/^	class player : public entity {$/;"	c	namespace:base	inherits:entity
+base::player::hit	include/base/player.h	/^			void hit(base::physicalObject *hitter);$/;"	p	class:base::player	access:public	signature:(base::physicalObject *hitter)
+base::player::hit	src/player.cpp	/^void base::player::hit(base::entity *hitter) {$/;"	f	class:base::player	signature:(base::entity *hitter)
+base::player::player	include/base/player.h	/^			player(vector<int> *_coords, map<string, string> *_data=NULL, chameleon::event::manager *_manager=NULL, int _curLevel=0);$/;"	p	class:base::player	access:public	signature:(vector<int> *_coords, map<string, string> *_data=NULL, chameleon::event::manager *_manager=NULL, int _curLevel=0)
+base::player::player	src/player.cpp	/^base::player::player(vector<int> *_coords, map<string, string> *_data=NULL, chameleon::event::manager *_manager=NULL, int _curLevel=0) : base::entity(_coords, _data, _manager, _curLevel) {$/;"	f	class:base::player	signature:(vector<int> *_coords, map<string, string> *_data=NULL, chameleon::event::manager *_manager=NULL, int _curLevel=0)
+base::player::prev	include/base/player.h	/^			string prev;$/;"	m	class:base::player	access:private
+base::player::update	include/base/player.h	/^			void update(base::group *allSprites);$/;"	p	class:base::player	access:public	signature:(base::group *allSprites)
+base::player::update	src/player.cpp	/^void base::player::update(base::group *allSprites) {$/;"	f	class:base::player	signature:(base::group *allSprites)
+base::player::wasjusthit	include/base/player.h	/^			int wasjusthit;$/;"	m	class:base::player	access:private
+base::stairsDown	include/base/stairsDown.h	/^	class stairsDown : public base::block {$/;"	c	namespace:base	inherits:base::block
+base::stairsDown::hit	include/base/stairsDown.h	/^			void hit(base::entity *hitter);$/;"	p	class:base::stairsDown	access:public	signature:(base::entity *hitter)
+base::stairsDown::hit	src/stairsDown.cpp	/^void base::stairsDown::hit(base::entity *hitter) {$/;"	f	class:base::stairsDown	signature:(base::entity *hitter)
+base::stairsDown::stairsDown	include/base/stairsDown.h	/^			stairsDown(vector<int> *_coords);$/;"	p	class:base::stairsDown	access:public	signature:(vector<int> *_coords)
+base::stairsDown::stairsDown	src/stairsDown.cpp	/^base::stairsDown::stairsDown(vector<int> *_coords) : base::block(_coords) {$/;"	f	class:base::stairsDown	signature:(vector<int> *_coords)
+base::stairsUp	include/base/stairsUp.h	/^	class stairsUp : public base::block {$/;"	c	namespace:base	inherits:base::block
+base::stairsUp::hit	include/base/stairsUp.h	/^			void hit(base::entity *hitter);$/;"	p	class:base::stairsUp	access:public	signature:(base::entity *hitter)
+base::stairsUp::hit	src/stairsUp.cpp	/^void base::stairsUp::hit(base::entity *hitter) {$/;"	f	class:base::stairsUp	signature:(base::entity *hitter)
+base::stairsUp::stairsUp	include/base/stairsUp.h	/^			stairsUp(vector<int> *_coords);$/;"	p	class:base::stairsUp	access:public	signature:(vector<int> *_coords)
+base::stairsUp::stairsUp	src/stairsUp.cpp	/^base::stairsUp::stairsUp(vector<int> *_coords) : base::block(_coords) {$/;"	f	class:base::stairsUp	signature:(vector<int> *_coords)
+base::stairsWarp	include/base/stairsWarp.h	/^	class stairsWarp : public base::block {$/;"	c	namespace:base	inherits:base::block
+base::stairsWarp::hit	include/base/stairsWarp.h	/^			void hit(base::entity *hitter);$/;"	p	class:base::stairsWarp	access:public	signature:(base::entity *hitter)
+base::stairsWarp::hit	src/stairsWarp.cpp	/^void base::stairsWarp::hit(base::entity *hitter) {$/;"	f	class:base::stairsWarp	signature:(base::entity *hitter)
+base::stairsWarp::stairsWarp	include/base/stairsWarp.h	/^			stairsWarp(vector<int> *_coords, int _warp);$/;"	p	class:base::stairsWarp	access:public	signature:(vector<int> *_coords, int _warp)
+base::stairsWarp::stairsWarp	src/stairsWarp.cpp	/^base::stairsWarp::stairsWarp(vector<int> *_coords, int _warp) : base::block(_coords) {$/;"	f	class:base::stairsWarp	signature:(vector<int> *_coords, int _warp)
+base::stairsWarp::warp	include/base/stairsWarp.h	/^			int warp;$/;"	m	class:base::stairsWarp	access:private
+base::stone	include/base/stone.h	/^	class stone : public base::block {$/;"	c	namespace:base	inherits:base::block
+base::stone::stone	include/base/stone.h	/^			stone(vector<int> *_coords);$/;"	p	class:base::stone	access:public	signature:(vector<int> *_coords)
+base::stone::stone	src/stone.cpp	/^base::stone::stone(vector<int> *_coords) : base::block(_coords) {$/;"	f	class:base::stone	signature:(vector<int> *_coords)
+base::woodFloor	include/base/woodFloor.h	/^	class woodFloor : public base::floor {$/;"	c	namespace:base	inherits:base::floor
+base::woodFloor::woodFloor	include/base/woodFloor.h	/^			woodFloor(vector<int> *_coords);$/;"	p	class:base::woodFloor	access:public	signature:(vector<int> *_coords)
+base::woodFloor::woodFloor	src/woodFloor.cpp	/^base::woodFloor::woodFloor(vector<int> *_coords) : base::floor(_coords) {$/;"	f	class:base::woodFloor	signature:(vector<int> *_coords)
+block	include/base/block.h	/^			block(vector<int> *_coords);$/;"	p	class:base::block	access:public	signature:(vector<int> *_coords)
+block	include/base/block.h	/^	class block : public base::physicalObject {$/;"	c	namespace:base	inherits:base::physicalObject
+block	src/block.cpp	/^base::block::block(vector<int> *_coords) : base::physicalObject(_coords) {}$/;"	f	class:base::block	signature:(vector<int> *_coords)
+blockState	include/client/glGame.h	/^			base::group *blockState;$/;"	m	class:client::glGame	access:private
+blockState	include/client/networkController.h	/^			base::group *blockState;$/;"	m	class:client::networkController	access:private
+blockState	include/level/level.h	/^			base::group *blockState;$/;"	m	class:level::level	access:private
+blocks	include/level/level.h	/^			map<string, base::block *> *blocks;\/\/Give base::block a clone method to instantiate new blocks.$/;"	m	class:level::level	access:private
+bump	include/base/physicalObject.h	/^			virtual void bump(base::entity *bumper) =0;$/;"	p	class:base::physicalObject	access:public	signature:(base::entity *bumper)
+client	include/client/glGame.h	/^namespace client {$/;"	n
+client	include/client/networkController.h	/^namespace client {$/;"	n
+client	include/client/networkView.h	/^namespace client {$/;"	n
+client	include/server/network/networkController.h	/^				network::wrapper *client;$/;"	m	class:server::network::networkController	access:private
+client	include/server/network/networkSubsystem.h	/^				network::wrapper *client;$/;"	m	class:server::network::networkSubsystem	access:private
+client	include/server/network/networkView.h	/^				network::wrapper *client;$/;"	m	class:server::network::networkView	access:private
+client::glGame	include/client/glGame.h	/^	class glGame : public chameleon::event::manager, public chameleon::event::listener {$/;"	c	namespace:client	inherits:chameleon::event::manager,chameleon::event::listener
+client::glGame::blockState	include/client/glGame.h	/^			base::group *blockState;$/;"	m	class:client::glGame	access:private
+client::glGame::entities	include/client/glGame.h	/^			map<string, base::entity *> *entities;$/;"	m	class:client::glGame	access:private
+client::glGame::ev_distLevel	include/client/glGame.h	/^			void ev_distLevel(void *data);$/;"	p	class:client::glGame	access:public	signature:(void *data)
+client::glGame::ev_entityKilled	include/client/glGame.h	/^			void ev_entityKilled(void *data);$/;"	p	class:client::glGame	access:public	signature:(void *data)
+client::glGame::ev_entityMoved	include/client/glGame.h	/^			void ev_entityMoved(void *data);$/;"	p	class:client::glGame	access:public	signature:(void *data)
+client::glGame::ev_entitySpawned	include/client/glGame.h	/^			void ev_entitySpawned(void *data);$/;"	p	class:client::glGame	access:public	signature:(void *data)
+client::glGame::ev_gameOver	include/client/glGame.h	/^			void ev_gameOver(void *data);$/;"	p	class:client::glGame	access:public	signature:(void *data)
+client::glGame::floorState	include/client/glGame.h	/^			base::group *floorState;$/;"	m	class:client::glGame	access:private
+client::glGame::glGame	include/client/glGame.h	/^			glGame();$/;"	p	class:client::glGame	access:public	signature:()
+client::glGame::main	include/client/glGame.h	/^			void main();$/;"	p	class:client::glGame	access:public	signature:()
+client::networkController	include/client/networkController.h	/^	class networkController : public chameleon::event::listener {$/;"	c	namespace:client	inherits:chameleon::event::listener
+client::networkController::blockState	include/client/networkController.h	/^			base::group *blockState;$/;"	m	class:client::networkController	access:private
+client::networkController::entityState	include/client/networkController.h	/^			base::group *entityState;$/;"	m	class:client::networkController	access:private
+client::networkController::ev_levelReceived	include/client/networkController.h	/^			void ev_levelReceived(void *data);$/;"	p	class:client::networkController	access:public	signature:(void *data)
+client::networkController::ev_update	include/client/networkController.h	/^			void ev_update(void *data);$/;"	p	class:client::networkController	access:public	signature:(void *data)
+client::networkController::floorState	include/client/networkController.h	/^			base::group *floorState;$/;"	m	class:client::networkController	access:private
+client::networkController::manager	include/client/networkController.h	/^			chameleon::event::manager *manager;$/;"	m	class:client::networkController	access:private
+client::networkController::networkController	include/client/networkController.h	/^			networkController(chameleon::event::manager *_manager, network::wrapper *_server);$/;"	p	class:client::networkController	access:public	signature:(chameleon::event::manager *_manager, network::wrapper *_server)
+client::networkController::server	include/client/networkController.h	/^			network::wrapper *server;$/;"	m	class:client::networkController	access:private
+client::networkView	include/client/networkView.h	/^	class networkView : public chameleon::event::listener {$/;"	c	namespace:client	inherits:chameleon::event::listener
+client::networkView::ev_attack	include/client/networkView.h	/^			void ev_attack(void *data);$/;"	p	class:client::networkView	access:public	signature:(void *data)
+client::networkView::ev_down	include/client/networkView.h	/^			void ev_down(void *data);$/;"	p	class:client::networkView	access:public	signature:(void *data)
+client::networkView::ev_left	include/client/networkView.h	/^			void ev_left(void *data);$/;"	p	class:client::networkView	access:public	signature:(void *data)
+client::networkView::ev_logout	include/client/networkView.h	/^			void ev_logout(void *data);$/;"	p	class:client::networkView	access:public	signature:(void *data)
+client::networkView::ev_right	include/client/networkView.h	/^			void ev_right(void *data);$/;"	p	class:client::networkView	access:public	signature:(void *data)
+client::networkView::ev_up	include/client/networkView.h	/^			void ev_up(void *data);$/;"	p	class:client::networkView	access:public	signature:(void *data)
+client::networkView::manager	include/client/networkView.h	/^			chameleon::event::manager *manager;$/;"	m	class:client::networkView	access:private
+client::networkView::networkView	include/client/networkView.h	/^			networkView(chameleon::event::manager *_manager, network::wrapper *_server);$/;"	p	class:client::networkView	access:public	signature:(chameleon::event::manager *_manager, network::wrapper *_server)
+client::networkView::server	include/client/networkView.h	/^			network::wrapper *server;$/;"	m	class:client::networkView	access:private
+coords	include/base/drawnObject.h	/^			vector<int> *coords;$/;"	m	class:base::drawnObject	access:private
+curlevel	include/base/entity.h	/^			int curlevel;$/;"	m	class:base::entity	access:private
+curtime	include/level/levelManager.h	/^			double curtime;$/;"	m	class:level::levelManager	access:private
+data	include/base/drawnObject.h	/^			map<string, string> *data;$/;"	m	class:base::drawnObject	access:private
+db	include/server/db/dbManager.h	/^	namespace db {$/;"	n	namespace:server
+dbManager	include/server/db/dbManager.h	/^				dbManager(chameleon::event::manager *_manager);$/;"	p	class:server::db::dbManager	access:public	signature:(chameleon::event::manager *_manager)
+dbManager	include/server/db/dbManager.h	/^		class dbManager : public chameleon::event::listener {$/;"	c	namespace:server::db	inherits:chameleon::event::listener
+dbManager	include/server/spinner.h	/^			server::db::dbManager *dbManager;$/;"	m	class:server::spinner	access:private
+draw	include/base/drawnObject.h	/^			void draw(int scale=1);$/;"	p	class:base::drawnObject	access:public	signature:(int scale=1)
+draw	include/base/image.h	/^			void draw(vector<int> *coords, int scale = 1);$/;"	p	class:base::image	access:public	signature:(vector<int> *coords, int scale = 1)
+draw	src/drawnObject.cpp	/^void base::drawnObject::draw(int scale) {$/;"	f	class:base::drawnObject	signature:(int scale)
+drawnObject	include/base/drawnObject.h	/^			drawnObject(vector<int> *_coords);$/;"	p	class:base::drawnObject	access:public	signature:(vector<int> *_coords)
+drawnObject	include/base/drawnObject.h	/^	class drawnObject {$/;"	c	namespace:base
+drawnObject	src/drawnObject.cpp	/^base::drawnObject::drawnObject(vector<int> *_coords) {$/;"	f	class:base::drawnObject	signature:(vector<int> *_coords)
+entities	include/client/glGame.h	/^			map<string, base::entity *> *entities;$/;"	m	class:client::glGame	access:private
+entity	include/base/entity.h	/^			entity(vector<int> *_coords, map<string, string> *_data=NULL, chameleon::event::manager *_manager=NULL, int _curLevel=0);$/;"	p	class:base::entity	access:public	signature:(vector<int> *_coords, map<string, string> *_data=NULL, chameleon::event::manager *_manager=NULL, int _curLevel=0)
+entity	include/base/entity.h	/^	class entity : public base::physicalObject {$/;"	c	namespace:base	inherits:base::physicalObject
+entity	src/entity.cpp	/^base::entity::entity(vector<int> *_coords, map<string, string> *_data, chameleon::event::manager *_manager, int _curLevel) : base::physicalObject(_coords) {$/;"	f	class:base::entity	signature:(vector<int> *_coords, map<string, string> *_data, chameleon::event::manager *_manager, int _curLevel)
+entityState	include/client/networkController.h	/^			base::group *entityState;$/;"	m	class:client::networkController	access:private
+entityState	include/level/level.h	/^			base::group *entityState;$/;"	m	class:level::level	access:private
+ev_attack	include/client/networkView.h	/^			void ev_attack(void *data);$/;"	p	class:client::networkView	access:public	signature:(void *data)
+ev_distEntity	include/server/network/networkSubsystem.h	/^				void ev_distEntity(void *data);$/;"	p	class:server::network::networkSubsystem	access:public	signature:(void *data)
+ev_distLevel	include/client/glGame.h	/^			void ev_distLevel(void *data);$/;"	p	class:client::glGame	access:public	signature:(void *data)
+ev_distLevel	include/server/network/networkSubsystem.h	/^				void ev_distLevel(void *data);$/;"	p	class:server::network::networkSubsystem	access:public	signature:(void *data)
+ev_distLevel	include/server/network/networkView.h	/^				void ev_distLevel(void *data);$/;"	p	class:server::network::networkView	access:public	signature:(void *data)
+ev_distSwitchLevel	include/server/network/networkSubsystem.h	/^				void ev_distSwitchLevel(void *data);$/;"	p	class:server::network::networkSubsystem	access:public	signature:(void *data)
+ev_down	include/client/networkView.h	/^			void ev_down(void *data);$/;"	p	class:client::networkView	access:public	signature:(void *data)
+ev_entityKilled	include/client/glGame.h	/^			void ev_entityKilled(void *data);$/;"	p	class:client::glGame	access:public	signature:(void *data)
+ev_entityKilled	include/server/network/networkSubsystem.h	/^				void ev_entityKilled(void *data);$/;"	p	class:server::network::networkSubsystem	access:public	signature:(void *data)
+ev_entityKilled	include/server/network/networkView.h	/^				void ev_entityKilled(void *data);$/;"	p	class:server::network::networkView	access:public	signature:(void *data)
+ev_entityMoved	include/client/glGame.h	/^			void ev_entityMoved(void *data);$/;"	p	class:client::glGame	access:public	signature:(void *data)
+ev_entityMoved	include/server/network/networkSubsystem.h	/^				void ev_entityMoved(void *data);$/;"	p	class:server::network::networkSubsystem	access:public	signature:(void *data)
+ev_entityMoved	include/server/network/networkView.h	/^				void ev_entityMoved(void *data);$/;"	p	class:server::network::networkView	access:public	signature:(void *data)
+ev_entitySpawned	include/client/glGame.h	/^			void ev_entitySpawned(void *data);$/;"	p	class:client::glGame	access:public	signature:(void *data)
+ev_entitySpawned	include/server/network/networkSubsystem.h	/^				void ev_entitySpawned(void *data);$/;"	p	class:server::network::networkSubsystem	access:public	signature:(void *data)
+ev_entitySpawned	include/server/network/networkView.h	/^				void ev_entitySpawned(void *data);$/;"	p	class:server::network::networkView	access:public	signature:(void *data)
+ev_fetchEntity	include/server/db/dbManager.h	/^				void ev_fetchEntity(void *data);$/;"	p	class:server::db::dbManager	access:public	signature:(void *data)
+ev_gameOver	include/client/glGame.h	/^			void ev_gameOver(void *data);$/;"	p	class:client::glGame	access:public	signature:(void *data)
+ev_gameOver	include/server/network/networkSubsystem.h	/^				void ev_gameOver(void *data);$/;"	p	class:server::network::networkSubsystem	access:public	signature:(void *data)
+ev_gameOver	include/server/network/networkView.h	/^				void ev_gameOver(void *data);$/;"	p	class:server::network::networkView	access:public	signature:(void *data)
+ev_getLevel	include/level/levelManager.h	/^			void ev_getLevel(void *data);$/;"	p	class:level::levelManager	access:public	signature:(void *data)
+ev_getLevel	include/server/network/networkSubsystem.h	/^				void ev_getLevel(void *data);$/;"	p	class:server::network::networkSubsystem	access:public	signature:(void *data)
+ev_kill	include/server/network/networkSubsystem.h	/^				void ev_kill(void *data);$/;"	p	class:server::network::networkSubsystem	access:public	signature:(void *data)
+ev_killEntity	include/level/levelManager.h	/^			void ev_killEntity(void *data);$/;"	p	class:level::levelManager	access:public	signature:(void *data)
+ev_left	include/client/networkView.h	/^			void ev_left(void *data);$/;"	p	class:client::networkView	access:public	signature:(void *data)
+ev_levelReceived	include/client/networkController.h	/^			void ev_levelReceived(void *data);$/;"	p	class:client::networkController	access:public	signature:(void *data)
+ev_logout	include/client/networkView.h	/^			void ev_logout(void *data);$/;"	p	class:client::networkView	access:public	signature:(void *data)
+ev_removeNetSubsystem	include/server/network/networkSubsystemDelegator.h	/^				void ev_removeNetSubsystem(void *data);$/;"	p	class:server::network::networkSubsystemDelegator	access:public	signature:(void *data)
+ev_right	include/client/networkView.h	/^			void ev_right(void *data);$/;"	p	class:client::networkView	access:public	signature:(void *data)
+ev_saveEntity	include/server/db/dbManager.h	/^				void ev_saveEntity(void *data);$/;"	p	class:server::db::dbManager	access:public	signature:(void *data)
+ev_sendLevel	include/server/network/networkView.h	/^				void ev_sendLevel(void *data);$/;"	p	class:server::network::networkView	access:public	signature:(void *data)
+ev_spawnEntity	include/level/levelManager.h	/^			void ev_spawnEntity(void *data);$/;"	p	class:level::levelManager	access:public	signature:(void *data)
+ev_switchLevel	include/level/levelManager.h	/^			void ev_switchLevel(void *data);$/;"	p	class:level::levelManager	access:public	signature:(void *data)
+ev_up	include/client/networkView.h	/^			void ev_up(void *data);$/;"	p	class:client::networkView	access:public	signature:(void *data)
+ev_update	include/client/networkController.h	/^			void ev_update(void *data);$/;"	p	class:client::networkController	access:public	signature:(void *data)
+ev_update	include/level/levelManager.h	/^			void ev_update(void *data);$/;"	p	class:level::levelManager	access:public	signature:(void *data)
+ev_update	include/server/network/networkController.h	/^				void ev_update(void *data);$/;"	p	class:server::network::networkController	access:public	signature:(void *data)
+ev_update	include/server/network/networkSubsystem.h	/^				void ev_update(void *data);$/;"	p	class:server::network::networkSubsystem	access:public	signature:(void *data)
+ev_update	include/server/network/networkSubsystemDelegator.h	/^				void ev_update(void *data);$/;"	p	class:server::network::networkSubsystemDelegator	access:public	signature:(void *data)
+floor	include/base/floor.h	/^			floor(vector<int> *_coords);$/;"	p	class:base::floor	access:public	signature:(vector<int> *_coords)
+floor	include/base/floor.h	/^	class floor : public base::drawnObject {$/;"	c	namespace:base	inherits:base::drawnObject
+floor	src/floor.cpp	/^base::floor::floor(vector<int> *_coords) : base::drawnObject(_coords) {}$/;"	f	class:base::floor	signature:(vector<int> *_coords)
+floorState	include/client/glGame.h	/^			base::group *floorState;$/;"	m	class:client::glGame	access:private
+floorState	include/client/networkController.h	/^			base::group *floorState;$/;"	m	class:client::networkController	access:private
+floorState	include/level/level.h	/^			base::group *floorState;$/;"	m	class:level::level	access:private
+getAttr	include/base/entity.h	/^			int getAttr(string key) {return attrs[key];}$/;"	f	class:base::entity	access:public	signature:(string key)
+getManager	include/base/entity.h	/^			chameleon::event::manager *getManager() {return manager;}$/;"	f	class:base::entity	access:public	signature:()
+glGame	include/client/glGame.h	/^			glGame();$/;"	p	class:client::glGame	access:public	signature:()
+glGame	include/client/glGame.h	/^	class glGame : public chameleon::event::manager, public chameleon::event::listener {$/;"	c	namespace:client	inherits:chameleon::event::manager,chameleon::event::listener
+group	include/base/group.h	/^			group();$/;"	p	class:base::group	access:public	signature:()
+group	include/base/group.h	/^	class group {$/;"	c	namespace:base
+gx	includes.vim	/^nmap gx <Plug>NetrwBrowseX$/;"	m
+gx	srcs.vim	/^nmap gx <Plug>NetrwBrowseX$/;"	m
+height	include/base/drawnObject.h	/^			int height;$/;"	m	class:base::drawnObject	access:private
+height	include/base/image.h	/^			int height;$/;"	m	class:base::image	access:private
+hit	include/base/player.h	/^			void hit(base::physicalObject *hitter);$/;"	p	class:base::player	access:public	signature:(base::physicalObject *hitter)
+hit	include/base/stairsDown.h	/^			void hit(base::entity *hitter);$/;"	p	class:base::stairsDown	access:public	signature:(base::entity *hitter)
+hit	include/base/stairsUp.h	/^			void hit(base::entity *hitter);$/;"	p	class:base::stairsUp	access:public	signature:(base::entity *hitter)
+hit	include/base/stairsWarp.h	/^			void hit(base::entity *hitter);$/;"	p	class:base::stairsWarp	access:public	signature:(base::entity *hitter)
+hit	src/player.cpp	/^void base::player::hit(base::entity *hitter) {$/;"	f	class:base::player	signature:(base::entity *hitter)
+hit	src/stairsDown.cpp	/^void base::stairsDown::hit(base::entity *hitter) {$/;"	f	class:base::stairsDown	signature:(base::entity *hitter)
+hit	src/stairsUp.cpp	/^void base::stairsUp::hit(base::entity *hitter) {$/;"	f	class:base::stairsUp	signature:(base::entity *hitter)
+hit	src/stairsWarp.cpp	/^void base::stairsWarp::hit(base::entity *hitter) {$/;"	f	class:base::stairsWarp	signature:(base::entity *hitter)
+image	include/base/drawnObject.h	/^			base::image *image;$/;"	m	class:base::drawnObject	access:private
+image	include/base/image.h	/^			image(string name);$/;"	p	class:base::image	access:public	signature:(string name)
+image	include/base/image.h	/^	class image {$/;"	c	namespace:base
+imgname	include/base/drawnObject.h	/^			string imgname;\/\/For loading client-side.$/;"	m	class:base::drawnObject	access:private
+intern	include/base/group.h	/^			list<base::drawnObject *> intern;$/;"	m	class:base::group	access:private
+level	include/level/level.h	/^			level(chameleon::event::manager *_manager, int _index);$/;"	p	class:level::level	access:public	signature:(chameleon::event::manager *_manager, int _index)
+level	include/level/level.h	/^	class level {$/;"	c	namespace:level
+level	include/level/level.h	/^namespace level {$/;"	n
+level	include/level/levelManager.h	/^namespace level {$/;"	n
+level	include/server/network/networkView.h	/^				level::level *level;$/;"	m	class:server::network::networkView	access:private
+level::level	include/level/level.h	/^	class level {$/;"	c	namespace:level
+level::level::blockState	include/level/level.h	/^			base::group *blockState;$/;"	m	class:level::level	access:private
+level::level::blocks	include/level/level.h	/^			map<string, base::block *> *blocks;\/\/Give base::block a clone method to instantiate new blocks.$/;"	m	class:level::level	access:private
+level::level::entityState	include/level/level.h	/^			base::group *entityState;$/;"	m	class:level::level	access:private
+level::level::floorState	include/level/level.h	/^			base::group *floorState;$/;"	m	class:level::level	access:private
+level::level::level	include/level/level.h	/^			level(chameleon::event::manager *_manager, int _index);$/;"	p	class:level::level	access:public	signature:(chameleon::event::manager *_manager, int _index)
+level::level::load	include/level/level.h	/^			static level *load(string dump, chameleon::event::manager *_manager);$/;"	p	class:level::level	access:public	signature:(string dump, chameleon::event::manager *_manager)
+level::level::loadLevel	include/level/level.h	/^			void loadLevel();$/;"	p	class:level::level	access:public	signature:()
+level::level::serialize	include/level/level.h	/^			string serialize();$/;"	p	class:level::level	access:public	signature:()
+level::level::startCoords	include/level/level.h	/^			vector<int> *startCoords;$/;"	m	class:level::level	access:private
+level::levelManager	include/level/levelManager.h	/^	class levelManager : public chameleon::event::listener {$/;"	c	namespace:level	inherits:chameleon::event::listener
+level::levelManager::curtime	include/level/levelManager.h	/^			double curtime;$/;"	m	class:level::levelManager	access:private
+level::levelManager::ev_getLevel	include/level/levelManager.h	/^			void ev_getLevel(void *data);$/;"	p	class:level::levelManager	access:public	signature:(void *data)
+level::levelManager::ev_killEntity	include/level/levelManager.h	/^			void ev_killEntity(void *data);$/;"	p	class:level::levelManager	access:public	signature:(void *data)
+level::levelManager::ev_spawnEntity	include/level/levelManager.h	/^			void ev_spawnEntity(void *data);$/;"	p	class:level::levelManager	access:public	signature:(void *data)
+level::levelManager::ev_switchLevel	include/level/levelManager.h	/^			void ev_switchLevel(void *data);$/;"	p	class:level::levelManager	access:public	signature:(void *data)
+level::levelManager::ev_update	include/level/levelManager.h	/^			void ev_update(void *data);$/;"	p	class:level::levelManager	access:public	signature:(void *data)
+level::levelManager::levelManager	include/level/levelManager.h	/^			levelManager(chameleon::event::listener *_manager);$/;"	p	class:level::levelManager	access:public	signature:(chameleon::event::listener *_manager)
+level::levelManager::manager	include/level/levelManager.h	/^			chameleon::event::manager *manager;$/;"	m	class:level::levelManager	access:private
+levelManager	include/level/levelManager.h	/^			levelManager(chameleon::event::listener *_manager);$/;"	p	class:level::levelManager	access:public	signature:(chameleon::event::listener *_manager)
+levelManager	include/level/levelManager.h	/^	class levelManager : public chameleon::event::listener {$/;"	c	namespace:level	inherits:chameleon::event::listener
+levelManager	include/server/spinner.h	/^			level::levelManager *levelManager;$/;"	m	class:server::spinner	access:private
+load	include/level/level.h	/^			static level *load(string dump, chameleon::event::manager *_manager);$/;"	p	class:level::level	access:public	signature:(string dump, chameleon::event::manager *_manager)
+loadLevel	include/level/level.h	/^			void loadLevel();$/;"	p	class:level::level	access:public	signature:()
+main	include/client/glGame.h	/^			void main();$/;"	p	class:client::glGame	access:public	signature:()
+main	include/server/spinner.h	/^			void main();$/;"	p	class:server::spinner	access:public	signature:()
+manager	include/base/entity.h	/^			chameleon::event::manager *manager;$/;"	m	class:base::entity	access:private
+manager	include/client/networkController.h	/^			chameleon::event::manager *manager;$/;"	m	class:client::networkController	access:private
+manager	include/client/networkView.h	/^			chameleon::event::manager *manager;$/;"	m	class:client::networkView	access:private
+manager	include/level/levelManager.h	/^			chameleon::event::manager *manager;$/;"	m	class:level::levelManager	access:private
+manager	include/server/network/networkController.h	/^				chameleon::event::manager *manager;$/;"	m	class:server::network::networkController	access:private
+manager	include/server/network/networkSubsystem.h	/^				chameleon::event::manager *manager;$/;"	m	class:server::network::networkSubsystem	access:private
+manager	include/server/network/networkSubsystemDelegator.h	/^				chameleon::event::manager *manager;$/;"	m	class:server::network::networkSubsystemDelegator	access:private
+manager	include/server/network/networkView.h	/^				chameleon::event::manager *manager;$/;"	m	class:server::network::networkView	access:private
+movedown	include/base/entity.h	/^			void movedown(bool down);$/;"	p	class:base::entity	access:public	signature:(bool down)
+movedown	src/entity.cpp	/^void base::entity::movedown(bool down) {$/;"	f	class:base::entity	signature:(bool down)
+moveleft	include/base/entity.h	/^			void moveleft(bool down);$/;"	p	class:base::entity	access:public	signature:(bool down)
+moveleft	src/entity.cpp	/^void base::entity::moveleft(bool down) {$/;"	f	class:base::entity	signature:(bool down)
+moveright	include/base/entity.h	/^			void moveright(bool down);$/;"	p	class:base::entity	access:public	signature:(bool down)
+moveright	src/entity.cpp	/^void base::entity::moveright(bool down) {$/;"	f	class:base::entity	signature:(bool down)
+moveup	include/base/entity.h	/^			void moveup(bool down);$/;"	p	class:base::entity	access:public	signature:(bool down)
+moveup	src/entity.cpp	/^void base::entity::moveup(bool down) {$/;"	f	class:base::entity	signature:(bool down)
+nOfColors	src/image.cpp	/^	GLint nOfColors;$/;"	v
+name	genSkeleton.py	/^name = sys.argv[1]$/;"	v
+netSubDelegator	include/server/spinner.h	/^			server::networkSubsystemDelegator *netSubDelegator;$/;"	m	class:server::spinner	access:private
+netSubsystems	include/server/network/networkSubsystemDelegator.h	/^				list<server::network::networkSubsystem *> netSubsystems;$/;"	m	class:server::network::networkSubsystemDelegator	access:private
+network	include/server/network/networkController.h	/^	namespace network {$/;"	n	namespace:server
+network	include/server/network/networkSubsystem.h	/^	namespace network {$/;"	n	namespace:server
+network	include/server/network/networkSubsystemDelegator.h	/^	namespace network {$/;"	n	namespace:server
+network	include/server/network/networkView.h	/^	namespace network {$/;"	n	namespace:server
+networkController	include/client/networkController.h	/^			networkController(chameleon::event::manager *_manager, network::wrapper *_server);$/;"	p	class:client::networkController	access:public	signature:(chameleon::event::manager *_manager, network::wrapper *_server)
+networkController	include/client/networkController.h	/^	class networkController : public chameleon::event::listener {$/;"	c	namespace:client	inherits:chameleon::event::listener
+networkController	include/server/network/networkController.h	/^				networkController(chameleon::event::manager *_manager, network::wrapper *_client);$/;"	p	class:server::network::networkController	access:public	signature:(chameleon::event::manager *_manager, network::wrapper *_client)
+networkController	include/server/network/networkController.h	/^		class networkController : public chameleon::event::listener {$/;"	c	namespace:server::network	inherits:chameleon::event::listener
+networkSubsystem	include/server/network/networkSubsystem.h	/^				networkSubsystem(chameleon::event::manager *_manager, network::wrapper *_client);$/;"	p	class:server::network::networkSubsystem	access:public	signature:(chameleon::event::manager *_manager, network::wrapper *_client)
+networkSubsystem	include/server/network/networkSubsystem.h	/^		class networkSubsystem : public chameleon::event::manager, public chameleon::event::listener {$/;"	c	namespace:server::network	inherits:chameleon::event::manager,chameleon::event::listener
+networkSubsystemDelegator	include/server/network/networkSubsystemDelegator.h	/^				networkSubsystemDelegator(chameleon::event::manager *_manager);$/;"	p	class:server::network::networkSubsystemDelegator	access:public	signature:(chameleon::event::manager *_manager)
+networkSubsystemDelegator	include/server/network/networkSubsystemDelegator.h	/^		class networkSubsystemDelegator : public chameleon::event::listener {$/;"	c	namespace:server::network	inherits:chameleon::event::listener
+networkView	include/client/networkView.h	/^			networkView(chameleon::event::manager *_manager, network::wrapper *_server);$/;"	p	class:client::networkView	access:public	signature:(chameleon::event::manager *_manager, network::wrapper *_server)
+networkView	include/client/networkView.h	/^	class networkView : public chameleon::event::listener {$/;"	c	namespace:client	inherits:chameleon::event::listener
+networkView	include/server/network/networkView.h	/^				networkView(chameleon::event::manager *_manager, network::wrapper *_client);$/;"	p	class:server::network::networkView	access:public	signature:(chameleon::event::manager *_manager, network::wrapper *_client)
+networkView	include/server/network/networkView.h	/^		class networkView : public chameleon::event::listener {$/;"	c	namespace:server::network	inherits:chameleon::event::listener
+package	genSkeleton.py	/^package = sys.argv[2]$/;"	v
+physicalObject	include/base/physicalObject.h	/^			physicalObject(vector<int> *_coords):$/;"	p	class:base::physicalObject	access:public	signature:(vector<int> *_coords)
+physicalObject	include/base/physicalObject.h	/^	class physicalObject : public base::drawnObject {$/;"	c	namespace:base	inherits:base::drawnObject
+physicalObject	src/physicalObject.cpp	/^base::physicalObject::physicalObject(vector<int> *_coords) : base::drawnObject(_coords) {}$/;"	f	class:base::physicalObject	signature:(vector<int> *_coords)
+player	include/base/player.h	/^			player(vector<int> *_coords, map<string, string> *_data=NULL, chameleon::event::manager *_manager=NULL, int _curLevel=0);$/;"	p	class:base::player	access:public	signature:(vector<int> *_coords, map<string, string> *_data=NULL, chameleon::event::manager *_manager=NULL, int _curLevel=0)
+player	include/base/player.h	/^	class player : public entity {$/;"	c	namespace:base	inherits:entity
+player	src/player.cpp	/^base::player::player(vector<int> *_coords, map<string, string> *_data=NULL, chameleon::event::manager *_manager=NULL, int _curLevel=0) : base::entity(_coords, _data, _manager, _curLevel) {$/;"	f	class:base::player	signature:(vector<int> *_coords, map<string, string> *_data=NULL, chameleon::event::manager *_manager=NULL, int _curLevel=0)
+plugins	include/server/network/networkSubsystem.h	/^				list<chameleon::event::listener *> *plugins;$/;"	m	class:server::network::networkSubsystem	access:private
+prev	include/base/player.h	/^			string prev;$/;"	m	class:base::player	access:private
+remove	include/base/group.h	/^			void remove(base::drawnObject *object);$/;"	p	class:base::group	access:public	signature:(base::drawnObject *object)
+requestx	include/base/entity.h	/^			int requestx;$/;"	m	class:base::entity	access:private
+requesty	include/base/entity.h	/^			int requesty;$/;"	m	class:base::entity	access:private
+s:cpo_save	includes.vim	/^let s:cpo_save=&cpo$/;"	v
+s:cpo_save	srcs.vim	/^let s:cpo_save=&cpo$/;"	v
+s:l	includes.vim	/^let s:l = 1 - ((0 * winheight(0) + 17) \/ 34)$/;"	v
+s:l	includes.vim	/^let s:l = 14 - ((13 * winheight(0) + 17) \/ 34)$/;"	v
+s:l	srcs.vim	/^let s:l = 1 - ((0 * winheight(0) + 17) \/ 34)$/;"	v
+s:l	srcs.vim	/^let s:l = 28 - ((27 * winheight(0) + 17) \/ 34)$/;"	v
+s:l	srcs.vim	/^let s:l = 4 - ((3 * winheight(0) + 17) \/ 34)$/;"	v
+s:l	srcs.vim	/^let s:l = 6 - ((5 * winheight(0) + 17) \/ 34)$/;"	v
+s:l	srcs.vim	/^let s:l = 70 - ((19 * winheight(0) + 17) \/ 34)$/;"	v
+s:l	srcs.vim	/^let s:l = 8 - ((7 * winheight(0) + 17) \/ 34)$/;"	v
+s:l	srcs.vim	/^let s:l = 81 - ((14 * winheight(0) + 17) \/ 34)$/;"	v
+s:so_save	includes.vim	/^let s:so_save = &so | let s:siso_save = &siso | set so=0 siso=0$/;"	v
+s:so_save	srcs.vim	/^let s:so_save = &so | let s:siso_save = &siso | set so=0 siso=0$/;"	v
+s:sx	includes.vim	/^let s:sx = expand("<sfile>:p:r")."x.vim"$/;"	v
+s:sx	srcs.vim	/^let s:sx = expand("<sfile>:p:r")."x.vim"$/;"	v
+s:wipebuf	includes.vim	/^  let s:wipebuf = bufnr('%')$/;"	v
+s:wipebuf	srcs.vim	/^  let s:wipebuf = bufnr('%')$/;"	v
+serialize	include/base/drawnObject.h	/^			virtual void serialize(Archive &ar, const unsigned int version);$/;"	p	class:base::drawnObject	access:public	signature:(Archive &ar, const unsigned int version)
+serialize	include/base/group.h	/^			virtual void serialize(Archive &ar, const unsigned int version);$/;"	p	class:base::group	access:public	signature:(Archive &ar, const unsigned int version)
+serialize	include/level/level.h	/^			string serialize();$/;"	p	class:level::level	access:public	signature:()
+serialize	src/drawnObject.cpp	/^void base::drawnObject::serialize(Archive &ar, const unsigned int version) {$/;"	f	class:base::drawnObject	signature:(Archive &ar, const unsigned int version)
+serialize	src/group.cpp	/^void base::group::serialize(Archive &ar, const unsigned int version) {$/;"	f	class:base::group	signature:(Archive &ar, const unsigned int version)
+server	include/client/networkController.h	/^			network::wrapper *server;$/;"	m	class:client::networkController	access:private
+server	include/client/networkView.h	/^			network::wrapper *server;$/;"	m	class:client::networkView	access:private
+server	include/server/db/dbManager.h	/^namespace server {$/;"	n
+server	include/server/network/networkController.h	/^namespace server {$/;"	n
+server	include/server/network/networkSubsystem.h	/^namespace server {$/;"	n
+server	include/server/network/networkSubsystemDelegator.h	/^namespace server {$/;"	n
+server	include/server/network/networkView.h	/^namespace server {$/;"	n
+server	include/server/spinner.h	/^namespace server {$/;"	n
+server::db	include/server/db/dbManager.h	/^	namespace db {$/;"	n	namespace:server
+server::db::dbManager	include/server/db/dbManager.h	/^		class dbManager : public chameleon::event::listener {$/;"	c	namespace:server::db	inherits:chameleon::event::listener
+server::db::dbManager::dbManager	include/server/db/dbManager.h	/^				dbManager(chameleon::event::manager *_manager);$/;"	p	class:server::db::dbManager	access:public	signature:(chameleon::event::manager *_manager)
+server::db::dbManager::ev_fetchEntity	include/server/db/dbManager.h	/^				void ev_fetchEntity(void *data);$/;"	p	class:server::db::dbManager	access:public	signature:(void *data)
+server::db::dbManager::ev_saveEntity	include/server/db/dbManager.h	/^				void ev_saveEntity(void *data);$/;"	p	class:server::db::dbManager	access:public	signature:(void *data)
+server::network	include/server/network/networkController.h	/^	namespace network {$/;"	n	namespace:server
+server::network	include/server/network/networkSubsystem.h	/^	namespace network {$/;"	n	namespace:server
+server::network	include/server/network/networkSubsystemDelegator.h	/^	namespace network {$/;"	n	namespace:server
+server::network	include/server/network/networkView.h	/^	namespace network {$/;"	n	namespace:server
+server::network::networkController	include/server/network/networkController.h	/^		class networkController : public chameleon::event::listener {$/;"	c	namespace:server::network	inherits:chameleon::event::listener
+server::network::networkController::client	include/server/network/networkController.h	/^				network::wrapper *client;$/;"	m	class:server::network::networkController	access:private
+server::network::networkController::ev_update	include/server/network/networkController.h	/^				void ev_update(void *data);$/;"	p	class:server::network::networkController	access:public	signature:(void *data)
+server::network::networkController::manager	include/server/network/networkController.h	/^				chameleon::event::manager *manager;$/;"	m	class:server::network::networkController	access:private
+server::network::networkController::networkController	include/server/network/networkController.h	/^				networkController(chameleon::event::manager *_manager, network::wrapper *_client);$/;"	p	class:server::network::networkController	access:public	signature:(chameleon::event::manager *_manager, network::wrapper *_client)
+server::network::networkSubsystem	include/server/network/networkSubsystem.h	/^		class networkSubsystem : public chameleon::event::manager, public chameleon::event::listener {$/;"	c	namespace:server::network	inherits:chameleon::event::manager,chameleon::event::listener
+server::network::networkSubsystem::client	include/server/network/networkSubsystem.h	/^				network::wrapper *client;$/;"	m	class:server::network::networkSubsystem	access:private
+server::network::networkSubsystem::ev_distEntity	include/server/network/networkSubsystem.h	/^				void ev_distEntity(void *data);$/;"	p	class:server::network::networkSubsystem	access:public	signature:(void *data)
+server::network::networkSubsystem::ev_distLevel	include/server/network/networkSubsystem.h	/^				void ev_distLevel(void *data);$/;"	p	class:server::network::networkSubsystem	access:public	signature:(void *data)
+server::network::networkSubsystem::ev_distSwitchLevel	include/server/network/networkSubsystem.h	/^				void ev_distSwitchLevel(void *data);$/;"	p	class:server::network::networkSubsystem	access:public	signature:(void *data)
+server::network::networkSubsystem::ev_entityKilled	include/server/network/networkSubsystem.h	/^				void ev_entityKilled(void *data);$/;"	p	class:server::network::networkSubsystem	access:public	signature:(void *data)
+server::network::networkSubsystem::ev_entityMoved	include/server/network/networkSubsystem.h	/^				void ev_entityMoved(void *data);$/;"	p	class:server::network::networkSubsystem	access:public	signature:(void *data)
+server::network::networkSubsystem::ev_entitySpawned	include/server/network/networkSubsystem.h	/^				void ev_entitySpawned(void *data);$/;"	p	class:server::network::networkSubsystem	access:public	signature:(void *data)
+server::network::networkSubsystem::ev_gameOver	include/server/network/networkSubsystem.h	/^				void ev_gameOver(void *data);$/;"	p	class:server::network::networkSubsystem	access:public	signature:(void *data)
+server::network::networkSubsystem::ev_getLevel	include/server/network/networkSubsystem.h	/^				void ev_getLevel(void *data);$/;"	p	class:server::network::networkSubsystem	access:public	signature:(void *data)
+server::network::networkSubsystem::ev_kill	include/server/network/networkSubsystem.h	/^				void ev_kill(void *data);$/;"	p	class:server::network::networkSubsystem	access:public	signature:(void *data)
+server::network::networkSubsystem::ev_update	include/server/network/networkSubsystem.h	/^				void ev_update(void *data);$/;"	p	class:server::network::networkSubsystem	access:public	signature:(void *data)
+server::network::networkSubsystem::manager	include/server/network/networkSubsystem.h	/^				chameleon::event::manager *manager;$/;"	m	class:server::network::networkSubsystem	access:private
+server::network::networkSubsystem::networkSubsystem	include/server/network/networkSubsystem.h	/^				networkSubsystem(chameleon::event::manager *_manager, network::wrapper *_client);$/;"	p	class:server::network::networkSubsystem	access:public	signature:(chameleon::event::manager *_manager, network::wrapper *_client)
+server::network::networkSubsystem::plugins	include/server/network/networkSubsystem.h	/^				list<chameleon::event::listener *> *plugins;$/;"	m	class:server::network::networkSubsystem	access:private
+server::network::networkSubsystemDelegator	include/server/network/networkSubsystemDelegator.h	/^		class networkSubsystemDelegator : public chameleon::event::listener {$/;"	c	namespace:server::network	inherits:chameleon::event::listener
+server::network::networkSubsystemDelegator::ev_removeNetSubsystem	include/server/network/networkSubsystemDelegator.h	/^				void ev_removeNetSubsystem(void *data);$/;"	p	class:server::network::networkSubsystemDelegator	access:public	signature:(void *data)
+server::network::networkSubsystemDelegator::ev_update	include/server/network/networkSubsystemDelegator.h	/^				void ev_update(void *data);$/;"	p	class:server::network::networkSubsystemDelegator	access:public	signature:(void *data)
+server::network::networkSubsystemDelegator::manager	include/server/network/networkSubsystemDelegator.h	/^				chameleon::event::manager *manager;$/;"	m	class:server::network::networkSubsystemDelegator	access:private
+server::network::networkSubsystemDelegator::netSubsystems	include/server/network/networkSubsystemDelegator.h	/^				list<server::network::networkSubsystem *> netSubsystems;$/;"	m	class:server::network::networkSubsystemDelegator	access:private
+server::network::networkSubsystemDelegator::networkSubsystemDelegator	include/server/network/networkSubsystemDelegator.h	/^				networkSubsystemDelegator(chameleon::event::manager *_manager);$/;"	p	class:server::network::networkSubsystemDelegator	access:public	signature:(chameleon::event::manager *_manager)
+server::network::networkView	include/server/network/networkView.h	/^		class networkView : public chameleon::event::listener {$/;"	c	namespace:server::network	inherits:chameleon::event::listener
+server::network::networkView::client	include/server/network/networkView.h	/^				network::wrapper *client;$/;"	m	class:server::network::networkView	access:private
+server::network::networkView::ev_distLevel	include/server/network/networkView.h	/^				void ev_distLevel(void *data);$/;"	p	class:server::network::networkView	access:public	signature:(void *data)
+server::network::networkView::ev_entityKilled	include/server/network/networkView.h	/^				void ev_entityKilled(void *data);$/;"	p	class:server::network::networkView	access:public	signature:(void *data)
+server::network::networkView::ev_entityMoved	include/server/network/networkView.h	/^				void ev_entityMoved(void *data);$/;"	p	class:server::network::networkView	access:public	signature:(void *data)
+server::network::networkView::ev_entitySpawned	include/server/network/networkView.h	/^				void ev_entitySpawned(void *data);$/;"	p	class:server::network::networkView	access:public	signature:(void *data)
+server::network::networkView::ev_gameOver	include/server/network/networkView.h	/^				void ev_gameOver(void *data);$/;"	p	class:server::network::networkView	access:public	signature:(void *data)
+server::network::networkView::ev_sendLevel	include/server/network/networkView.h	/^				void ev_sendLevel(void *data);$/;"	p	class:server::network::networkView	access:public	signature:(void *data)
+server::network::networkView::level	include/server/network/networkView.h	/^				level::level *level;$/;"	m	class:server::network::networkView	access:private
+server::network::networkView::manager	include/server/network/networkView.h	/^				chameleon::event::manager *manager;$/;"	m	class:server::network::networkView	access:private
+server::network::networkView::networkView	include/server/network/networkView.h	/^				networkView(chameleon::event::manager *_manager, network::wrapper *_client);$/;"	p	class:server::network::networkView	access:public	signature:(chameleon::event::manager *_manager, network::wrapper *_client)
+server::spinner	include/server/spinner.h	/^	class spinner  : public chameleon::event::manager {$/;"	c	namespace:server	inherits:chameleon::event::manager
+server::spinner::dbManager	include/server/spinner.h	/^			server::db::dbManager *dbManager;$/;"	m	class:server::spinner	access:private
+server::spinner::levelManager	include/server/spinner.h	/^			level::levelManager *levelManager;$/;"	m	class:server::spinner	access:private
+server::spinner::main	include/server/spinner.h	/^			void main();$/;"	p	class:server::spinner	access:public	signature:()
+server::spinner::netSubDelegator	include/server/spinner.h	/^			server::networkSubsystemDelegator *netSubDelegator;$/;"	m	class:server::spinner	access:private
+server::spinner::spinner	include/server/spinner.h	/^			spinner();$/;"	p	class:server::spinner	access:public	signature:()
+setCurLevel	include/base/entity.h	/^			void setCurLevel(int _curLevel) {curLevel = _curLevel;}$/;"	f	class:base::entity	access:public	signature:(int _curLevel)
+spinner	include/server/spinner.h	/^			spinner();$/;"	p	class:server::spinner	access:public	signature:()
+spinner	include/server/spinner.h	/^	class spinner  : public chameleon::event::manager {$/;"	c	namespace:server	inherits:chameleon::event::manager
+stairsDown	include/base/stairsDown.h	/^			stairsDown(vector<int> *_coords);$/;"	p	class:base::stairsDown	access:public	signature:(vector<int> *_coords)
+stairsDown	include/base/stairsDown.h	/^	class stairsDown : public base::block {$/;"	c	namespace:base	inherits:base::block
+stairsDown	src/stairsDown.cpp	/^base::stairsDown::stairsDown(vector<int> *_coords) : base::block(_coords) {$/;"	f	class:base::stairsDown	signature:(vector<int> *_coords)
+stairsUp	include/base/stairsUp.h	/^			stairsUp(vector<int> *_coords);$/;"	p	class:base::stairsUp	access:public	signature:(vector<int> *_coords)
+stairsUp	include/base/stairsUp.h	/^	class stairsUp : public base::block {$/;"	c	namespace:base	inherits:base::block
+stairsUp	src/stairsUp.cpp	/^base::stairsUp::stairsUp(vector<int> *_coords) : base::block(_coords) {$/;"	f	class:base::stairsUp	signature:(vector<int> *_coords)
+stairsWarp	include/base/stairsWarp.h	/^			stairsWarp(vector<int> *_coords, int _warp);$/;"	p	class:base::stairsWarp	access:public	signature:(vector<int> *_coords, int _warp)
+stairsWarp	include/base/stairsWarp.h	/^	class stairsWarp : public base::block {$/;"	c	namespace:base	inherits:base::block
+stairsWarp	src/stairsWarp.cpp	/^base::stairsWarp::stairsWarp(vector<int> *_coords, int _warp) : base::block(_coords) {$/;"	f	class:base::stairsWarp	signature:(vector<int> *_coords, int _warp)
+startCoords	include/level/level.h	/^			vector<int> *startCoords;$/;"	m	class:level::level	access:private
+stone	include/base/stone.h	/^			stone(vector<int> *_coords);$/;"	p	class:base::stone	access:public	signature:(vector<int> *_coords)
+stone	include/base/stone.h	/^	class stone : public base::block {$/;"	c	namespace:base	inherits:base::block
+stone	src/stone.cpp	/^base::stone::stone(vector<int> *_coords) : base::block(_coords) {$/;"	f	class:base::stone	signature:(vector<int> *_coords)
+surface	src/image.cpp	/^	SDL_Surface *surface;	\/\/ This surface will tell us the details of the image$/;"	v
+texture	include/base/image.h	/^			GLuint texture;$/;"	m	class:base::image	access:private
+texture_format	src/image.cpp	/^	GLenum texture_format;$/;"	v
+update	include/base/drawnObject.h	/^			virtual void update(base::group *allSprites) =0;$/;"	p	class:base::drawnObject	access:public	signature:(base::group *allSprites)
+update	include/base/entity.h	/^			void update(base::group *allSprites);$/;"	p	class:base::entity	access:public	signature:(base::group *allSprites)
+update	include/base/player.h	/^			void update(base::group *allSprites);$/;"	p	class:base::player	access:public	signature:(base::group *allSprites)
+update	src/entity.cpp	/^void base::entity::update(base::group *allSprites) {$/;"	f	class:base::entity	signature:(base::group *allSprites)
+update	src/player.cpp	/^void base::player::update(base::group *allSprites) {$/;"	f	class:base::player	signature:(base::group *allSprites)
+warp	include/base/stairsWarp.h	/^			int warp;$/;"	m	class:base::stairsWarp	access:private
+wasjusthit	include/base/player.h	/^			int wasjusthit;$/;"	m	class:base::player	access:private
+width	include/base/drawnObject.h	/^			int width;$/;"	m	class:base::drawnObject	access:private
+width	include/base/image.h	/^			int width;$/;"	m	class:base::image	access:private
+woodFloor	include/base/woodFloor.h	/^			woodFloor(vector<int> *_coords);$/;"	p	class:base::woodFloor	access:public	signature:(vector<int> *_coords)
+woodFloor	include/base/woodFloor.h	/^	class woodFloor : public base::floor {$/;"	c	namespace:base	inherits:base::floor
+woodFloor	src/woodFloor.cpp	/^base::woodFloor::woodFloor(vector<int> *_coords) : base::floor(_coords) {$/;"	f	class:base::woodFloor	signature:(vector<int> *_coords)
+zt	includes.vim	/^normal! zt$/;"	m
+zt	srcs.vim	/^normal! zt$/;"	m
+ 	includes.vim	/^cnoremap   :simalt ~$/;"	m
+ 	includes.vim	/^inoremap   :simalt ~$/;"	m
+ 	includes.vim	/^noremap   :simalt ~$/;"	m
+ 	srcs.vim	/^cnoremap   :simalt ~$/;"	m
+ 	srcs.vim	/^inoremap   :simalt ~$/;"	m
+ 	srcs.vim	/^noremap   :simalt ~$/;"	m

@@ -9,28 +9,35 @@
 //USER INCLUDES:
 #include "chameleon.h"
 #include "base/physicalObject.h"
+#include "base/drawnObject.h"
+#include "base/rect.h"
 namespace base {
 	using namespace std;
 	class entity : public base::physicalObject {
-		static int amountCreated = 0;
+		friend class boost::serialization::access;
 		public:
 			entity(vector<int> *_coords, map<string, string> *_data=NULL, chameleon::event::manager *_manager=NULL, int _curLevel=0);
+			virtual base::drawnObject *clone() {return this;}
+			virtual string getType() {return "entity";}
 			void moveup(bool down);
 			void movedown(bool down);
 			void moveleft(bool down);
 			void moveright(bool down);
-			void attack(base::group *allSprites);
-			void update(base::group *allSprites);
+			virtual void attack(base::group<base::physicalObject> *allSprites);
+			virtual void update(base::group<base::physicalObject> *allSprites);
 			chameleon::event::manager *getManager() {return manager;}
+			int getCurLevel() {return curLevel;}
 			void setCurLevel(int _curLevel) {curLevel = _curLevel;}
-			int getAttr(string key) {return attrs[key];}
-		private:
-			static amountCreated;
+			int getAttr(string key) {return (*attrs)[key];}
+		protected:
 			chameleon::event::manager *manager;
-			int curlevel;
+			int curLevel;
+			map<string, int> *attrs;
+		private:
+			template<class Archive>
+			void serialize(Archive &ar, const unsigned int version);
 			int requestx;
 			int requesty;
-			map<string, int> attrs;
 	};
 }
 #endif

@@ -2,8 +2,13 @@
 #define LEVELMANAGER_H
 //LIBRARY INCLUDES:
 #include <string>
+#include <list>
+#include <boost/bind.hpp>
+#include <boost/chrono.hpp>
 //USER INCLUDES:
 #include "chameleon.h"
+#include "utils.h"
+#include "level/level.h"
 namespace level {
 	using namespace std;
 	class levelManager : public chameleon::event::listener {
@@ -14,9 +19,11 @@ namespace level {
 			void ev_switchLevel(void *data);
 			void ev_spawnEntity(void *data);
 			void ev_killEntity(void *data);
+		protected:
+			list<level::level *> *levels;
 		private:
 			chameleon::event::manager *manager;
-			double curtime;
+			boost::chrono::system_clock::time_point curtime;
 	};
 }
 #endif
