@@ -10,6 +10,7 @@ def loadImages():
     global IMAGES
     global ENTITYIMAGES
     IMAGES = {
+    "enter" : textureLoad("enter.png"),
     "red" : textureLoad("red.png"),
     "up" : textureLoad("up.png"),
     "down" : textureLoad("down.png"),

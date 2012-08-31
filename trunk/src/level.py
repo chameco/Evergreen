@@ -31,6 +31,7 @@ class levelManager(chameleon.listener):
                 level.entityState.update(t)
     #@utils.trace
     def ev_getLevel(self, data):
+        print data.data
         self.manager.alert(chameleon.event("distLevel", (self.levels[data.curLevel], data.data["name"])))
     def ev_switchLevel(self, data):
         print data
@@ -78,10 +79,12 @@ class level():
             elif c == " ":
                 x += 32
             else:
+                t = self.blocks[c]((x, y), self.index)
                 if issubclass(self.blocks[c], base.entity):
-                    self.entityState.add(self.blocks[c]((x, y), manager=self.manager, curLevel=self.index))
+                    t.manager = self.manager
+                    self.entityState.add(t)
                 elif issubclass(self.blocks[c], base.floor):
-                    self.floorState.add(self.blocks[c]((x, y)))
+                    self.floorState.add(t)
                 else:
-                    self.blockState.add(self.blocks[c]((x, y)))
+                    self.blockState.add(t)
                 x += 32

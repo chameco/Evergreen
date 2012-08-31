@@ -3,6 +3,7 @@ import sys
 import socket
 import collections
 import pygame
+pygame.init()
 import cPickle as pickle
 import re
 import select
@@ -50,13 +51,15 @@ class serverWrapper():
     def postEvent(self, event, data):
         #print event
         #print data
-        self.socket.sendall(pickle.dumps(utils.netEvent(event, data), 2))
+        try:
+            self.socket.sendall(pickle.dumps(utils.netEvent(event, data), 2))
+        except socket.error as e: #Broken pipe, if a key is pressed in the split-second between disconnect and game over.
+            print "Must be game over."
     def getData(self):
         #print "getData"
         request = ""
         p = self.poll.poll(0)
         while p:
-            print p
             if p[0][1] == select.POLLIN:
                 t = self.socket.recv(8192)
                 if t:
@@ -86,18 +89,15 @@ class networkController(chameleon.listener):
         self.entityState = None
     def ev_levelReceived(self, data):
         print "Block State Received"
-        print base
         self.blockState = base.copyableGroup.load(data[0])
         self.floorState = base.copyableGroup.load(data[1])
         self.entityState = base.copyableGroup.load(data[2])
         self.manager.alert(chameleon.event("distLevel", (self.blockState, self.floorState, self.entityState)))# We do it this way so everyone has the same reference to the newly-loaded state. Probably unnessesary, but I like it.
-        self.server.postEvent("ackBlockState", None)
+        #self.server.postEvent("ackBlockState", None)
     def ev_update(self, data):
         responses = self.server.getData()
         if responses:
             for response in responses:
-                if response == "gameOver":
-                    print "GAME OVER: ev_update"
                 self.manager.alert(response)
 class networkView(chameleon.listener):
     def __init__(self, manager, server):
@@ -135,69 +135,96 @@ class networkView(chameleon.listener):
 class clientState():
     def __init__(self, game):
         pass
-    def on_key_down(self, event): #self will be replaced by the instance of glGame
+    def on_key_down(self, game, event):
         pass
-    def on_key_up(self, event):
+    def on_key_up(self, game, event):
         pass
-    def on_quit(self, event):
-        self.alert(chameleon.event("logout", None))
-    def draw(self):
+    def on_quit(self, game):
+        game.alert(chameleon.event("logout", None))
+    def draw(self, game):
         pass
-class drawState(clientState):
+class menuState(clientState):
     def __init__(self, game):
-        pygame.event.set_blocked([pygame.mousemotion, pygame.mousebuttonup, pygame.mousebuttondown])
-        game.loadingFont = SpriteFont(os.path.join("src", "client", "spritepacks", CONFIG["spritepack"], CONFIG["font"]))
-        spritepack.loadimages()
-        game.socket = socket.socket()
-        game.socket.connect((config["host"], config["port"]))
-        game.server = serverwrapper(self.socket)
-        game.netview = networkview(self, self.server)
-        game.netControl = networkController(self, self.server)
-    def on_key_down(self, event):
-        self.alert(chameleon.event(pygame.key.name(event.key), True))
-    def on_key_up(self, event):
-        self.alert(chameleon.event(pygame.key.name(event.key), False))
-    def draw(self):
-        self.alert(chameleon.event("update", None))
-        if CONFIG["playername"] in self.entities:
-            glTranslatef(Gloss.screen_resolution[0]/2 - self.entities[CONFIG["playername"]].rect.x, Gloss.screen_resolution[1]/2 - self.entities[CONFIG["playername"]].rect.y, 0)
+        self.menuItems = []
+        self.addMenuItem("enter", (100, 100), lambda (game): game.loadState(drawState(game)))
+    def addMenuItem(self, name, pos, func):
+        s = base.drawnObject(pos, 0)
+        s.image = spritepack.getImage(name)
+        s.click = func
+        self.menuItems.append(s)
+    def on_mouse_down(self, game, event):
+        self.menuItems[pygame.rect.Rect(event.pos, (1, 1)).collidelist([x.rect for x in self.menuItems])].click(game)
+    def draw(self, game):
+        Gloss.clear(Color.BLACK)
+        for sprite in self.menuItems:
+            sprite.draw()
+class drawState(clientState):
+    def on_key_down(self, game, event):
+        game.alert(chameleon.event(pygame.key.name(event.key), True))
+    def on_key_up(self, game, event):
+        game.alert(chameleon.event(pygame.key.name(event.key), False))
+    def draw(self, game):
+        game.alert(chameleon.event("update", None))
+        if CONFIG["playername"] in game.entities:
+            glTranslatef(Gloss.screen_resolution[0]/2 - game.entities[CONFIG["playername"]].rect.x, Gloss.screen_resolution[1]/2 - game.entities[CONFIG["playername"]].rect.y, 0)
             Gloss.clear(Color.BLACK)
-            for block in self.blockState:
+            for block in game.blockState:
                 block.draw() #Unneeded
-            for floor in self.floorState:
+            for floor in game.floorState:
                 floor.draw()
-            for entity in self.entities.values():
+            for entity in game.entities.values():
                 entity.draw()
             glLoadIdentity();
 class gameOverState(clientState):
-    def draw(self):
+    def draw(self, game):
         Gloss.clear(Color.BLACK)
-        self.loadingFont.draw(text="GAME OVER")
+        game.font.draw(text="GAME OVER")
+class drawTextState(clientState):
+    def __init__(self, game, text):
+        self.text = text + "\nPress <Enter> to continue."
+    def on_key_down(self, game, event):
+        if event.key == pygame.K_RETURN:
+            game.loadState(drawState(game))
+    def draw(self, game):
+        Gloss.clear(Color.BLACK)
+        game.font.draw(text=self.text)
 class glGame(GlossGame, chameleon.manager, chameleon.listener):
     def __init__(self):
         GlossGame.__init__(self, "Evergreen")
         chameleon.manager.__init__(self)
         chameleon.listener.__init__(self)
+        pygame.display.set_icon(pygame.image.load(os.path.join("src", "client", "icon.png"))) #NEEDS CHANGING
         self.setResponse("distLevel", self.ev_distLevel)
         self.setResponse("entityMoved", self.ev_entityMoved)
         self.setResponse("entitySpawned", self.ev_entitySpawned)
         self.setResponse("entityKilled", self.ev_entityKilled)
         self.setResponse("gameOver", self.ev_gameOver)
+        self.setResponse("displayText", self.ev_displayText)
         self.reg("distLevel", self)
         self.reg("entityMoved", self)
         self.reg("entitySpawned", self)
         self.reg("entityKilled", self)
         self.reg("gameOver", self)
+        self.reg("displayText", self)
         self.blockState = []
         self.floorState = []
         self.entities = {}
-        self.loadState(drawState)
-    def loadState(self, state):
-        s = state(self)
-        self.on_key_down = state.on_key_down
-        self.on_key_up = state.on_key_up
-        self.on_quit = state.on_quit
-        self.draw = state.draw
+    def load_content(self):
+        pygame.event.set_blocked([pygame.MOUSEMOTION])
+        spritepack.loadImages()
+        self.socket = socket.socket()
+        self.socket.connect((CONFIG["host"], CONFIG["port"]))
+        self.server = serverWrapper(self.socket)
+        self.netView = networkView(self, self.server)
+        self.netControl = networkController(self, self.server)
+        self.font = SpriteFont(os.path.join("src", "client", "spritepacks", CONFIG["spritepack"], CONFIG["font"]))
+        self.loadState(menuState(self))
+    def loadState(self, s):
+        self.on_key_down = lambda (e): s.on_key_down(self, e)
+        self.on_key_up = lambda (e): s.on_key_up(self, e)
+        self.on_mouse_down = lambda (e): s.on_mouse_down(self, e)
+        self.on_quit = lambda: s.on_quit(self)
+        self.draw = lambda: s.draw(self)
     def ev_distLevel(self, data):
         print "diststate"
         Gloss.clear(Color.BLACK)
@@ -236,9 +263,10 @@ class glGame(GlossGame, chameleon.manager, chameleon.listener):
         del self.entities[sprite.data["name"]]
     def ev_gameOver(self, data):
         print "GAME OVER"
-        self.state = "gameOver"
-        self.on_key_down = utils.sponge
-        self.on_key_up = utils.sponge
+        self.loadState(gameOverState(self))
+    def ev_displayText(self, data):
+        print "ev_displayText"
+        self.loadState(drawTextState(self, data))
 evMan = glGame()
 if CONFIG["fullscreen"]:
     Gloss.full_screen = True

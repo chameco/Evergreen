@@ -1,12 +1,12 @@
 from .... import base
 from .... import chameleon
 class pitwall(base.block):
-    def __init__(self, coords):
-        base.block.__init__(self, coords)
+    def __init__(self, coords, curLevel):
+        base.block.__init__(self, coords, curLevel)
         self.imgname = "pitwall"
 class pitcreature(base.entity):
-    def __init__(self, coords, data=None, manager=None, curLevel=0):
-        base.entity.__init__(self, coords, data, manager, curLevel)
+    def __init__(self, coords, curLevel):
+        base.entity.__init__(self, coords, curLevel)
         self.wasjusthit = 0
         self.prev = 0
     def update(self, allSprites):
@@ -27,8 +27,8 @@ class pitcreature(base.entity):
         self.wasjusthit = 2
         self.data["health"] -= hitter.attrs["attack"]
 class pittooth(pitcreature):
-    def __init__(self, rect, data=None, manager=None, curLevel=0):
-        pitcreature.__init__(self, rect, data, manager, curLevel)
+    def __init__(self, coords, curLevel):
+        pitcreature.__init__(self, coords, curLevel)
         self.data["health"] = 5
         self.imgname = "pittooth"
     def bump(self, bumper):
