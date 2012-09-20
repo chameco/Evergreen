@@ -9,7 +9,6 @@ import cPickle as pickle
 class drawnObject(pygame.sprite.Sprite):
     def __init__(self, coords, curLevel):
         pygame.sprite.Sprite.__init__(self)
-        #print coords
         self.image = None
         self.rect = pygame.rect.Rect(coords, (32, 32))
         self.curLevel = curLevel
@@ -34,31 +33,19 @@ class drawnObject(pygame.sprite.Sprite):
         GL.glTexCoord2f(0, 1); GL.glVertex2f(-originx, -originy)
         GL.glTexCoord2f(self.image.width_ratio, 1); GL.glVertex2f(texwidth - originx, -originy)
         GL.glEnd()
-		
+
         GL.glPopMatrix()
     def serialize(self):
         return {"type" : self.__class__, "coords" : (self.rect.x, self.rect.y), "curLevel" : self.curLevel, "data" : self.data}
     @staticmethod
     def load(dump, manager=None):
         data = dump
-        #print data["coords"]
-        #print data
         r = data["type"](data["coords"], data["curLevel"])
         if "data" in data and data["data"]:
             r.data = data["data"]
         if manager:
             r.manager = manager
         return r
-#        if "data" in data and data["data"]: #If data is set to a true value in the constructor, you better have an argument slot for it!
-#            if manager:
-#                return data["type"](data["coords"], data["data"], manager)
-#            else:
-#                return data["type"](data["coords"], data["data"])
-#        else:
-#            if manager:
-#                return data["type"](data["coords"], manager)
-#            else:
-#                return data["type"](data["coords"])
 class floor(drawnObject):
     def __init__(self, coords, curLevel):
         drawnObject.__init__(self, coords, curLevel)
@@ -207,6 +194,8 @@ class player(entity):
         print "player hit"
         self.wasjusthit = 2
         self.data["health"] -= hitter.attrs["attack"]
+    def refresh(self):
+        self.data["health"] = 10
 @utils.serializable
 class copyableGroup(pygame.sprite.Group):
     def serialize(self):

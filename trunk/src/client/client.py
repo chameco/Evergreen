@@ -1,12 +1,10 @@
 import os
 import sys
 import socket
-import collections
+import select
 import pygame
 pygame.init()
 import cPickle as pickle
-import re
-import select
 from .. import chameleon
 import ConfigParser
 import argparse
@@ -139,6 +137,8 @@ class clientState():
         pass
     def on_key_up(self, game, event):
         pass
+    def on_mouse_down(self, game, event):
+        pass
     def on_quit(self, game):
         game.alert(chameleon.event("logout", None))
     def draw(self, game):
@@ -147,14 +147,22 @@ class menuState(clientState):
     def __init__(self, game):
         self.menuItems = []
         self.addMenuItem("enter", (100, 100), lambda (game): game.loadState(drawState(game)))
+        print self.menuItems[0].rect
     def addMenuItem(self, name, pos, func):
         s = base.drawnObject(pos, 0)
         s.image = spritepack.getImage(name)
+        s.rect = pygame.rect.Rect(pos, (s.image.width, s.image.height))
         s.click = func
         self.menuItems.append(s)
     def on_mouse_down(self, game, event):
-        self.menuItems[pygame.rect.Rect(event.pos, (1, 1)).collidelist([x.rect for x in self.menuItems])].click(game)
+        rectlist = [x.rect for x in self.menuItems]
+        print rectlist
+        t = pygame.rect.Rect(event.pos, (1, 1)).collidelist(rectlist)
+        print t
+        if t != -1:
+            self.menuItems[t].click(game)
     def draw(self, game):
+        glLoadIdentity()
         Gloss.clear(Color.BLACK)
         for sprite in self.menuItems:
             sprite.draw()

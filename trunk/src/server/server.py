@@ -122,6 +122,7 @@ class networkSubsystem(chameleon.manager, chameleon.listener):
         self.manager.alert(chameleon.event("removeNetSubsystem", self))
         self.controlledEntity.kill()
         self.manager.alert(chameleon.event("killEntity", self.controlledEntity))
+        self.controlledEntity.refresh()
         self.manager.alert(chameleon.event("saveEntity", self.controlledEntity))
     def ev_getLevel(self, data):
         self.manager.alert(chameleon.event("getLevel", self.controlledEntity))

@@ -14,6 +14,6 @@ setup(
     package_dir={"src" : "src"},
     package_data={"src.server" : ["server.ini"], "src.client" : ["client.ini"], "src.client.spritepacks.default" : ["*.png"]},
     data_files=["entity.db"],
-    install_requires=["pygame>=1.9"],
+    install_requires=["pygame>=1.9", "pyopengl"],
     dependency_links=["http://www.pygame.org/download.shtml"]
 )
