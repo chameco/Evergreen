@@ -17,6 +17,7 @@ def loadImages():
     "warp" : textureLoad("warp.png"),
     "stone" : textureLoad("stone.png"),
     "woodFloor" : textureLoad("woodfloor.png"),
+    "messageBox" : textureLoad("messagebox.png"),
     "pitwall" : textureLoad("pitwall.png"),
     }
     ENTITYIMAGES = {

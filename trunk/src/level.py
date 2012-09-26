@@ -76,7 +76,7 @@ class level():
             elif c == "C":
                 self.startcoords = (x, y)
                 x += 32
-            elif c == " ":
+            elif c == " " or c == "?":
                 x += 32
             else:
                 t = self.blocks[c]((x, y), self.index)

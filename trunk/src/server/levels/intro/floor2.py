@@ -10,27 +10,18 @@ class lvl(level.level):
         self.levelimp = """\
 ############
 #          #
+#       C  #
+#   ?  ><  #
 #          #
-#  ?    >  #
 #          #
 #          #
 #          #
-#    C     #
 #          #
 #          #
 #          #
 ############"""
         self.messageBox = base.messageBox((3 * 32, 3 * 32), self.index)
         self.messageBox.msg = """\
-Welcome to Evergreen!
-You probably already know the controls if you managed
-to hit the block, but here goes nothing:
-WASD - Move
-Space - Attack/Interact
-And that's it. This is really the most redundant help
-message ever, as in order to see it you need the information
-that it contains. Maybe later we can have nicer things.
-Anyway, try walking over to the down portal (the red portal
-orb thing) and interacting with it."""
+The green portal moves you up a floor. Go down once more."""
         self.blockState.add(self.messageBox)
         self.loadLevel()

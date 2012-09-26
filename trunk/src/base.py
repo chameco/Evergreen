@@ -101,6 +101,13 @@ class stairsWarp(block):
         hitter.curLevel = self.warp
         print hitter
         hitter.manager.alert(chameleon.event("switchLevel", hitter))
+class messageBox(block):
+    def __init__(self, coords, curLevel):
+        block.__init__(self, coords, curLevel)
+        self.imgname = "messageBox"
+    def hit(self, hitter):
+        print "messageBox hit"
+        hitter.manager.alert(chameleon.event("displayText", (self.msg, hitter)))
 class entity(physicalObject): #On the character creation webpage we'll need to add some additional attributes, such as name.
     amountCreated = 0
     def __init__(self, coords, curLevel):
