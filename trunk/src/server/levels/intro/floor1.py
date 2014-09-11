@@ -9,7 +9,7 @@ class lvl(level.level):
         self.blocks["w"] = base.woodFloor
         self.levelimp = """\
 ############
-#          #
+#       www#
 #          #
 #  ?    >  #
 #          #
